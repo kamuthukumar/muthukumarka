@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import portrait from "../assets/portrait-studio.jpg";
+import portraitDark from "../assets/portrait-studio-dark.jpg";
 import site from "../../content/site.json";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
@@ -17,8 +18,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     </div>
     <figure class="portrait">
       <div class="frame">
-        <Picture src={portrait} formats={["avif", "webp"]} widths={[360, 480, 640, 880, 1100]} sizes="(max-width: 64rem) 62vw, 440px"
-          alt="Portrait of Dr. K. A. Muthukumar" loading="eager" fetchpriority="high" class="photo" />
+        <Picture src={portrait} formats={["avif", "webp"]} widths={[360, 480, 640, 880, 985]} sizes="(max-width: 64rem) 62vw, 440px"
+          alt="Portrait of Dr. K. A. Muthukumar" loading="eager" fetchpriority="high" class="photo light-only" />
+        <Picture src={portraitDark} formats={["avif", "webp"]} widths={[360, 480, 640, 880, 985]} sizes="(max-width: 64rem) 62vw, 440px"
+          alt="Portrait of Dr. K. A. Muthukumar" loading="lazy" class="photo dark-only" />
       </div>
       <figcaption class="credit mono"><span class="jp" lang="ja">慶應</span><span>Dr. K. A. Muthukumar, Keio 2022</span></figcaption>
     </figure>
@@ -50,6 +53,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   .portrait { grid-column: 8 / span 5; justify-self: end; align-self: end; position: relative; z-index: 2; width: min(100%, 440px); margin-bottom: -1px; }
   .frame { position: relative; overflow: hidden; aspect-ratio: 4 / 5; }
   .portrait :global(.photo) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .portrait :global(.dark-only) { display: none; }
+  :global(:root[data-theme="dark"]) .portrait :global(.dark-only) { display: block; }
+  :global(:root[data-theme="dark"]) .portrait :global(.light-only) { display: none; }
   .frame { box-shadow: 0 30px 60px -34px oklch(20% 0.02 50 / 0.45); }
   .credit { position: absolute; left: -26px; top: 0; writing-mode: vertical-rl; text-orientation: mixed; display: flex; gap: var(--space-md); align-items: center; font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
   .credit .jp { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--ink-2); }
