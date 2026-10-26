@@ -1,0 +1,52 @@
+---
+import t from "../../content/teaching.json";
+import site from "../../content/site.json";
+const achievements = t.achievements.filter((a) => !a.todo || site.showTodos);
+---
+<section class="section band" id="teaching" aria-labelledby="teach-h">
+  <div class="container grid wrap">
+    <div class="intro">
+      <h2 id="teach-h" data-reveal>Teaching and mentorship</h2>
+      <p class="lead" data-reveal style="--i:1">{t.open}</p>
+      <a class="btn primary" href={`mailto:${site.links.email}?subject=Prospective%20student`}>Write about joining the group</a>
+    </div>
+    <div class="body">
+      <h3 class="tag">Courses</h3>
+      <ul class="courses">
+        {t.courses.map((c, i) => <li data-reveal style={`--i:${i}`}><span class="cname">{c.name}</span><span class="tag">{c.where}</span></li>)}
+      </ul>
+      <dl class="facts">
+        <div><dt class="tag">Supervision</dt><dd>{t.supervision}</dd></div>
+        <div><dt class="tag">Faculty development</dt><dd>{t.development}</dd></div>
+      </dl>
+      <h3 class="tag ach-h">Student achievements</h3>
+      <ul class="ruled ach">
+        {achievements.map((a) => a.todo
+          ? <li><p class="todo">TODO: more student achievements (awards, placements, papers). Edit content/teaching.json.</p></li>
+          : <li><span class="mono">{a.year}</span><span>{a.text}</span></li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .wrap { align-items: start; row-gap: var(--space-2xl); }
+  .intro { grid-column: 1 / span 5; position: sticky; top: 104px; }
+  .intro .lead { margin-block: var(--space-lg) var(--space-xl); }
+  .body { grid-column: 7 / span 6; }
+  .courses { list-style: none; border-top: 1px solid var(--ink); margin-top: var(--space-sm); }
+  .courses li { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-md); flex-wrap: wrap; padding-block: var(--space-lg); border-bottom: 1px solid var(--rule); }
+  .cname { font-family: var(--font-display); font-size: var(--text-section); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); }
+  .facts { margin-top: var(--space-2xl); }
+  .facts div { display: grid; grid-template-columns: 10rem 1fr; gap: var(--space-md); padding-block: var(--space-md); border-bottom: 1px solid var(--rule); }
+  .facts div:first-child { border-top: 1px solid var(--rule); }
+  .ach-h { margin-top: var(--space-2xl); }
+  .ach { margin-top: var(--space-sm); }
+  .ach li { display: grid; grid-template-columns: 4.5rem 1fr; gap: var(--space-md); padding-block: var(--space-md); }
+  .ach li:has(.todo) { display: block; }
+  .ach .mono { color: var(--accent); }
+  @media (max-width: 64rem) {
+    .intro, .body { grid-column: 1 / -1; position: static; }
+    .facts div { grid-template-columns: 1fr; gap: var(--space-2xs); }
+  }
+</style>

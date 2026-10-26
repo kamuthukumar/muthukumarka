@@ -1,0 +1,72 @@
+---
+import shinkai from "../../content/shinkai.json";
+import site from "../../content/site.json";
+const products = shinkai.products.filter((p) => !p.todo || site.showTodos);
+---
+<section class="section sea" id="shinkai" aria-labelledby="shinkai-h">
+  <div class="container">
+    <div class="top">
+      <div class="name" data-reveal>
+        <p class="tag">Founder and CEO, since {shinkai.since}</p>
+        <h2 id="shinkai-h">Shinkai Labs <span class="jp" lang="ja">{shinkai.kanji}</span></h2>
+        <p class="recog">{shinkai.recognition}</p>
+      </div>
+      <p class="mission" data-reveal style="--i:1">{shinkai.mission} The same research, built to be used.</p>
+    </div>
+
+    <ul class="products">
+      {products.map((p, i) => p.todo ? (
+        <li class="product todo-card" data-reveal style={`--i:${i}`}>
+          <p class="todo">TODO: product name, one line on what it does, status. Edit content/shinkai.json.</p>
+        </li>
+      ) : (
+        <li class="product" data-reveal style={`--i:${i}`}>
+          <p class="tag status">{p.status}, {p.year}</p>
+          <h3>{p.name}</h3>
+          <p>{p.body}</p>
+          <dl>
+            <div><dt class="tag">Built with</dt><dd class="mono">{p.stack?.join(", ")}</dd></div>
+            <div><dt class="tag">Copyright</dt><dd class="mono">Reg. No. {p.ref}</dd></div>
+          </dl>
+        </li>
+      ))}
+    </ul>
+    {shinkai.website ? <a class="btn" href={shinkai.website} target="_blank" rel="noopener">Visit Shinkai Labs</a>
+      : site.showTodos && <p class="todo">TODO: Shinkai Labs website URL (content/shinkai.json, "website").</p>}
+  </div>
+</section>
+
+<style>
+  /* 深海: the deep sea. The one section that is always dark, in both themes */
+  .sea { --sea: oklch(17% 0.022 232); --sea-ink: oklch(94% 0.01 220); --sea-muted: oklch(74% 0.02 220); --sea-rule: oklch(32% 0.025 230); --sea-accent: oklch(84% 0.16 152);
+    background: linear-gradient(to bottom, var(--sea), oklch(13% 0.02 236)); color: var(--sea-ink); }
+  :global(:root[data-theme="dark"]) .sea { --sea: oklch(13% 0.02 234); background: linear-gradient(to bottom, var(--sea), oklch(10% 0.016 238)); border-block: 1px solid var(--sea-rule); }
+  .sea :global(.tag) { color: var(--sea-muted); }
+  .sea :global(:focus-visible) { outline-color: var(--sea-accent); }
+  .top { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: end; }
+  .name { grid-column: 1 / span 6; }
+  h2 { color: var(--sea-ink); font-size: var(--text-display); line-height: 1; letter-spacing: -0.03em; margin-top: var(--space-md); max-width: none; }
+  .jp { font-size: 0.32em; letter-spacing: 0.1em; color: var(--sea-muted); vertical-align: 0.9em; margin-left: 0.2em; }
+  .recog { margin-top: var(--space-md); color: var(--sea-accent); font-family: var(--font-mono); font-size: var(--text-sm); }
+  .mission { grid-column: 8 / span 5; font-size: var(--text-lead); line-height: 1.5; color: var(--sea-ink); }
+  .products { list-style: none; margin-block: clamp(56px, 7vw, 96px) var(--space-xl); display: grid; grid-template-columns: 7fr 5fr; grid-auto-rows: minmax(0, auto); gap: var(--gap); }
+  .product { border: 1px solid var(--sea-rule); padding: clamp(24px, 3vw, 40px); background: oklch(100% 0 0 / 0.025); }
+  .product:first-child { grid-row: span 2; }
+  .products:has(> .product:only-child) { grid-template-columns: minmax(0, 1fr); }
+  .products:has(> .product:only-child) .product { grid-row: auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gap); align-items: end; }
+  .products:has(> .product:only-child) .product dl { grid-column: 2; grid-row: 1 / span 3; }
+  .product h3 { color: var(--sea-ink); font-size: var(--text-section); line-height: 1.06; letter-spacing: -0.02em; margin-top: var(--space-md); max-width: 16ch; }
+  .product > p:not(.tag) { margin-top: var(--space-lg); max-width: 46ch; color: var(--sea-muted); }
+  .status { color: var(--sea-accent) !important; }
+  .product dl { margin-top: var(--space-xl); border-top: 1px solid var(--sea-rule); }
+  .product dl div { display: grid; grid-template-columns: 8rem 1fr; gap: var(--space-md); padding-block: var(--space-sm); border-bottom: 1px solid var(--sea-rule); }
+  .todo-card { display: grid; place-items: center; border-style: dashed; min-height: 160px; }
+  .sea .todo { border-color: var(--sea-accent); color: var(--sea-muted); }
+  .sea .btn { border-color: var(--sea-ink); color: var(--sea-ink); }
+  @media (max-width: 64rem) {
+    .name, .mission { grid-column: 1 / -1; }
+    .mission { margin-top: var(--space-lg); }
+    .products { grid-template-columns: 1fr; }
+    .product:first-child { grid-row: auto; }
+  }
+</style>

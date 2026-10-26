@@ -1,0 +1,84 @@
+---
+import h from "../../content/honours.json";
+---
+<section class="section" id="honours" aria-labelledby="hon-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 id="hon-h" data-reveal>Funded, registered, invited</h2>
+      <p class="lead" data-reveal style="--i:1">Grants and scholarships from India and Japan, software registered with the Government of India, and the sessions and talks I have been asked to lead.</p>
+    </div>
+
+    <div class="cols">
+      <table class="grants">
+        <caption>Grants and scholarships</caption>
+        <thead><tr><th scope="col">Years</th><th scope="col">Award</th><th scope="col" class="r">Amount</th></tr></thead>
+        <tbody>
+          {h.grants.map((g) => (
+            <tr><td class="mono">{g.year}</td><th scope="row">{g.name}<span class="sub">{g.detail}</span></th><td class="mono r amt">{g.amount ?? ""}</td></tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div class="slips">
+        <h3>Software copyrights</h3>
+        <ul>
+          {h.copyrights.map((c, i) => (
+            <li class="slip" data-reveal style={`--i:${i}`}>
+              <p class="mono reg">{c.ref}</p>
+              <p class="nm">{c.name}</p>
+              <p class="tag">{c.year}, {c.detail}</p>
+            </li>
+          ))}
+        </ul>
+        <p class="tag issuer">Copyright Office, Government of India</p>
+      </div>
+    </div>
+
+    <div class="cols lower">
+      <div>
+        <h3>Session chair</h3>
+        <ul class="ruled list">
+          {h.chairs.map((c) => <li><span class="mono">{c.year}</span><span><b>{c.name}</b>{c.detail}</span></li>)}
+        </ul>
+      </div>
+      <div>
+        <h3>Invited talks</h3>
+        <ul class="ruled list">
+          {h.talks.map((t) => <li><span class="mono">{t.year ?? ""}</span><span><b>{t.name}</b>{t.detail}</span></li>)}
+        </ul>
+        <h3 class="award-h">Award</h3>
+        <ul class="ruled list">
+          {h.awards.map((a) => <li><span class="mono">{a.year}</span><span><b>{a.name}</b>{a.detail}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cols { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(32px, 5vw, 96px); align-items: start; }
+  .lower { margin-top: clamp(64px, 8vw, 112px); grid-template-columns: 1fr 1fr; }
+  table { width: 100%; border-collapse: collapse; }
+  caption, h3 { text-align: left; font-family: var(--font-display); font-size: var(--text-title); color: var(--ink); padding-bottom: var(--space-md); }
+  thead th { font-weight: 400; font-size: var(--text-sm); color: var(--muted); text-align: left; padding: 0 var(--space-md) var(--space-xs) 0; border-bottom: 1px solid var(--ink); }
+  td, tbody th { padding: var(--space-md) var(--space-md) var(--space-md) 0; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: baseline; font-weight: 400; }
+  tbody th { color: var(--ink); }
+  td.mono { color: var(--muted); white-space: nowrap; width: 6.5rem; }
+  .r { text-align: right !important; padding-right: 0 !important; }
+  td.amt { color: var(--accent); font-size: 0.95rem; }
+  .sub { display: block; color: var(--muted); font-size: var(--text-sm); }
+  .slips ul { list-style: none; display: grid; gap: var(--space-md); }
+  .slip { position: relative; padding: var(--space-lg) var(--space-lg) var(--space-md); background: var(--card); border: 1px solid var(--rule); border-left: 1px solid var(--rule);
+    box-shadow: 0 1px 0 var(--lit) inset, 0 6px 18px -12px oklch(20% 0.02 50 / 0.3); }
+  .slip::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: repeating-linear-gradient(to bottom, var(--rule) 0 4px, transparent 4px 8px); }
+  .reg { color: var(--accent); font-size: 0.95rem; }
+  .nm { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink); line-height: 1.25; margin-top: var(--space-xs); }
+  .slip .tag { margin-top: var(--space-xs); }
+  .issuer { margin-top: var(--space-sm); }
+  .list li { display: grid; grid-template-columns: 4.5rem 1fr; gap: var(--space-md); padding-block: var(--space-md); }
+  .list li > span:first-child { color: var(--muted); }
+  .list b { display: block; font-weight: 400; color: var(--ink); }
+  .list li > span:last-child { color: var(--muted); font-size: var(--text-sm); }
+  .award-h { margin-top: var(--space-2xl); }
+  @media (max-width: 64rem) { .cols, .lower { grid-template-columns: 1fr; } }
+</style>

@@ -79,4 +79,7 @@ const links = [
     anchors.forEach((a) => a.classList.toggle("current", a.hash === `#${e.target.id}`));
   }), { rootMargin: "-45% 0px -50% 0px" });
   anchors.forEach((a) => { const s = document.querySelector(a.hash); if (s) io.observe(s); });
+  // at the top nothing is current
+  const hero = document.getElementById("top");
+  if (hero) new IntersectionObserver((es) => { if (es[0].isIntersecting) anchors.forEach((x) => x.classList.remove("current")); }, { threshold: 0.35 }).observe(hero);
 </script>

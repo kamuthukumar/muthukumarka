@@ -1,0 +1,42 @@
+---
+import news from "../../content/news.json";
+const lead = news.find((n) => n.lead) ?? news[0];
+const rest = news.filter((n) => n !== lead);
+---
+<section class="section" id="news" aria-labelledby="news-h">
+  <div class="container">
+    <h2 id="news-h" class="sr-only">News</h2>
+    <article class="lead-item" data-reveal>
+      <p class="tag"><time>{lead.date}</time>, {lead.kind}</p>
+      <h3 class="statement">{lead.title}</h3>
+      <p class="wall dropcap">{lead.body}</p>
+    </article>
+    <ol class="ruled index" aria-label={`Also in ${rest[0]?.date ?? "the news"}`}>
+      {rest.map((n, i) => (
+        <li class="row" data-reveal style={`--i:${i}`}>
+          <p class="tag"><time>{n.date}</time><span>{n.kind}</span></p>
+          <h3>{n.title}</h3>
+          <p class="body">{n.body}{n.ref && <> <span class="mono">{n.ref}</span></>}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .lead-item { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+  .lead-item .tag { grid-column: 1 / -1; margin-bottom: var(--space-md); }
+  .statement { grid-column: 1 / span 10; font-size: var(--text-display); line-height: 1.04; letter-spacing: -0.026em; max-width: 21ch; font-variation-settings: "opsz" 72; }
+  .wall { grid-column: 7 / span 5; margin-top: var(--space-xl); max-width: 60ch; }
+  .dropcap::first-letter { float: left; font: 400 3.4em/0.8 var(--font-display); padding: 0.08em 0.1em 0 0; color: var(--accent); }
+  .index { margin-top: clamp(64px, 8vw, 120px); }
+  .row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding-block: var(--space-lg); align-items: baseline; }
+  .row .tag { grid-column: 1 / span 2; display: flex; flex-direction: column; }
+  .row h3 { grid-column: 3 / span 5; }
+  .row .body { grid-column: 8 / span 5; }
+  @media (max-width: 64rem) {
+    .statement, .wall, .row .tag, .row h3, .row .body { grid-column: 1 / -1; }
+    .row .tag { flex-direction: row; gap: var(--space-sm); }
+    .row h3 { margin-block: var(--space-xs); }
+  }
+</style>

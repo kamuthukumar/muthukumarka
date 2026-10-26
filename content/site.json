@@ -1,15 +1,30 @@
 {
+  "showTodos": true,
   "name": "K. A. Muthukumar",
   "honorific": "Ph.D.",
   "headline": "Building AI that sees, senses and cares.",
   "role": "AI researcher. Assistant Professor at SSN College of Engineering, and founder of Shinkai Labs.",
   "thread": "Noise to information: machine learning where the signal is weak, the data is scarce and the stakes are clinical.",
   "location": "Chennai, India",
-  "languages": ["English", "Tamil", "Japanese"],
+  "languages": [
+    "English",
+    "Tamil",
+    "Japanese"
+  ],
   "description": "K. A. Muthukumar, AI researcher, Assistant Professor at SSN College of Engineering and founder of Shinkai Labs, working on fetal ECG, medical image analysis, optimal transport and edge AI.",
   "affiliations": [
-    { "name": "SSN College of Engineering", "parent": "Anna University", "role": "Assistant Professor", "since": "2025-05" },
-    { "name": "Shinkai Labs Pvt. Ltd.", "role": "Founder and CEO", "since": "2025-03", "note": "DPIIT-recognized deep tech startup" }
+    {
+      "name": "SSN College of Engineering",
+      "parent": "Anna University",
+      "role": "Assistant Professor",
+      "since": "2025-05"
+    },
+    {
+      "name": "Shinkai Labs Pvt. Ltd.",
+      "role": "Founder and CEO",
+      "since": "2025-03",
+      "note": "DPIIT-recognized deep tech startup"
+    }
   ],
   "links": {
     "email": "muthukumar9890@gmail.com",
@@ -22,9 +37,21 @@
     "shinkai": null
   },
   "stats": [
-    { "value": "21", "label": "papers and abstracts" },
-    { "value": "3", "label": "registered software copyrights" },
-    { "value": "INR 2.2M", "label": "DST-SERB grant, fetal arrhythmia" },
-    { "value": "5", "label": "conference sessions chaired" }
+    {
+      "value": "21",
+      "label": "papers and abstracts"
+    },
+    {
+      "value": "3",
+      "label": "registered software copyrights"
+    },
+    {
+      "value": "INR 2.2M",
+      "label": "DST-SERB grant, fetal arrhythmia"
+    },
+    {
+      "value": "5",
+      "label": "conference sessions chaired"
+    }
   ]
 }

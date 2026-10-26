@@ -144,7 +144,9 @@ export function mountTrace(canvas: HTMLCanvasElement, hero: HTMLElement) {
   if (still) return;
 
   // plays once on load, then the scroll owns it
-  gsap.to(state, { intro: 1, duration: 2.6, delay: 0.45, ease: "none", onUpdate: schedule });
+  // on phones the strip can sit below the first screen, so the transport waits until it is seen
+  const play = () => gsap.to(state, { intro: 1, duration: 2.6, delay: 0.35, ease: "none", onUpdate: schedule });
+  new IntersectionObserver((es, o) => { if (es.some((e) => e.isIntersecting)) { o.disconnect(); play(); } }, { threshold: 0.4 }).observe(canvas);
   lenisReady.then(() => {
     ScrollTrigger.create({
       trigger: hero, start: "top top", end: "bottom top", scrub: 0.6,

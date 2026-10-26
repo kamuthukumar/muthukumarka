@@ -1,0 +1,10 @@
+---
+// A single heartbeat drawn across the page as a section divider; it draws itself once in view.
+const { at = 0.62 } = Astro.props as { at?: number };
+const x = Math.round(1200 * at);
+const d = `M0 24 H${x - 60} l8 -3 l8 3 H${x - 14} l4 3 l6 -21 l6 27 l5 -6 H${x + 40} q14 -9 28 0 H1200`;
+---
+<svg class="beat" viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" data-beat>
+  <path class="base" d="M0 24 H1200" />
+  <path class="line" d={d} pathLength="1" />
+</svg>

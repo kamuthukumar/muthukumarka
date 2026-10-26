@@ -1,0 +1,118 @@
+---
+import journey from "../../content/journey.json";
+// A two-lane timeline, India above and Japan below. Each stay is a bar from its start to its end;
+// overlapping stays in a lane take the next free row. Under 64rem it becomes a plain ordered list.
+const START = 2008, END = 2027;
+const dec = (s: string | null) => { if (!s) return 2026.83; const [y, m = "1"] = s.split("-"); return +y + (+m - 1) / 12; };
+const pct = (v: number) => ((v - START) / (END - START)) * 100;
+const items = journey.map((j, i) => ({ ...j, i, a: dec(j.from), b: Math.max(dec(j.to) , dec(j.from) + 0.25) }))
+  .sort((p, q) => p.a - q.a);
+const lanes: Record<string, { rows: number[]; list: (typeof items[number] & { row: number })[] }> = { India: { rows: [], list: [] }, Japan: { rows: [], list: [] } };
+for (const it of items) {
+  const lane = lanes[it.country];
+  let row = lane.rows.findIndex((end) => end <= it.a);
+  if (row < 0) { row = lane.rows.length; lane.rows.push(0); }
+  lane.rows[row] = it.b + 0.15;
+  lane.list.push({ ...it, row });
+}
+const ticks = Array.from({ length: END - START }, (_, k) => START + k).filter((y) => y % 2 === 0);
+const fmt = (s: string | null) => s ? s.replace(/^(\d{4})-(\d{2})$/, (_, y, m) => `${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m - 1]} ${y}`) : "now";
+const ordered = [...items].sort((p, q) => q.a - p.a);
+const first = ordered[0];
+---
+<section class="section" id="journey" aria-labelledby="journey-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 id="journey-h" data-reveal>From Keio to Chennai</h2>
+      <p class="lead" data-reveal style="--i:1">Between India and Japan: study, banking, a Ph.D., industry, a lab of my own and a company. Choose a stay to read it.</p>
+    </div>
+
+    <div class="chart" aria-hidden="false">
+      {Object.entries(lanes).map(([name, lane]) => (
+        <div class="lane" style={`--rows:${lane.rows.length}`}>
+          <p class="lane-name">{name}{name === "Japan" && <span class="jp" lang="ja"> 日本</span>}</p>
+          <div class="track">
+            {lane.list.map((it) => (
+              <button type="button" class={`bar ${it.kind === "study" ? "study" : ""} ${it.to ? "" : "now"}`}
+                style={`left:${pct(it.a)}%;width:${pct(it.b) - pct(it.a)}%;--r:${it.row}`}
+                aria-controls="j-detail" aria-pressed={it === first ? "true" : "false"}
+                data-role={it.role} data-org={it.org} data-place={`${it.place}, ${it.country}`} data-when={`${fmt(it.from)} to ${fmt(it.to)}`} data-body={it.body ?? ""}>
+                <span class="sr-only">{it.role}, {it.org}, {fmt(it.from)} to {fmt(it.to)}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="axis" aria-hidden="true">
+        {ticks.map((y) => <span class="mono" style={`left:${pct(y)}%`}>{y}</span>)}
+      </div>
+      <div class="detail" id="j-detail" aria-live="polite">
+        <p class="tag when">{fmt(first.from)} to {fmt(first.to)}, {first.place}, {first.country}</p>
+        <h3 class="role">{first.role}</h3>
+        <p class="org">{first.org}</p>
+        <p class="body">{first.body}</p>
+      </div>
+      <p class="key mono"><span><i class="k work"></i>work</span><span><i class="k study"></i>study</span></p>
+    </div>
+
+    <ol class="list ruled">
+      {ordered.map((it) => (
+        <li>
+          <p class="tag">{fmt(it.from)} to {fmt(it.to)}, {it.place}, {it.country}</p>
+          <h3>{it.role}</h3>
+          <p class="org">{it.org}</p>
+          {it.body && <p class="body">{it.body}</p>}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .chart { position: relative; }
+  .lane { display: grid; grid-template-columns: 7rem 1fr; align-items: center; border-top: 1px solid var(--rule); padding-block: var(--space-md); }
+  .lane:first-child { border-top: 1px solid var(--ink); }
+  .lane-name { font-family: var(--font-display); font-size: var(--text-title); color: var(--ink); }
+  .lane-name .jp { font-size: 0.6em; color: var(--muted); letter-spacing: 0.08em; }
+  .track { position: relative; height: calc(var(--rows) * 30px); }
+  .bar { position: absolute; top: calc(var(--r) * 30px + 6px); height: 18px; min-width: 18px; border-radius: 2px; background: var(--ink-2); opacity: 0.55;
+    transition: opacity var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+  .bar.study { background: transparent; border: 1.5px solid var(--ink-2); }
+  .bar.now::after { content: ""; position: absolute; right: -6px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; background: var(--accent); }
+  .bar[aria-pressed="true"] { opacity: 1; background: var(--accent); border-color: var(--accent); }
+  .bar:active { transform: scaleY(0.88); }
+  @media (hover: hover) and (pointer: fine) { .bar:hover { opacity: 1; } }
+  .axis { position: relative; height: 28px; margin-left: 7rem; border-top: 1px solid var(--ink); }
+  .axis span { position: absolute; top: 6px; transform: translateX(-50%); color: var(--muted); }
+  .detail { margin-top: var(--space-xl); margin-left: 7rem; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); column-gap: var(--gap); min-height: 170px; }
+  .detail .when { grid-column: 1 / -1; }
+  .detail .role { grid-column: 1 / span 5; font-size: var(--text-section); line-height: 1.06; letter-spacing: -0.02em; margin-top: var(--space-sm); }
+  .detail .org { grid-column: 1 / span 5; margin-top: var(--space-xs); color: var(--ink); }
+  .detail .body { grid-column: 6 / span 5; grid-row: 2 / span 2; align-self: end; max-width: 52ch; }
+  .key { display: flex; gap: var(--space-lg); margin: var(--space-lg) 0 0 7rem; color: var(--muted); }
+  .k { display: inline-block; width: 18px; height: 10px; border-radius: 2px; margin-right: 6px; background: var(--ink-2); opacity: 0.55; vertical-align: 0; }
+  .k.study { background: transparent; border: 1.5px solid var(--ink-2); }
+  .list { display: none; }
+  .list li { padding-block: var(--space-lg); }
+  .list h3 { margin-top: var(--space-xs); }
+  .list .org { color: var(--ink); }
+  .list .body { margin-top: var(--space-xs); }
+  @media (max-width: 64rem) {
+    .chart { display: none; }
+    .list { display: block; }
+  }
+</style>
+
+<script>
+  const bars = [...document.querySelectorAll<HTMLButtonElement>("#journey .bar")];
+  const d = document.getElementById("j-detail")!;
+  const set = (b: HTMLButtonElement) => {
+    bars.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    const { role, org, place, when, body } = b.dataset;
+    d.querySelector(".when")!.textContent = `${when}, ${place}`;
+    d.querySelector(".role")!.textContent = role!;
+    d.querySelector(".org")!.textContent = org!;
+    d.querySelector(".body")!.textContent = body ?? "";
+  };
+  bars.forEach((b) => { b.addEventListener("click", () => set(b)); b.addEventListener("focus", () => set(b)); });
+</script>

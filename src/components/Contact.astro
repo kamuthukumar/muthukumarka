@@ -1,0 +1,47 @@
+---
+import site from "../../content/site.json";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const L = site.links;
+const rows = [
+  { k: "Email", v: L.email, href: `mailto:${L.email}` },
+  { k: "GitHub", v: "github.com/kamuthukumar", href: L.github },
+  { k: "LinkedIn", v: "linkedin.com/in/muthukumarka", href: L.linkedin },
+  { k: "CV", v: "Curriculum vitae (PDF)", href: `${base}/${L.cv}` },
+  { k: "Google Scholar", v: L.scholar, href: L.scholar, todo: "scholar" },
+  { k: "ORCID", v: L.orcid, href: L.orcid, todo: "orcid" },
+  { k: "IEEE", v: L.ieee, href: L.ieee, todo: "ieee" },
+  { k: "Shinkai Labs", v: L.shinkai, href: L.shinkai, todo: "shinkai" },
+].filter((r) => r.v || site.showTodos);
+---
+<section class="section" id="contact" aria-labelledby="contact-h">
+  <div class="container grid wrap">
+    <div class="copy">
+      <h2 id="contact-h" data-reveal>Write to me</h2>
+      <p class="lead" data-reveal style="--i:1">Research collaborations, students who want to join, industry projects in healthcare and vision AI, and India and Japan academic exchange.</p>
+      <a class="mail" href={`mailto:${L.email}`}>{L.email}</a>
+    </div>
+    <dl class="links ruled">
+      {rows.map((r) => (
+        <div>
+          <dt class="tag">{r.k}</dt>
+          <dd>{r.v
+            ? <a href={r.href!} target={r.href!.startsWith("http") ? "_blank" : undefined} rel="noopener">{r.v}</a>
+            : <span class="todo">TODO: add the {r.k} URL in content/site.json ("{r.todo}")</span>}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .wrap { align-items: start; row-gap: var(--space-2xl); }
+  .copy { grid-column: 1 / span 6; }
+  h2 { font-size: var(--text-hero); line-height: 0.98; letter-spacing: -0.032em; font-variation-settings: "opsz" 72; }
+  .lead { margin-top: var(--space-lg); }
+  .mail { display: inline-block; margin-top: var(--space-xl); font-family: var(--font-display); font-size: var(--text-title); color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.18em; overflow-wrap: anywhere; }
+  .links { grid-column: 8 / span 5; }
+  .links div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: var(--space-md); padding-block: var(--space-md); align-items: baseline; }
+  .links a { color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+  @media (hover: hover) and (pointer: fine) { .links a:hover, .mail:hover { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; } }
+  @media (max-width: 64rem) { .copy, .links { grid-column: 1 / -1; } .links div { grid-template-columns: 1fr; gap: var(--space-2xs); } }
+</style>

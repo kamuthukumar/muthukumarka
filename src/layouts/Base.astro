@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import site from "../../content/site.json";
+import displayFont from "@fontsource-variable/newsreader/files/newsreader-latin-opsz-normal.woff2?url";
+import bodyFont from "@fontsource/hanken-grotesk/files/hanken-grotesk-latin-400-normal.woff2?url";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const url = new URL(import.meta.env.BASE_URL, Astro.site).href;
@@ -51,6 +53,8 @@ const person = {
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#efe9e1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#14110e" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin>
   <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml">
   <script is:inline>
     // Theme before first paint: saved choice, else the system's.

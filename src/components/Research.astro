@@ -1,0 +1,139 @@
+---
+import research from "../../content/research.json";
+import site from "../../content/site.json";
+import { loadPublications } from "../lib/bib";
+const pubs = loadPublications();
+const papersFor = (id: string) => pubs.filter((p) => p.topics.includes(id));
+---
+<section class="section band" id="research" aria-labelledby="research-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 id="research-h" data-reveal>Six lines, one thread</h2>
+      <p class="lead" data-reveal style="--i:1">{site.thread}</p>
+    </div>
+
+    <div class="lines">
+      <div class="tabs" role="tablist" aria-label="Research lines" aria-orientation="vertical">
+        {research.map((r, i) => (
+          <button type="button" role="tab" id={`rt-${r.id}`} aria-controls={`rp-${r.id}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>
+            <span class="mono n">{String(i + 1).padStart(2, "0")}</span>
+            <span class="nm">{r.name}</span>
+            {r.ot && <span class="mono otb" title="Uses optimal transport">OT</span>}
+          </button>
+        ))}
+      </div>
+      <div class="panels">
+        {research.map((r, i) => {
+          const papers = papersFor(r.id);
+          return (
+            <div class="panel" role="tabpanel" id={`rp-${r.id}`} aria-labelledby={`rt-${r.id}`} hidden={i !== 0}>
+              <h3>{r.title}</h3>
+              <p class="idea">{r.idea}</p>
+              <dl class="facts">
+                <div><dt class="tag">Methods</dt><dd>{r.methods.join(", ")}</dd></div>
+                {r.note && <div><dt class="tag">Context</dt><dd>{r.note}</dd></div>}
+              </dl>
+              {papers.length > 0 && (
+                <div class="papers">
+                  <p class="tag">{papers.length === 1 ? "1 paper" : `${papers.length} papers`}</p>
+                  <ul>
+                    {papers.map((p) => (
+                      <li><a href={`#pub-${p.key}`}><span class="mono yr">{p.year}</span> {p.title}</a></li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <figure class="ot" aria-labelledby="ot-h">
+      <div class="ot-copy">
+        <h3 id="ot-h">The through-line: optimal transport</h3>
+        <p>Fetal ECG with earth mover's distance, segmentation with a Sinkhorn divergence: the same idea, moving one distribution onto another at the least cost. Drag the noisy points. Lower ε for the sharp Wasserstein plan, raise it for the smooth Sinkhorn one.</p>
+        <div class="controls">
+          <label for="eps" class="tag">ε, entropic regularisation</label>
+          <input id="eps" type="range" min="0" max="100" value="22" aria-describedby="eps-out">
+          <output id="eps-out" class="mono" for="eps">ε = 0.020</output>
+          <output id="cost-out" class="mono" aria-live="polite">transport cost 0.000</output>
+          <button type="button" class="btn" id="ot-reshuffle">New noise</button>
+        </div>
+      </div>
+      <div class="ot-stage">
+        <canvas id="ot" role="img" aria-label="Interactive diagram: noisy source points are matched to points on a clean curve; lines show the optimal transport plan, thicker where more mass moves."></canvas>
+        <figcaption class="mono legend"><span><i class="dot src"></i>noisy samples, drag me</span><span><i class="dot tgt"></i>clean signal</span></figcaption>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .lines { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: start; }
+  .tabs { grid-column: 1 / span 5; display: flex; flex-direction: column; border-top: 1px solid var(--ink); }
+  [role="tab"] { display: grid; grid-template-columns: 3rem 1fr auto; align-items: baseline; gap: var(--space-sm); text-align: left; padding: var(--space-md) 0; border-bottom: 1px solid var(--rule); color: var(--muted); transition: color var(--dur-short) var(--ease-out), padding var(--dur-short) var(--ease-out); }
+  [role="tab"] .nm { font-family: var(--font-display); font-size: var(--text-title); line-height: 1.2; }
+  [role="tab"] .otb { font-size: 0.7rem; border: 1px solid currentColor; padding: 1px 5px; border-radius: 2px; }
+  [role="tab"][aria-selected="true"] { color: var(--ink); }
+  [role="tab"][aria-selected="true"] .n, [role="tab"][aria-selected="true"] .otb { color: var(--accent); }
+  @media (hover: hover) and (pointer: fine) { [role="tab"]:hover { color: var(--ink); } }
+  .panels { grid-column: 7 / span 6; min-height: 420px; }
+  .panel { animation: in var(--dur-long) var(--ease-out) both; }
+  @keyframes in { from { opacity: 0; transform: translateY(6px); } }
+  .panel h3 { font-size: var(--text-section); line-height: 1.06; letter-spacing: -0.02em; }
+  .idea { font-size: var(--text-lead); margin-top: var(--space-lg); max-width: 40ch; color: var(--ink-2); }
+  .facts { margin-top: var(--space-xl); border-top: 1px solid var(--rule); }
+  .facts div { display: grid; grid-template-columns: 7rem 1fr; gap: var(--space-md); padding-block: var(--space-sm); border-bottom: 1px solid var(--rule); }
+  .papers { margin-top: var(--space-xl); }
+  .papers ul { list-style: none; margin-top: var(--space-xs); }
+  .papers li { padding-block: var(--space-xs); }
+  .papers a { text-decoration: none; color: var(--ink-2); }
+  .papers a:hover { text-decoration: underline; }
+  .yr { color: var(--accent); margin-right: var(--space-xs); }
+
+  .ot { margin-top: clamp(80px, 10vw, 144px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: var(--space-xl); align-items: center; }
+  .ot-copy { grid-column: 1 / span 4; }
+  .ot-copy h3 { font-size: var(--text-section); line-height: 1.06; letter-spacing: -0.02em; }
+  .ot-copy p { margin-top: var(--space-lg); max-width: 46ch; }
+  .controls { margin-top: var(--space-xl); display: grid; gap: var(--space-sm); justify-items: start; }
+  input[type="range"] { width: 100%; max-width: 320px; accent-color: var(--accent); height: 32px; }
+  #cost-out { color: var(--accent); }
+  .ot-stage { grid-column: 6 / span 7; position: relative; }
+  #ot { width: 100%; aspect-ratio: 16 / 10; display: block; background: var(--paper); border: 1px solid var(--rule); touch-action: none; cursor: grab;
+    background-image: linear-gradient(var(--grid-minor) 1px, transparent 1px), linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px); background-size: 20px 20px; }
+  #ot.dragging { cursor: grabbing; }
+  .legend { display: flex; gap: var(--space-lg); margin-top: var(--space-sm); color: var(--muted); }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .dot.src { border: 1.5px solid var(--ink); }
+  .dot.tgt { background: var(--accent); }
+  @media (max-width: 64rem) {
+    .tabs, .panels, .ot-copy, .ot-stage { grid-column: 1 / -1; }
+    .panels { margin-top: var(--space-xl); min-height: 0; }
+  }
+</style>
+
+<script>
+  // research tabs
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('#research [role="tab"]')];
+  const choose = (t: HTMLButtonElement, focus = false) => {
+    tabs.forEach((x) => {
+      const on = x === t;
+      x.setAttribute("aria-selected", String(on)); x.tabIndex = on ? 0 : -1;
+      (document.getElementById(x.getAttribute("aria-controls")!) as HTMLElement).hidden = !on;
+    });
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => choose(t));
+    t.addEventListener("keydown", (e) => {
+      const k = ({ ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 } as Record<string, number>)[e.key];
+      if (k) { e.preventDefault(); choose(tabs[(i + k + tabs.length) % tabs.length], true); }
+      if (e.key === "Home") { e.preventDefault(); choose(tabs[0], true); }
+      if (e.key === "End") { e.preventDefault(); choose(tabs[tabs.length - 1], true); }
+    });
+  });
+
+  import { mountOT } from "../scripts/ot";
+  mountOT();
+</script>

@@ -1,0 +1,140 @@
+---
+import { loadPublications, ME, TOPICS } from "../lib/bib";
+const pubs = loadPublications();
+const years = [...new Set(pubs.map((p) => p.year))].sort((a, b) => b - a);
+const topics = Object.entries(TOPICS).filter(([k]) => pubs.some((p) => p.topics.includes(k)));
+const journals = pubs.filter((p) => p.type === "journal").length;
+const ones = ["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+const tens = ["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+const words = (n: number) => n < 20 ? ones[n] : n < 100 ? tens[Math.floor(n / 10)] + (n % 10 ? "-" + ones[n % 10] : "") : String(n);
+const count = words(pubs.length);
+---
+<section class="section band" id="publications" aria-labelledby="pubs-h">
+  <div class="container">
+    <div class="sec-head">
+      <h2 id="pubs-h" data-reveal>{count[0].toUpperCase() + count.slice(1)} papers and abstracts</h2>
+      <p class="lead" data-reveal style="--i:1">{journals} journal entries and {pubs.length - journals} conference entries, newest first. Search, filter, and copy any citation as BibTeX.</p>
+    </div>
+
+    <form class="filters" role="search" aria-label="Filter publications" onsubmit="return false">
+      <div class="seg" role="group" aria-label="Type">
+        <button type="button" class="chip" aria-pressed="true" data-type="all">All</button>
+        <button type="button" class="chip" aria-pressed="false" data-type="journal">Journals</button>
+        <button type="button" class="chip" aria-pressed="false" data-type="conference">Conferences</button>
+      </div>
+      <label class="field"><span class="tag">Year</span>
+        <select id="f-year"><option value="">Any</option>{years.map((y) => <option value={y}>{y}</option>)}</select>
+      </label>
+      <label class="field"><span class="tag">Topic</span>
+        <select id="f-topic"><option value="">Any</option>{topics.map(([k, v]) => <option value={k}>{v}</option>)}</select>
+      </label>
+      <label class="field grow"><span class="tag">Search</span>
+        <input id="f-q" type="search" placeholder="Title, author, venue" autocomplete="off">
+      </label>
+      <output class="count mono" id="f-count" aria-live="polite">{pubs.length} papers</output>
+    </form>
+
+    <ol class="pubs" id="pubs">
+      {pubs.map((p) => (
+        <li class="pub" id={`pub-${p.key}`} data-type={p.type} data-year={p.year} data-topics={p.topics.join(" ")}
+          data-text={`${p.title} ${p.authors.join(" ")} ${p.venue}`.toLowerCase()}>
+          <p class="y mono">{p.year}</p>
+          <div class="main">
+            <h3 class="ti">{p.title}</h3>
+            <p class="au">{p.authors.map((a, i) => <>{i > 0 && ", "}{a === ME ? <span class="me">{a}</span> : a}</>)}</p>
+            <p class="ve"><i>{p.venue}</i>{p.details && `, ${p.details}`}</p>
+          </div>
+          <div class="side">
+            <p class="tag">{p.type === "journal" ? "Journal" : "Conference"}{p.note && `, ${p.note}`}</p>
+            {p.doi && <a class="mono ref" href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">doi:{p.doi}</a>}
+            {p.arxiv && <a class="mono ref" href={`https://arxiv.org/abs/${p.arxiv}`} target="_blank" rel="noopener">arXiv:{p.arxiv}</a>}
+            <button type="button" class="copy mono" data-bib={p.raw} aria-label={`Copy BibTeX for ${p.title}`}>Copy BibTeX</button>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <p class="empty" id="f-empty" hidden>No paper matches those filters. <button type="button" class="link" id="f-clear">Clear the filters</button></p>
+  </div>
+</section>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; align-items: end; gap: var(--space-md) var(--space-lg); margin-bottom: var(--space-xl); }
+  .seg { display: flex; gap: var(--space-xs); }
+  .chip { min-height: 44px; padding: 0 var(--space-md); border: 1px solid var(--rule); border-radius: var(--radius); font-size: var(--text-sm); color: var(--ink-2);
+    transition: border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .field { display: grid; gap: var(--space-2xs); }
+  .field.grow { flex: 1 1 220px; }
+  select, input[type="search"] { min-height: 44px; font: inherit; font-size: var(--text-sm); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0 var(--space-sm); }
+  select:focus-visible, input:focus-visible { outline-offset: 0; }
+  .count { margin-left: auto; color: var(--muted); padding-bottom: 12px; }
+  .pubs { list-style: none; border-top: 1px solid var(--ink); }
+  .pub { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding-block: var(--space-lg); border-bottom: 1px solid var(--rule); }
+  .pub[hidden] { display: none; }
+  .pub:target { background: color-mix(in oklch, var(--accent) 8%, transparent); }
+  .y { grid-column: 1 / span 1; color: var(--accent); padding-top: 0.3em; }
+  .main { grid-column: 2 / span 8; }
+  .ti { font-size: 1.25rem; line-height: 1.32; max-width: 62ch; }
+  .au { margin-top: var(--space-xs); font-size: var(--text-sm); color: var(--muted); }
+  .me { color: var(--ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .ve { font-size: var(--text-sm); color: var(--ink-2); margin-top: 2px; }
+  .side { grid-column: 10 / span 3; display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2xs); text-align: right; }
+  .ref { color: var(--ink-2); overflow-wrap: anywhere; }
+  .copy { margin-top: var(--space-xs); min-height: 32px; padding: 0 var(--space-sm); border: 1px solid var(--rule); border-radius: var(--radius); color: var(--ink-2);
+    transition: border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+  .copy:active { transform: scale(0.97); }
+  .copy.done { color: var(--accent); border-color: var(--accent); }
+  @media (hover: hover) and (pointer: fine) {
+    .chip:hover:not([aria-pressed="true"]), .copy:hover { border-color: var(--ink); color: var(--ink); }
+    .ref:hover { color: var(--ink); }
+  }
+  .empty { padding-block: var(--space-xl); }
+  @media (max-width: 64rem) {
+    .y, .main, .side { grid-column: 1 / -1; }
+    .side { align-items: flex-start; text-align: left; margin-top: var(--space-sm); }
+    .count { margin-left: 0; }
+  }
+</style>
+
+<script>
+  const list = [...document.querySelectorAll<HTMLLIElement>("#pubs .pub")];
+  const chips = [...document.querySelectorAll<HTMLButtonElement>("#publications .chip")];
+  const year = document.getElementById("f-year") as HTMLSelectElement;
+  const topic = document.getElementById("f-topic") as HTMLSelectElement;
+  const q = document.getElementById("f-q") as HTMLInputElement;
+  const count = document.getElementById("f-count")!;
+  const empty = document.getElementById("f-empty")!;
+  let type = "all";
+  const apply = () => {
+    const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let n = 0;
+    list.forEach((li) => {
+      const d = li.dataset;
+      const ok = (type === "all" || d.type === type) && (!year.value || d.year === year.value) &&
+        (!topic.value || d.topics!.split(" ").includes(topic.value)) && terms.every((t) => d.text!.includes(t));
+      li.hidden = !ok; if (ok) n++;
+    });
+    count.textContent = `${n} ${n === 1 ? "paper" : "papers"}`;
+    empty.hidden = n > 0;
+  };
+  chips.forEach((c) => c.addEventListener("click", () => { type = c.dataset.type!; chips.forEach((x) => x.setAttribute("aria-pressed", String(x === c))); apply(); }));
+  [year, topic].forEach((s) => s.addEventListener("change", apply));
+  q.addEventListener("input", apply);
+  document.getElementById("f-clear")!.addEventListener("click", () => { type = "all"; chips.forEach((x, i) => x.setAttribute("aria-pressed", String(i === 0))); year.value = topic.value = q.value = ""; apply(); });
+
+  document.querySelectorAll<HTMLButtonElement>("#pubs .copy").forEach((b) => b.addEventListener("click", async () => {
+    const text = b.dataset.bib!;
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch {
+      // older browsers and non-secure previews: copy through a hidden field
+      const t = Object.assign(document.createElement("textarea"), { value: text });
+      t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+      document.body.append(t); t.select();
+      try { ok = document.execCommand("copy"); } catch {}
+      t.remove();
+    }
+    b.textContent = ok ? "Copied" : "Copy blocked by the browser";
+    b.classList.toggle("done", ok);
+    setTimeout(() => { b.textContent = "Copy BibTeX"; b.classList.remove("done"); }, 1800);
+  }));
+</script>

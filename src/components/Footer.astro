@@ -1,0 +1,19 @@
+---
+import site from "../../content/site.json";
+const year = new Date().getFullYear();
+---
+<footer class="colophon">
+  <div class="container grid">
+    <p class="mark">{site.name}</p>
+    <p class="text">© {year} {site.name}, {site.location}. Speaks {site.languages.join(", ").replace(/, ([^,]*)$/, " and $1")}. Set in Newsreader, Hanken Grotesk and JetBrains Mono. The heartbeat in the hero is a synthetic illustration, not patient data. <a href="#top">Back to the top</a></p>
+  </div>
+</footer>
+
+<style>
+  .colophon { padding-block: var(--space-3xl) var(--space-2xl); border-top: 1px solid var(--rule); font-size: var(--text-sm); color: var(--muted); }
+  .grid { row-gap: var(--space-lg); }
+  .mark { grid-column: 1 / span 5; font-family: var(--font-display); font-size: var(--text-title); color: var(--ink); }
+  .text { grid-column: 7 / span 6; max-width: 60ch; }
+  a { color: var(--ink-2); }
+  @media (max-width: 64rem) { .mark, .text { grid-column: 1 / -1; } }
+</style>
