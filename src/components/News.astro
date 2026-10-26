@@ -5,11 +5,11 @@ const rest = news.filter((n) => n !== lead);
 ---
 <section class="section" id="news" aria-labelledby="news-h">
   <div class="container">
-    <h2 id="news-h" class="sr-only">News</h2>
+    <div class="sec-head"><h2 id="news-h" data-reveal>Recent news</h2></div>
     <article class="lead-item" data-reveal>
-      <p class="tag"><time>{lead.date}</time>, {lead.kind}</p>
+      <p class="tag"><time>{lead.date}</time><span>{lead.kind}</span></p>
       <h3 class="statement">{lead.title}</h3>
-      <p class="wall dropcap">{lead.body}</p>
+      <p class="wall">{lead.body}</p>
     </article>
     <ol class="ruled index" aria-label={`Also in ${rest[0]?.date ?? "the news"}`}>
       {rest.map((n, i) => (
@@ -24,18 +24,23 @@ const rest = news.filter((n) => n !== lead);
 </section>
 
 <style>
-  .lead-item { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
-  .lead-item .tag { grid-column: 1 / -1; margin-bottom: var(--space-md); }
-  .statement { grid-column: 1 / span 10; font-size: var(--text-display); line-height: 1.04; letter-spacing: -0.026em; max-width: 21ch; font-variation-settings: "opsz" 72; }
-  .wall { grid-column: 7 / span 5; margin-top: var(--space-xl); max-width: 60ch; }
-  .dropcap::first-letter { float: left; font: 400 3.4em/0.8 var(--font-display); padding: 0.08em 0.1em 0 0; color: var(--accent); }
-  .index { margin-top: clamp(64px, 8vw, 120px); }
+  /* the featured item: same row grid as the rest, a step larger, on a tint */
+  .lead-item { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: baseline;
+    border-top: 1px solid var(--ink); padding-block: var(--space-xl); background: linear-gradient(90deg, color-mix(in oklch, var(--accent) 7%, transparent), transparent 70%); }
+  .lead-item .tag { grid-column: 1 / span 2; display: flex; flex-direction: column; padding-left: var(--space-md); }
+  .lead-item .tag span { color: var(--accent); }
+  .statement { grid-column: 3 / span 5; font-size: clamp(1.5rem, 1.4vw + 1rem, 2.125rem); line-height: 1.15; letter-spacing: -0.015em; }
+  .wall { grid-column: 8 / span 5; }
+  .index { margin-top: 0; }
   .row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding-block: var(--space-lg); align-items: baseline; }
   .row .tag { grid-column: 1 / span 2; display: flex; flex-direction: column; }
   .row h3 { grid-column: 3 / span 5; }
   .row .body { grid-column: 8 / span 5; }
   @media (max-width: 64rem) {
-    .statement, .wall, .row .tag, .row h3, .row .body { grid-column: 1 / -1; }
+    .statement, .wall, .row .tag, .row h3, .row .body, .lead-item .tag { grid-column: 1 / -1; }
+    .lead-item .tag { flex-direction: row; gap: var(--space-sm); padding-left: 0; }
+    .wall { margin-top: var(--space-sm); }
+    .lead-item { padding-inline: var(--space-sm); }
     .row .tag { flex-direction: row; gap: var(--space-sm); }
     .row h3 { margin-block: var(--space-xs); }
   }
