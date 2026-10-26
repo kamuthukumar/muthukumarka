@@ -18,9 +18,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <figure class="portrait">
       <div class="frame">
         <Picture src={portrait} formats={["avif", "webp"]} widths={[360, 480, 640, 880, 1254]} sizes="(max-width: 64rem) 62vw, 440px"
-          alt="Portrait of K. A. Muthukumar" loading="eager" fetchpriority="high" class="photo" />
+          alt="Portrait of Dr. K. A. Muthukumar" loading="eager" fetchpriority="high" class="photo" />
       </div>
-      <figcaption class="credit mono"><span class="jp" lang="ja">慶應</span><span>K. A. Muthukumar, Ph.D. Keio, 2022</span></figcaption>
+      <figcaption class="credit mono"><span class="jp" lang="ja">慶應</span><span>Dr. K. A. Muthukumar, Keio 2022</span></figcaption>
     </figure>
   </div>
 
@@ -73,6 +73,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     .hero { min-height: 0; }
     .hero-grid { align-items: start; }
     .copy { grid-column: 1 / -1; order: 2; padding-block: var(--space-lg) var(--space-md); }
+    .credit { font-size: 0.62rem; gap: var(--space-xs); }
     .portrait { grid-column: 1 / -1; order: 1; justify-self: start; width: min(62vw, 280px); margin-left: 22px; align-self: start; margin-bottom: 0; }
     .strip { margin-top: var(--space-xl); height: 170px; }
   }
