@@ -1,0 +1,107 @@
+/* Direction A, "The strip": ECG chart paper by day, the bedside monitor by night. */
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource/hanken-grotesk/latin-400.css";
+@import "@fontsource/hanken-grotesk/latin-500.css";
+@import "@fontsource-variable/jetbrains-mono/wght.css";
+
+:root {
+  /* paper: the printed strip */
+  --paper: oklch(94.4% 0.012 76);
+  --paper-2: oklch(91.6% 0.014 74);
+  --card: oklch(97.4% 0.008 80);
+  --ink: oklch(18% 0.018 45);
+  --ink-2: oklch(32% 0.016 50);
+  --muted: oklch(45% 0.014 55);
+  --rule: oklch(82% 0.012 70);
+  --accent: oklch(52% 0.19 27);          /* signal red, the ink of the chart grid */
+  --accent-ink: oklch(97% 0.01 80);
+  --focus: oklch(52% 0.19 27);
+  --grid-minor: oklch(70% 0.11 22 / 0.16);
+  --grid-major: oklch(62% 0.14 24 / 0.26);
+  --trace-noise: oklch(30% 0.02 45 / 0.55);
+  --trace-clean: oklch(48% 0.2 27);
+  --shadow-print: 0 0 0 1px oklch(30% 0.03 55 / 0.05), 0.5px 1px 1px oklch(30% 0.03 55 / 0.08), 4px 10px 18px -8px oklch(30% 0.03 55 / 0.16), 16px 40px 70px -30px oklch(30% 0.03 55 / 0.32);
+  --lit: oklch(99.5% 0.004 85 / 0.9);
+
+  --font-display: "Newsreader Variable", "Newsreader", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+
+  --text-hero: clamp(3rem, 6.4vw + 0.5rem, 7rem);
+  --text-display: clamp(2.5rem, 4.6vw + 0.5rem, 5.25rem);
+  --text-section: clamp(2.1rem, 3.2vw + 0.6rem, 3.5rem);
+  --text-title: clamp(1.3rem, 0.7vw + 1rem, 1.625rem);
+  --text-lead: clamp(1.125rem, 0.45vw + 1rem, 1.375rem);
+  --text-md: 1.0625rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.8125rem;
+
+  --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px;
+  --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --section-gap: clamp(88px, 10vw, 152px);
+  --container: 1440px; --gutter: clamp(16px, 4.4vw, 64px); --gap: clamp(16px, 2.2vw, 32px);
+  --radius: 3px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  color-scheme: light;
+}
+
+/* the monitor: deep warm-black bezel, one phosphor signal */
+:root[data-theme="dark"] {
+  --paper: oklch(15% 0.008 70);
+  --paper-2: oklch(18.5% 0.009 70);
+  --card: oklch(21% 0.01 70);
+  --ink: oklch(94% 0.01 90);
+  --ink-2: oklch(84% 0.012 88);
+  --muted: oklch(69% 0.012 85);
+  --rule: oklch(30% 0.01 80);
+  --accent: oklch(84% 0.17 152);         /* phosphor */
+  --accent-ink: oklch(16% 0.03 152);
+  --focus: oklch(84% 0.17 152);
+  --grid-minor: oklch(80% 0.12 152 / 0.05);
+  --grid-major: oklch(80% 0.14 152 / 0.1);
+  --trace-noise: oklch(88% 0.03 140 / 0.42);
+  --trace-clean: oklch(86% 0.18 152);
+  --shadow-print: 0 0 0 1px oklch(5% 0.01 60 / 0.5), 4px 10px 18px -8px oklch(5% 0.01 60 / 0.6), 16px 40px 70px -30px oklch(5% 0.01 60 / 0.8);
+  --lit: oklch(40% 0.01 80 / 0.3);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; scrollbar-color: var(--rule) var(--paper); }
+body { overflow-x: clip; background: var(--paper); color: var(--ink-2); font: 400 var(--text-md)/1.62 var(--font-body); -webkit-font-smoothing: antialiased; font-synthesis: none; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3 { font-family: var(--font-display); color: var(--ink); font-weight: 400; text-wrap: balance; overflow-wrap: break-word; min-width: 0; font-optical-sizing: auto; }
+h2 { font-size: var(--text-section); line-height: 1.06; letter-spacing: -0.02em; max-width: 20ch; }
+h3 { font-size: var(--text-title); line-height: 1.22; letter-spacing: -0.01em; }
+p { text-wrap: pretty; }
+.mono { font-family: var(--font-mono); font-size: 0.8125em; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); }
+.lead { font-size: var(--text-lead); line-height: 1.5; color: var(--ink-2); max-width: 44ch; }
+.muted { color: var(--muted); }
+.skip { position: absolute; left: var(--space-md); top: -100px; z-index: 999; background: var(--ink); color: var(--paper); padding: var(--space-sm) var(--space-md); border-radius: var(--radius); }
+.skip:focus { top: var(--space-md); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* controls */
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 50px; padding: 0 var(--space-lg); border: 1px solid var(--ink); border-radius: var(--radius); color: var(--ink); background: transparent; text-decoration: none; font-size: var(--text-md); transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn:active, .chip:active, .icon-btn:active { transform: scale(0.97); }
+.link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .link:hover { text-decoration-thickness: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; transition-delay: 0ms !important; }
+}

@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+import site from "../../content/site.json";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const url = new URL(import.meta.env.BASE_URL, Astro.site).href;
+const ogImage = new URL(`${base}/assets/photo.jpg`, Astro.site).href;
+const sameAs = [site.links.github, site.links.linkedin, site.links.scholar, site.links.orcid, site.links.ieee].filter(Boolean);
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  honorificSuffix: site.honorific,
+  jobTitle: "Assistant Professor",
+  description: site.description,
+  url,
+  image: ogImage,
+  email: `mailto:${site.links.email}`,
+  knowsLanguage: site.languages,
+  affiliation: [
+    { "@type": "CollegeOrUniversity", name: "SSN College of Engineering", parentOrganization: { "@type": "CollegeOrUniversity", name: "Anna University" } },
+    { "@type": "Organization", name: "Shinkai Labs Pvt. Ltd.", ...(site.links.shinkai ? { url: site.links.shinkai } : {}) },
+  ],
+  worksFor: [
+    { "@type": "CollegeOrUniversity", name: "SSN College of Engineering" },
+    { "@type": "Organization", name: "Shinkai Labs Pvt. Ltd." },
+  ],
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "Keio University" },
+    { "@type": "CollegeOrUniversity", name: "National Institute of Technology, Tiruchirappalli" },
+    { "@type": "CollegeOrUniversity", name: "Pondicherry University" },
+    { "@type": "CollegeOrUniversity", name: "National Law School of India University" },
+  ],
+  sameAs,
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{`${site.name}, ${site.honorific}`}</title>
+  <meta name="description" content={site.description}>
+  <link rel="canonical" href={url}>
+  <meta property="og:title" content={`${site.name}, ${site.honorific}`}>
+  <meta property="og:description" content="AI researcher, Assistant Professor (SSN College of Engineering), founder of Shinkai Labs. Ph.D., Keio University.">
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:url" content={url}>
+  <meta property="og:type" content="profile">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#efe9e1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14110e" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml">
+  <script is:inline>
+    // Theme before first paint: saved choice, else the system's.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(person)} />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <slot />
+</body>
+</html>

@@ -1,0 +1,94 @@
+---
+import { Picture } from "astro:assets";
+import portrait from "../assets/portrait.jpg";
+import site from "../../content/site.json";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="container hero-grid">
+    <div class="copy">
+      <h1 id="hero-h">{site.headline}</h1>
+      <p class="lead">{site.role}</p>
+      <div class="actions">
+        <a class="btn primary" href="#publications">Read the publications</a>
+        <a class="btn" href="#shinkai">Shinkai Labs</a>
+        <a class="link" href={`${base}/${site.links.cv}`} target="_blank" rel="noopener">Download CV <span class="mono">(PDF)</span></a>
+      </div>
+    </div>
+    <figure class="print">
+      <div class="mat">
+        <Picture src={portrait} formats={["avif", "webp"]} widths={[320, 480, 640, 840]} sizes="(max-width: 64rem) 72vw, 340px"
+          alt="Portrait of K. A. Muthukumar" loading="eager" fetchpriority="high" class="photo" />
+        <div class="edition"><span><span class="hand" aria-hidden="true"></span>Ph.D. 2022, Keio University</span><span class="jp" lang="ja">慶應</span></div>
+      </div>
+    </figure>
+  </div>
+
+  <div class="strip" id="strip">
+    <canvas id="trace" role="img" aria-label="Illustration: a noisy abdominal ECG recording is transported, point by point, into a clean fetal heartbeat."></canvas>
+    <div class="container strip-labels" aria-hidden="true">
+      <span class="mono in">abdominal ECG, raw</span>
+      <span class="mono out">fetal ECG, recovered</span>
+    </div>
+  </div>
+  <div class="container">
+    <p class="caption mono">Noise to information. A synthetic recording, moved by monotone optimal transport: every point keeps its mass and no path crosses another. Scroll to run it back.</p>
+  </div>
+</section>
+
+<style>
+  .hero > :global(.container) { width: 100%; }
+  .hero { position: relative; min-height: calc(100svh - 68px); display: grid; grid-template-rows: 1fr auto auto; padding-top: clamp(24px, 5vh, 72px); }
+  .hero-grid { align-items: end; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding-bottom: 0; }
+  .copy { grid-column: 1 / span 8; padding-bottom: clamp(28px, 5vh, 64px); align-self: center; }
+  h1 { font-size: var(--text-hero); line-height: 0.98; letter-spacing: -0.032em; font-variation-settings: "opsz" 72; max-width: 12.5ch; }
+  .lead { margin-top: clamp(18px, 3vh, 32px); }
+  .actions { margin-top: clamp(24px, 4vh, 40px); display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-md); align-items: center; }
+  .actions .link { margin-left: var(--space-xs); }
+
+  .print { grid-column: 10 / span 3; justify-self: end; width: min(100%, 340px); position: relative; z-index: 2; margin-bottom: -48px; }
+  .mat { padding: 18px 18px 12px; background: linear-gradient(160deg, var(--lit), var(--card) 40%); border-radius: 2px; box-shadow: var(--shadow-print), inset 1px 1px 0 var(--lit); }
+  .print :global(.photo) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 26%; box-shadow: 0 0 0 1px var(--rule); }
+  .edition { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-md); margin-top: var(--space-sm); font-size: var(--text-xs); color: var(--muted); }
+  .hand { display: inline-block; width: 2.6em; border-bottom: 1px solid var(--muted); margin-right: 0.4em; transform: translateY(-0.25em); }
+  .jp { font-family: var(--font-display); letter-spacing: 0.08em; white-space: nowrap; flex-shrink: 0; }
+
+  /* the strip: chart paper in light, a monitor field in dark */
+  .strip { position: relative; height: clamp(150px, 24vh, 240px); border-block: 1px solid var(--rule);
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid-minor) 1px, transparent 1px), linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px; background-position: -1px -1px; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .strip-labels { position: absolute; inset: 0; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: var(--space-sm); pointer-events: none; }
+  .strip-labels span { color: var(--muted); background: var(--paper); padding: 2px 6px; transition: color var(--dur-long) var(--ease-out), opacity var(--dur-long) var(--ease-out); }
+  .strip-labels .out { opacity: 0.55; }
+  .strip[data-state="clean"] .strip-labels .in { opacity: 0.55; }
+  .strip[data-state="clean"] .strip-labels .out { opacity: 1; color: var(--accent); }
+  .caption { margin-block: var(--space-md) var(--space-xl); color: var(--muted); max-width: 72ch; }
+
+  @media (max-width: 64rem) {
+    .hero { min-height: 0; }
+    .copy { grid-column: 1 / -1; order: 2; padding-top: var(--space-lg); }
+    .print { grid-column: 1 / -1; order: 1; justify-self: start; width: min(46vw, 210px); margin-bottom: 0; }
+    .mat { padding: 10px 10px 8px; }
+    .edition { font-size: 0.6875rem; }
+    .hand { display: none; }
+    .hero-grid { align-items: start; }
+    .strip { margin-top: var(--space-xl); height: 170px; }
+  }
+
+  /* one authored entrance: copy settles, the print is laid down */
+  @keyframes settle { from { opacity: 0; transform: translateY(10px); } }
+  @keyframes lay { from { opacity: 0; transform: translateY(16px) rotate(-0.8deg); } }
+  .copy > * { animation: settle 620ms var(--ease-out) both; }
+  .copy > :nth-child(2) { animation-delay: 70ms; }
+  .copy > :nth-child(3) { animation-delay: 140ms; }
+  .print { animation: lay 820ms var(--ease-out) 120ms both; }
+</style>
+
+<script>
+  import { mountTrace } from "../scripts/trace";
+  mountTrace(document.getElementById("trace") as HTMLCanvasElement, document.querySelector(".hero") as HTMLElement);
+</script>

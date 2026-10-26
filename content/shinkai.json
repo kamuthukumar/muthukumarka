@@ -1,0 +1,15 @@
+{
+  "name": "Shinkai Labs Pvt. Ltd.",
+  "kanji": "深海",
+  "since": "March 2025",
+  "recognition": "DPIIT-recognized deep tech startup",
+  "mission": "AI product research in computer vision, drone detection and tracking, and digital health, from model to shipped software.",
+  "website": null,
+  "products": [
+    { "name": "Drone Detection and Tracking Platform", "status": "Registered software",
+      "body": "A drone detection and tracking web application with ML model integration.",
+      "stack": ["Python", "Dart"], "ref": "SW-2026023145", "year": "2026" },
+    { "name": null, "todo": true },
+    { "name": null, "todo": true }
+  ]
+}

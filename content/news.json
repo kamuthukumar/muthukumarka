@@ -1,0 +1,17 @@
+[
+  { "date": "2026", "kind": "Japan", "lead": true,
+    "title": "A student from my group joins Kyushu University on the JST LOTUS (Basic) Program.",
+    "body": "Selected by the Japan Science and Technology Agency (JST), the student opens a research collaboration with Kyushu University, extending the India and Japan research ties that began during my years at Keio." },
+  { "date": "2026", "kind": "Service",
+    "title": "Session Chair, IEEE EMBC 2026, Toronto",
+    "body": "Chairing a session at the 48th Annual International Conference of the IEEE Engineering in Medicine and Biology Society, where two of my papers also appear." },
+  { "date": "2026", "kind": "Grant",
+    "title": "IEEE ComSoc Travel Grant for ICC 2026, Glasgow",
+    "body": "Awarded USD 1,930 to present our work on non-invasive fetal ECG extraction using deep learning and earth mover's distance." },
+  { "date": "2026", "kind": "Copyright",
+    "title": "Shinkai Labs Drone Detection and Tracking Platform registered",
+    "body": "Granted by the Copyright Office, Government of India.", "ref": "SW-2026023145" },
+  { "date": "2026", "kind": "Papers",
+    "title": "Seven conference papers accepted",
+    "body": "At IEEE EMBC (two), IEEE ICC, IEEE CICN, IEEE SPACE, CVIP and ICETCI: fetal ECG, few-shot medical anomaly detection, topology-preserving segmentation and radar tracking." }
+]
