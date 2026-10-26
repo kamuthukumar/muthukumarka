@@ -1,1091 +1,599 @@
-
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>[ Muthukumar Krishnan Arumugasamy @ Keio University ]</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K. A. Muthukumar, Ph.D.</title>
+<meta name="description" content="K. A. Muthukumar — AI researcher, Assistant Professor at SSN College of Engineering, and Founder & CEO of Shinkai Labs. Medical image analysis, biomedical signal processing, computer vision and edge AI.">
+<meta property="og:title" content="K. A. Muthukumar, Ph.D. — AI Healthcare & Computer Vision">
+<meta property="og:description" content="AI researcher, Assistant Professor (SSN College of Engineering), Founder & CEO of Shinkai Labs. Ph.D., Keio University.">
+<meta property="og:image" content="https://kamuthukumar.github.io/assets/photo.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%238a1538'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='30' fill='white'>KA</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"K. A. Muthukumar","honorificSuffix":"Ph.D.","jobTitle":"Assistant Professor","worksFor":[{"@type":"CollegeOrUniversity","name":"SSN College of Engineering"},{"@type":"Organization","name":"Shinkai Labs Pvt. Ltd."}],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Keio University"},{"@type":"CollegeOrUniversity","name":"National Institute of Technology, Tiruchirappalli"}],"email":"mailto:muthukumar9890@gmail.com","url":"https://kamuthukumar.github.io","sameAs":["https://github.com/kamuthukumar","https://www.linkedin.com/in/muthukumarka"]}
+</script>
+<style>
+:root{
+  --bg:#faf8f4; --bg-2:#f2eee6; --card:#ffffff; --ink:#17151a; --ink-2:#4a4650; --ink-3:#7a7580;
+  --line:#e4ded3; --accent:#8a1538; --accent-2:#b4314f; --accent-soft:#f6e6ea; --gold:#a8812e;
+  --shadow:0 1px 2px rgba(23,21,26,.04),0 8px 24px rgba(23,21,26,.06);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --max:1120px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121014; --bg-2:#19161c; --card:#1d1a21; --ink:#f1ece6; --ink-2:#c3bcc6; --ink-3:#8d8592;
+    --line:#2d2832; --accent:#e5728f; --accent-2:#f093a9; --accent-soft:#2a1820; --gold:#d6b26a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121014; --bg-2:#19161c; --card:#1d1a21; --ink:#f1ece6; --ink-2:#c3bcc6; --ink-3:#8d8592;
+  --line:#2d2832; --accent:#e5728f; --accent-2:#f093a9; --accent-soft:#2a1820; --gold:#d6b26a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+@media(max-width:600px){.wrap{padding:0 16px}}
 
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<!-- Academic Font Awesome Icons -->
-<link rel="stylesheet" href="css/academicoins.min.css"/>
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.nav.scrolled{border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+.links{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--ink-2)}
+.links a:hover{color:var(--accent)}
+.icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:var(--card);color:var(--ink-2);cursor:pointer}
+.icon-btn:hover{color:var(--accent);border-color:var(--accent)}
+.menu-btn{display:none}
+@media(max-width:860px){
+  .links .l{display:none}
+  .menu-btn{display:grid}
+  .links.open{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px}
+  .links.open .l{display:block;padding:10px 0;width:100%;border-bottom:1px solid var(--line)}
+}
 
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+/* hero */
+.hero{position:relative;padding:88px 0 72px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,var(--accent-soft) 0%,transparent 65%);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:64px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,6.4vw,76px);line-height:1.02;letter-spacing:-.025em}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{margin-top:26px;font-size:18.5px;color:var(--ink-2);max-width:580px}
+.roles{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink-2)}
+.cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-size:14.5px;font-weight:500;border:1px solid var(--line);background:var(--card);transition:transform .2s,border-color .2s,background .2s}
+.btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.portrait{position:relative;justify-self:end;width:100%;max-width:380px}
+.portrait .frame{position:relative;border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:4/5;background:var(--bg-2);box-shadow:var(--shadow)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.portrait::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--accent);border-radius:200px 200px 24px 24px;z-index:-1;opacity:.5}
+.badge{position:absolute;left:-28px;bottom:36px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;max-width:250px}
+.badge .jp{font-family:var(--serif);font-size:26px;color:var(--accent);line-height:1;white-space:nowrap;flex-shrink:0}
+.badge small{display:block;font-size:12px;color:var(--ink-3);line-height:1.35}
+.badge b{font-size:13.5px;font-weight:600;display:block}
+@media(max-width:860px){
+  .hero{padding:48px 0 56px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .portrait{justify-self:center;max-width:300px;order:-1}
+  .badge{left:-10px}
+}
 
-<link href="css/mycss.css" rel="stylesheet">
-<!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:28px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat .n{font-family:var(--serif);font-size:44px;line-height:1;letter-spacing:-.02em}
+.stat .n sup{font-size:20px;color:var(--accent)}
+.stat .t{margin-top:8px;font-size:13.5px;color:var(--ink-3)}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
+/* sections */
+section{padding:96px 0}
+@media(max-width:700px){section{padding:64px 0}}
+.sec-head{display:grid;grid-template-columns:220px 1fr;gap:40px;margin-bottom:48px;align-items:end}
+.sec-head .num{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.2vw,48px);line-height:1.08;letter-spacing:-.02em}
+h2 em{font-style:italic;color:var(--accent)}
+.sec-head p{color:var(--ink-2);margin-top:12px;max-width:620px}
+@media(max-width:860px){.sec-head{grid-template-columns:1fr;gap:10px}}
+.alt{background:var(--bg-2)}
 
+/* news */
+.news{display:grid;gap:0}
+.news-item{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:26px 0;border-top:1px solid var(--line)}
+.news-item:last-child{border-bottom:1px solid var(--line)}
+.news-item .d{font-family:var(--mono);font-size:13px;color:var(--ink-3);padding-top:4px}
+.news-item h3{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.3;letter-spacing:-.01em}
+.news-item p{color:var(--ink-2);margin-top:6px;font-size:15.5px}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent);margin-right:8px;vertical-align:3px}
+.news-item.feature{background:linear-gradient(90deg,var(--accent-soft),transparent 75%);margin:0 -24px;padding:30px 24px;border-radius:0}
+@media(max-width:700px){.news-item{grid-template-columns:1fr;gap:6px}.news-item.feature{margin:0 -16px;padding:24px 16px}}
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/menucollapse.js"></script>
-<script type="text/javascript" src="js/arrow78.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+/* research cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:18px}
+.card h3{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:-.01em;margin-bottom:8px}
+.card p{color:var(--ink-2);font-size:15px}
+.card .kw{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.card .kw span{font-size:12px;color:var(--ink-3);border:1px solid var(--line);padding:2px 8px;border-radius:999px}
+@media(max-width:960px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
 
-<body id="page-top" class="index">
+/* timeline */
+.tl{position:relative}
+.tl-item{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:22px 0;position:relative}
+.tl-item .when{font-family:var(--mono);font-size:13px;color:var(--ink-3);padding-top:3px}
+.tl-body{position:relative;padding-left:28px;border-left:1px solid var(--line)}
+.tl-body::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl-item.now .tl-body::before{background:var(--accent)}
+.alt .tl-body::before{background:var(--bg-2)}
+.alt .tl-item.now .tl-body::before{background:var(--accent)}
+.tl-body h3{font-size:17px;font-weight:600}
+.tl-body .org{color:var(--accent);font-size:15px;font-weight:500}
+.tl-body p{color:var(--ink-2);font-size:15px;margin-top:6px}
+@media(max-width:700px){.tl-item{grid-template-columns:1fr;gap:4px}.tl-item .when{padding-left:29px}}
 
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-            <button id="button2" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- <span><a href="#"><img border="0" width="190" src="images/affli_logo.png"/></a></span> -->
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+@media(max-width:860px){.two{grid-template-columns:1fr;gap:40px}}
+h4.sub{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+
+/* publications */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.filters button{font:inherit;font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pubs{list-style:none;counter-reset:p}
+.pub{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.pub:last-child{border-bottom:1px solid var(--line)}
+.pub .y{font-family:var(--serif);font-size:22px;color:var(--ink-3)}
+.pub .ti{font-family:var(--serif);font-size:19px;line-height:1.35;font-weight:600;letter-spacing:-.005em}
+.pub .au{font-size:14px;color:var(--ink-3);margin-top:6px}
+.pub .au b{color:var(--ink);font-weight:600}
+.pub .ve{font-size:14.5px;color:var(--ink-2);margin-top:4px;font-style:italic}
+.pub .meta{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;border:1px solid var(--line);color:var(--ink-3)}
+.pill.j{border-color:transparent;background:var(--accent-soft);color:var(--accent)}
+.pill.hi{border-color:transparent;background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--gold)}
+.doi{font-size:13px;color:var(--accent);border-bottom:1px solid transparent}
+.doi:hover{border-bottom-color:var(--accent)}
+.pub[hidden]{display:none}
+@media(max-width:600px){.pub{grid-template-columns:1fr;gap:4px}}
+
+/* lists */
+.list{list-style:none}
+.list li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:92px 1fr;gap:16px}
+.list li:last-child{border-bottom:1px solid var(--line)}
+.list .yr{font-family:var(--mono);font-size:13px;color:var(--ink-3);padding-top:2px}
+.list b{font-weight:600}
+.list .s{display:block;color:var(--ink-2);font-size:14.5px}
+.amt{font-family:var(--mono);font-size:12.5px;color:var(--gold);white-space:nowrap}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 48px}
+.sk{padding:16px 0;border-top:1px solid var(--line)}
+.sk h4{font-size:13px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sk div{display:flex;flex-wrap:wrap;gap:6px}
+.sk span{font-size:13.5px;padding:4px 10px;border-radius:8px;background:var(--card);border:1px solid var(--line);color:var(--ink-2)}
+@media(max-width:700px){.skills{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--ink);color:var(--bg);border-radius:28px;padding:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.contact::after{content:"研究";position:absolute;right:-10px;bottom:-60px;font-family:var(--serif);font-size:240px;opacity:.05;line-height:1;pointer-events:none}
+.contact h2{color:var(--bg)}
+.contact h2 em{color:#f093a9}
+.contact p{color:color-mix(in srgb,var(--bg) 72%,transparent);margin-top:14px}
+.clinks{display:grid;gap:10px}
+.clinks a{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border:1px solid color-mix(in srgb,var(--bg) 18%,transparent);border-radius:14px;font-size:15px;transition:background .2s,border-color .2s;word-break:break-all;gap:12px}
+.clinks a:hover{background:color-mix(in srgb,var(--bg) 8%,transparent);border-color:#f093a9}
+.clinks small{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;white-space:nowrap}
+@media(max-width:860px){.contact{grid-template-columns:1fr;padding:40px 24px;border-radius:20px}}
+
+footer{padding:40px 0 56px;color:var(--ink-3);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">K. A. Muthukumar<span>.</span></a>
+    <nav class="links" id="links">
+      <a class="l" href="#news">News</a>
+      <a class="l" href="#research">Research</a>
+      <a class="l" href="#experience">Experience</a>
+      <a class="l" href="#publications">Publications</a>
+      <a class="l" href="#honours">Honours</a>
+      <a class="l" href="#contact">Contact</a>
+      <button class="icon-btn" id="theme" aria-label="Toggle colour theme" title="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu" aria-label="Open menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">AI Healthcare · Computer Vision</div>
+      <h1>Building AI that <em>sees</em>, senses and cares.</h1>
+      <p class="lede">I'm an AI researcher and Assistant Professor at SSN College of Engineering, and Founder &amp; CEO of Shinkai Labs. My work spans medical image analysis, fetal ECG extraction, infrared sensing and edge AI, from the lab bench to deployed products.</p>
+      <div class="roles">
+        <span class="chip">Ph.D., Keio University</span>
+        <span class="chip">B.Tech., NIT Tiruchirappalli</span>
+        <span class="chip">MEXT Scholar</span>
+        <span class="chip">English · தமிழ் · 日本語</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#publications">View publications
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn" href="assets/KA_Muthukumar_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+        <a class="btn" href="mailto:muthukumar9890@gmail.com">Get in touch</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="frame"><img src="assets/photo.jpg" alt="Portrait of K. A. Muthukumar" width="720" height="720"></div>
+      <div class="badge">
+        <div class="jp">慶應</div>
+        <div><b>Ph.D. Engineering</b><small>Keio University, Japan · Ohtsuki Lab</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats reveal">
+    <div class="stat"><div class="n">21<sup>+</sup></div><div class="t">Journal &amp; conference papers</div></div>
+    <div class="stat"><div class="n">3</div><div class="t">Registered software copyrights</div></div>
+    <div class="stat"><div class="n">₹2.2<sup>M</sup></div><div class="t">DST–SERB research grant</div></div>
+    <div class="stat"><div class="n">5</div><div class="t">Conference session chair roles</div></div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">01 — News</div>
+      <div><h2>Recent <em>highlights</em></h2></div>
+    </div>
+    <div class="news">
+      <article class="news-item feature reveal">
+        <div class="d">2026</div>
+        <div>
+          <h3><span class="tag">Japan</span>JST program award: student research collaboration with Kyushu University</h3>
+          <p>A student from my group was selected for a Japan Science and Technology Agency (JST) program, opening a research collaboration with Kyushu University, Japan, and extending the India–Japan research ties that began during my years at Keio.</p>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                Home<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                    <li><a onclick="javascript:reset_menus();$('#tab-1-content').show();" href="#intro">About me</a></li>
-                        <li><a target="_blank" href="Muthukumar_CV.pdf">CV (PDF)</a></li>
-                    </ul>
-                </li>
-<!--                 <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-2-content').show();" href="#news">News</a>
-                </li> -->
- <!--                <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                Publications<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                    <li><a onclick="javascript:reset_menus();$('#tab-3-content').show();" href="#publications">Selected</a></li>
-                        <li><a href="publications/">All</a></li>
-                    </ul>
-                </li> -->
-                <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-2-content').show();" href="#education">Education</a>
-                </li>
-                <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-3-content').show();" href="#publications">Publications</a>
-                </li>
-                <!-- <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-8-content').show();" href="#talks">Talks</a>
-                </li> -->
-                <!-- <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-11-content').show();" href="#projects">Projects</a>
-                </li> -->
-                <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-5-content').show();" href="#awards">Awards</a>
-                </li>
-                <li class="page-scroll">
-                <a onclick="javascript:reset_menus();$('#tab-7-content').show();" href="#advising">Grants</a>
-                </li>
-                <!-- <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-4-content').show();" href="#teaching">Teaching</a>
-                </li> -->
-                <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-6-content').show();" href="#service">Service</a>
-                </li>
-                <!-- <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-10-content').show();" href="#life">Hobbies</a>
-                </li> -->
-                <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#tab-9-content').show();" href="#contact">Contact</a>
-                </li>
-
-<!--                 <li class="page-scroll">
-                    <a onclick="javascript:reset_menus();$('#bs-example-navbar-collapse-2').toggle();">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </a>
-                </li> -->
-            </ul>
-        </div><!-- /.navbar-collapse -->
-
-        <!-- search box submenu -->
-        <div class="collapse" id="bs-example-navbar-collapse-2">
-            <gcse:search></gcse:search>
+      </article>
+      <article class="news-item reveal">
+        <div class="d">2026</div>
+        <div>
+          <h3><span class="tag">Service</span>Session Chair, IEEE EMBC 2026, Toronto</h3>
+          <p>Chairing a session at the 48th Annual International Conference of the IEEE Engineering in Medicine and Biology Society, where two of my papers also appear.</p>
         </div>
-
-    </div><!-- /.container-fluid -->
-</nav>
-
-<section>
-    <!-- Place this tag where you want the search results to render -->
-    <gcse:searchresults-only></gcse:searchresults-only>
+      </article>
+      <article class="news-item reveal">
+        <div class="d">2026</div>
+        <div>
+          <h3><span class="tag">Grant</span>IEEE ComSoc Travel Grant for ICC 2026, Glasgow</h3>
+          <p>Awarded USD 1,930 to present our work on non-invasive fetal ECG extraction using deep learning and earth mover's distance.</p>
+        </div>
+      </article>
+      <article class="news-item reveal">
+        <div class="d">2026</div>
+        <div>
+          <h3><span class="tag">Copyright</span>Shinkai Labs Drone Detection &amp; Tracking Platform registered</h3>
+          <p>Granted by the Copyright Office, Government of India (Reg. No. SW-2026023145).</p>
+        </div>
+      </article>
+      <article class="news-item reveal">
+        <div class="d">2026</div>
+        <div>
+          <h3><span class="tag">Papers</span>Seven conference papers accepted</h3>
+          <p>At IEEE EMBC (×2), IEEE ICC, IEEE CICN, IEEE SPACE, CVIP and ICETCI, covering fetal ECG, few-shot medical anomaly detection, topology-preserving segmentation and radar tracking.</p>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- Home Section -->
-<section id="home" style="margin-top:40px">
-<div class="container">
-        <div align="left" class="col-md-3">
-            <a href="#">
-                <img id="mobile-img" src="images/muthu.jpg" width="250" border="0" height="280" alt=""></a>
-        </div>
-        <div align="left" class="col-md-4">
-            <h3>Muthukumar Krishnan Arumugasamy
-                <!-- <h5>Ph.D. Candidate Univ. of California, Santa Barbara, USA</h5></h3> -->
-                <h5>Keio University, Tokyo, Japan</h5></h3>
-
-            <!-- <h4>Postdoctoral Scholar<br> -->
-            <!-- <br>
-            Center for Spatial Studies <br>
-            Department of Geography<br>
-            University of California, Santa Barbara<br>
-            <br> -->
-            Email: <body>&nbsp;<a href="mailto:muthukumar989@gmail.com">muthukumar9890@gmail.com</a></body>
-            <!-- <script language="JavaScript">
-                
-                document.write("&nbsp;");
-                spiderjam('muthukumar9890','gmail.com');
-                -->
-            <!-- </script><br/> --> 
-<!--             Directions: <a target="_blank" href="http://goo.gl/FQCHMl">http://goo.gl/FQCHMl</a>
- -->            </h4>
-        </div>
-       
-        <div align="left" class="col-md-5">
-                <h3>Research Interests</h3>
-                <div class='col-md-12'>
-                    <ul>
-                        <li><h4>Machine Learning</h4></li>
-                        <li><h4>Computer vision </h4></li>
-                        <li><h4>Assistive Health Care Technology </h4></li> 
-                        <li><h4>Human Activity Recognition</h4></li>
-                        <li><h4>Medical Imaging</h4></li>
-                        <li><h4>IoT</h4></li>
-                    </ul>
-                </div>
-        </div>
-<!-- Social icons  Section -->
-<section>
-
-    <div class="container lead">
-        
-    <div style="text-align: left; margin-top:10px" class="col-md-12">
-            <p>
-            
-            <!-- Add academic icons -->
-         
-            <!-- <a href="#" class="fa fa-facebook"></a> -->
-            <h2> 
-                <a target="_blank" data-toggle="tooltip" title="Google Scholar" href="https://scholar.google.com/citations?user=do7iXxwAAAAJ&hl=en" class="ai ai-google-scholar"></a>
-                <a target="_blank" data-toggle="tooltip" title="ORCID" href="https://orcid.org/0000-0002-7923-3995" class="ai ai-orcid"></a>
-                <a target="_blank" data-toggle="tooltip" title="Research Gate" href="https://www.researchgate.net/profile/Muthukumar-Krishnan-Arumugasamy" class="ai ai-researchgate"></a> 
-                <a target="_blank" data-toggle="tooltip" title="Publons" href="https://publons.com/researcher/5304722/muthukumar-ka/" class="ai ai-publons-square"></a> 
-                <a target="_blank" data-toggle="tooltip" title="Twitter" href="https://twitter.com/MuthukumarKA1" class="fa fa-twitter"></a>
-                <a target="_blank" data-toggle="tooltip" title="LinkedIn" href="https://www.linkedin.com/in/muthukumarka/" class="fa fa-linkedin-square"></a>
-                <!-- <a target="_blank" data-toggle="tooltip" title="ResearchMap" href="https://researchmap.jp/muthukumarka" class="fa fa-researchmap"></a>   -->
-                 <!-- own icon buttoms   -->
-                <a target="_blank" href="https://researchmap.jp/muthukumarka" class="btn-sm btn-primary">リサーチマップ&raquo;</a>
-                 <!--   To set cv link or pdfs -->
-                <!-- 
-                <a href="cv.html" class="btn-sm btn-primary">CV (Web)&raquo;</a>
-                <a href="zeinalipour.pdf" class="btn-sm btn-primary">CV (PDF)&raquo;</a>
-                -->
-             </h2>
-            </p>                
-    
+<!-- RESEARCH -->
+<section id="research" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">02 — Research</div>
+      <div>
+        <h2>What I <em>work on</em></h2>
+        <p>Machine learning for problems where the signal is weak, the data is scarce and the stakes are clinical.</p>
+      </div>
     </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></div>
+        <h3>Biomedical Signal Processing</h3>
+        <p>Non-invasive fetal ECG extraction from abdominal recordings with diffusion models, dynamical priors and optimal transport. DST–SERB funded work on fetal arrhythmia.</p>
+        <div class="kw"><span>Fetal ECG</span><span>EEG / BCI</span><span>Diffusion</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+        <h3>Medical Image Analysis</h3>
+        <p>Cardiovascular risk from fundus images and ECG, Alzheimer's classification on 3D MRI with Vision Mamba and ViTs, and topology-preserving segmentation.</p>
+        <div class="kw"><span>Fundus</span><span>MRI</span><span>Segmentation</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div>
+        <h3>Few-shot &amp; Anomaly Detection</h3>
+        <p>Vision–language adapters with learnable text anchors for few-shot medical anomaly classification, built for settings with very few labelled cases.</p>
+        <div class="kw"><span>CLIP</span><span>Few-shot</span><span>Anomaly</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+        <h3>Infrared Sensing &amp; Activity</h3>
+        <p>Privacy-preserving activity and fall detection with low-resolution infrared array sensors and hybrid CNN–LSTM / CGAN models. The core of my Keio Ph.D.</p>
+        <div class="kw"><span>IR arrays</span><span>CNN–LSTM</span><span>CGAN</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="6"/></svg></div>
+        <h3>Detection &amp; Tracking</h3>
+        <p>Drone detection and tracking, and radar tracking with neural combinatorial fusion and calibrated uncertainties, shipped through Shinkai Labs.</p>
+        <div class="kw"><span>Drones</span><span>Radar</span><span>Uncertainty</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+        <h3>Edge AI &amp; Industrial Vision</h3>
+        <p>Models on Raspberry Pi and NVIDIA Jetson; crack, rust and fault detection for railway and facade inspection with Raspect and Alstom.</p>
+        <div class="kw"><span>Jetson</span><span>IoT</span><span>Inspection</span></div>
+      </div>
     </div>
-</section>	
-        <!-- <i class="twittertop" style="display:none;" id="t1">
-        <div id="news" tyle="text-align: left"  class="col-md-5">&nbsp;
-            <center><a class="twitter-timeline" href="https://twitter.com/dmslucy" data-chrome="nofooter" data-widget-id="346662554203992065">Tweets
-                by @dmslcy</a>
-            <script>!function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                if (!d.getElementById(id)) {
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = p + "://platform.twitter.com/widgets.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }
-            }(document, "script", "twitter-wjs");</script></center>
-        </div>
-        </i> -->
-
-        <!--<p><a href="#" class="btn btn-primary">More &raquo;</a></p>-->
-        <i class="expandshow" style="display:none;" id="tab-1">
-            <button class="btn btn-primary btn-lg btn-block" style="width: 100%;" onclick="javascript:$('.allshow').show();$('.noshow').hide();$('.collapseshow').show();$('.expandshow').hide();">EXPAND ALL SECTIONS <span class="glyphicon glyphicon-chevron-down"></span></button>
-        </i>
-        <i class="collapseshow" style="display:none;" id="tab-1">
-            <button class="btn btn-primary btn-lg btn-block" style="display: block; width: 100%;" onclick="javascript:$('.allshow').hide();$('.noshow').show();$('.expandshow').show();$('.collapseshow').hide();">COLLAPSE ALL SECTIONS <span class="glyphicon glyphicon-chevron-up"></span></button>
-        </i>
-
-    </div>
+  </div>
 </section>
 
-<!-- Home Section -->
-<section id="intro">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-            <!--<h2>Welcome!</h2>-->
-
-            <i class="noshow" style="display:none;" id="tab-1">
-            <button class="btn btn-default btn-lg btn-block" style="display: block; width: 100%;" onclick="javascript:$('#tab-1-content').toggle();">About Me <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-
-            <div class="allshow" style="display:none;" id="tab-1-content">
-            <hr class="star-primary">
-
-
-            <p class="lead">
-                <h2>About Me</h2>
-
-           <!-- <p>I am Muthukumar Krishnan Arumugasamy, a postdoctoral scholar at the <a target="_blank" href="http://spatial.ucsb.edu/">Center for Spatial Studies, <a target="_blank" href="https://geog.ucsb.edu/">Department of Geography</a>, <a target="_blank" href="https://www.ucsb.edu/">University of California, Santa Barbara</a>. My research interests include geospatial semantics, spatial statistics, as well as their broader interactions in geospatial artificial intelligence (Geo-AI). More concretely, I combine theory-informed approach and data-driven appraoch to address geospatial challenges such as geospatial data interoperability, spatial predictions, qualitative spatial reasoning, and so on. My work has been applied to a wide range of applications, indluding urban studies, global health, environmental modeling, as well as humanitarian aids. I am currently working on the <a target="_blank" href="https://knowwheregraph.org/">KnowWhereGraph (KWG) project</a> funded by <a target="_blank" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2033521&HistoricalAwards=false">NSF Convergence Accelerator Program</a>.   
-           </p> -->
-           <p>I'm a Tokyo-based AI Researcher who specializes in AI Healtcare application using IoT devices. My research
-                <!-- Currently, I'm an PhD Student at -->
-            focused on activity detection IoT application.</p>
-           <p>I obtained my Ph.D. degree from the <a a target="_blank" href="https://www.st.keio.ac.jp/en/">Keio University, Japan</a> in 2022 under the supervision of <a target="_blank" href="https://www.ohtsuki.ics.keio.ac.jp/"> Prof. Tomoaki ohtsuki</a>. My research mainly based on assistive health care technology with infrared imaging. 
-               
-
-           </p>
-
-
-<!--             </p>
-            My name is Muthukumar Krishnan Arumugasamy, a Ph.D. candidate at the <a target="_blank" href="https://geog.ucsb.edu/">Department of Geography</a>, <a target="_blank" href="https://www.ucsb.edu/">University of California, Santa Barbara</a>. My major is Geographic Information Science (GIScience) with emphases on spatial statistics and geospatial semantics. I work with <a target="_blank" href="https://geog.ucsb.edu/~jano/">Dr. Krzysztof Janowicz</a> and <a target="_blank" href="https://www.cut.ac.cy/faculties/fet/ceg/staff/phaedon.kyriakidis/?languageId=1">Dr. Phaedon Kyriakidis</a>. I am a member of <a target="_blank" href="http://stko.geog.ucsb.edu/">Space and Time Knowledge Organization Lab (STKO)</a>. My current research focuses on revisiting fundamentals in spatiotemporal analysis (e.g., high-order spatial interactions and direction effect), and adopting spatiotemporal thinking into deep learning in order to explore complex spatial structures of geographic information (e.g., remotely sensed images, points of interest in urban cities, and the simulation of cellular automata). The semantics of extracted patterns are further investigated to uncover meaningful knowledge. Another research topic I am working on is to apply spatial statistics to understand the semantics of geospatial concepts in a data-driven approach; one example is to answer the classic geographic question <i>what is a mountain and what is a hill</i>? Furthermore, I also have experiences researching on household travel behaviors, spatiotemporally enriched knowledge graphs, geospatial question answering, urban dynamics and so on.    
-            <p> -->
-           
-            </p>
-<!--             <p>
-            Before joining UCSB, I got my master degree in <a target="_blank" href="http://sci.pitt.edu/">Information Sciences</a> from the <a target="_blank" href="http://www.pitt.edu/">University of Pittsburgh</a>. In the <a target="_blank" href="http://gis.sis.pitt.edu/">Geoinformatics Laboratory</a>, I was involved in multiple projects and research topics, including the PAM (Personalized Accessible Maps), PNS (Pedestrian Navigation Services), and the selection of landmarks for navigation guidance. I was also involved in research about  geovisualization and spatiotemporal data mining.
-            </p> -->
-
-
-            <p>
-<!--                <a href="cv.html" class="btn-sm btn-primary">CV (Web)&raquo;</a>
- -->               <a href="Muthukumar_CV.pdf" class="btn-sm btn-primary">CV (PDF)&raquo;</a></p>
-            </div>
-
-        </div>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">03 — Experience</div>
+      <div><h2>Academia, industry <em>&amp; startups</em></h2></div>
     </div>
+    <div class="tl">
+      <div class="tl-item now reveal"><div class="when">May 2025 — Now</div><div class="tl-body">
+        <h3>Assistant Professor</h3><div class="org">SSN College of Engineering, Anna University</div>
+        <p>Teaching and supervising research in machine learning, computer vision and AI for healthcare. Publishing at IEEE ICC, EMBC and SPACE.</p></div></div>
+      <div class="tl-item now reveal"><div class="when">Mar 2025 — Now</div><div class="tl-body">
+        <h3>Founder &amp; CEO</h3><div class="org">Shinkai Labs Pvt. Ltd.</div>
+        <p>AI product research in computer vision, drone detection and tracking, and digital health. Copyrighted software (Python, Dart) with ML integration; industry partnerships in inspection and healthcare AI.</p></div></div>
+      <div class="tl-item reveal"><div class="when">Nov 2022 — Feb 2025</div><div class="tl-body">
+        <h3>Assistant Professor</h3><div class="org">University of Petroleum and Energy Studies (UPES)</div>
+        <p>Founded and led the Centre of Excellence in IoT–AI Healthcare. Mentored students from undergraduate to Ph.D., ran the DST–SERB fetal arrhythmia project and consulted on railway and facade inspection.</p></div></div>
+      <div class="tl-item reveal"><div class="when">Jan 2022 — Mar 2022</div><div class="tl-body">
+        <h3>Computer Vision / ML Engineer</h3><div class="org">MOTiV Research Co., Japan</div>
+        <p>Deep learning pipelines for visual recognition in an industrial research setting.</p></div></div>
+      <div class="tl-item reveal"><div class="when">2018 — 2022</div><div class="tl-body">
+        <h3>MEXT Scholar · Ph.D. Researcher</h3><div class="org">Ohtsuki Laboratory, Keio University, Japan</div>
+        <p>Infrared-array sensing, hybrid deep learning (CNN–LSTM, CGAN) and edge deployment for activity and fall detection.</p></div></div>
+      <div class="tl-item reveal"><div class="when">Apr 2017 — Aug 2017</div><div class="tl-body">
+        <h3>Operations Officer</h3><div class="org">ANZ, Bengaluru</div></div></div>
+      <div class="tl-item reveal"><div class="when">Jun 2010 — Aug 2010</div><div class="tl-body">
+        <h3>Research Fellow</h3><div class="org">DA-IICT, Gandhinagar</div></div></div>
+    </div>
+
+    <div class="two" style="margin-top:72px">
+      <div class="reveal">
+        <h4 class="sub">Education</h4>
+        <ul class="list">
+          <li><span class="yr">2019–22</span><span><b>Ph.D., Engineering</b> · Keio University, Japan<span class="s">Activity and fall detection for AI healthcare using infrared array sensors and deep computer vision</span></span></li>
+          <li><span class="yr">2023–24</span><span><b>PG Diploma, IPR Law</b> · National Law School of India University</span></li>
+          <li><span class="yr">2014–16</span><span><b>M.Tech., CSE</b> · Pondicherry University<span class="s">Secure sharing of medical data in a hybrid cloud</span></span></li>
+          <li><span class="yr">2008–12</span><span><b>B.Tech., CSE</b> · NIT Tiruchirappalli</span></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <h4 class="sub">Leadership</h4>
+        <ul class="list">
+          <li><span class="yr">2023–24</span><span><b>Centre of Excellence, IoT–AI Healthcare Lab</b><span class="s">Founded and led strategy, industry–academia collaboration, budgeting and infrastructure</span></span></li>
+          <li><span class="yr">Ongoing</span><span><b>Research supervision</b><span class="s">UG, master's and Ph.D. students in AI healthcare and medical imaging</span></span></li>
+          <li><span class="yr">Ongoing</span><span><b>Faculty development</b><span class="s">FDPs and training in ML, computer vision and healthcare AI</span></span></li>
+          <li><span class="yr">2023–24</span><span><b>Industry consultation</b><span class="s">Railway inspection AI (Raspect, Alstom); facade monitoring (Raspect)</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- <div class="twitterlow" style="display:none;" id="t1">
- --><!-- News Section -->
-<!-- <section id="news">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-2">
-                <button class="btn btn-default btn-lg btn-block" style="display: block; width: 100%;" onclick="javascript:$('#tab-2-content').toggle();">News  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <i class="allshow" style="display:none;" id="tab-2-content">
-
-            <hr class="star-primary">
-
-            <h2>News</h2>
-            <center><a class="twitter-timeline" href="https://twitter.com/dmslucy" data-chrome="nofooter" data-widget-id="346662554203992065">Tweets
-                by @dmslcy</a>
-            <script>!function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                if (!d.getElementById(id)) {
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = p + "://platform.twitter.com/widgets.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }
-            }(document, "script", "twitter-wjs");
-            </script>
-            </center>
-            </i>
-        </div>
+<!-- PUBLICATIONS -->
+<section id="publications" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">04 — Publications</div>
+      <div><h2>Selected <em>writing</em></h2><p>Journal articles, peer-reviewed conference papers and abstracts.</p></div>
     </div>
-</section>
-</div> --> 
-
-<!-- Education Section -->
-<section id="education">
-    <div class= "container lead">
-         <div style="text-align: left; margin-top:10px" class="col-md-12">
-            <i class="noshow" style="display:none;" id="tab-2">
-                <button class="btn btn-default btn-lg btn-block" style="display: block; width: 100%;" onclick="javascript:$('#tab-2-content').toggle();">Education<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-2-content">
-                <hr class="star-primary">
-                <h2>Education</h2>
-                    <ul>
-                        <li>
-                            <p><strong>Ph.D. in Engineering</strong>, Keio University, Tokyo, Japan</p>
-                            <p><h4><i>2019 - 2022 </i></h5></p>
-                            <ul>
-                             <li>Specialization: Machine Learning, Computer Vision</li>                             
-                            </ul>
-                        </li>
-                        <li>
-                            <p> <strong>M.Tech. in Computer Science and Engineering</strong>, Pondicherry University, India</p>
-                            <p><h4><i>2014 - 2016</i></h4></p>
-                            <ul>
-                                <li>Specialization: Cloud Computing</li>
-                                
-                             </ul>
-                        </li>
-                        <li>
-                            <p><strong>B.Tech. in Computer Science and Engineering</strong>, NIT-Tiruchrappalli, Tamil Nadu, India</p>
-                            <p><h4><i>2008 - 2012</i></h4></p>
-                            <ul>
-                                <li>Specialization: Image Processing</li> 
-                            </ul>
-                        </li>
-                    </ul>
-            </div>
-        </div>
+    <div class="filters" role="group" aria-label="Filter publications">
+      <button aria-pressed="true" data-f="all">All</button>
+      <button aria-pressed="false" data-f="j">Journals</button>
+      <button aria-pressed="false" data-f="c">Conferences</button>
+      <button aria-pressed="false" data-f="2026">2026</button>
     </div>
+    <ol class="pubs" id="pubs"></ol>
+  </div>
 </section>
 
-<!-- Research Section -->
-<section id="publications">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-3">
-                <button class="btn btn-default btn-lg btn-block" style="display: block; width: 100%;" onclick="javascript:$('#tab-3-content').toggle();">Publications  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-3-content">
-            <hr class="star-primary">
-
-            <h2>Publications </h2>
-<!--             <span class="label label-success"> Peer-reviewed Journal Papers </span>-->   
-                             <h4>
-                            <span class="label label-warning">
-                                <a target="_blank" href="https://www.scopus.com/authid/detail.uri?authorId=57225418241"><font color=white>h-index</font></a>: 2
-                            </span>&nbsp;
-                            <span class="label label-warning">
-                                <a target="_blank" href="https://scholar.google.com/citations?user=do7iXxwAAAAJ&hl=en"><font color=white>Citations</font></a>: 14
-                            </span>&nbsp;
-                            <!-- <span class="label label-warning">
-                                <a target="_blank" href="https://en.wikipedia.org/wiki/Erd&ouml;s_number"><font color="white">Erd&ouml;s #</font></a>: 3
-                            </span>&nbsp;
-                            <span class="label label-default">
-                                <a target="_blank" href="https://orcid.org/0000-0002-7239-2387"><font color="white">ORCID</font></a>
-                            </span>&nbsp;
-                            <span class="label label-default">
-                                <a target="_blank" href="https://www.scopus.com/authid/detail.uri?authorId=35176841800"><font color="white">Scopus</font></a>
-                            </span>&nbsp;
-                            <span class="label label-default">
-                                <a target="_blank" href="https://www.researcherid.com/rid/O-2301-2016"><font color="white">ResearcherID</font></a>
-                            </span>
-                             -->
-                            
-                        </h4>
-            <h3> <i>Peer-reviewed Journal Papers </i></h3>
-            <ul>
-                <li><span class="label label-success">IEEE Access</span><strong> Muthukumar, K.A.</strong>, Bouazizi, M., Ohtsuki, T., <a href="https://doi.org/10.3390/s22103898
-                    "> An Infrared Array Sensor-Based Approach for Activity Detection, Combining Low-Cost Technology with Advanced Deep Learning Techniques</a>, Sensors, 22(10):3898, 2022.
-                </li>
-                    <li><span class="label label-success">Sensors</span> <strong>Muthukumar, K.A.</strong>, Bouazizi, M., Ohtsuki, T., <a href="https://doi.org/10.1109/ACCESS.2021.3084926
-                    "> A Novel Hybrid Deep Learning Model for Activity Detection Using Wide-Angle Low-Resolution Infrared Array Sensor</a>. IEEE Access, vol. 9, pp. 82563-82576, 2021.
-                </li>
-
-
-                
-             </ul>
-
-<!--             <h3> <i>Peer-reviewed Journal Papers (in revision & under review)</i></h3>
-            <ul>
-                <li>Burchfield, E., Touma, D., Stiefel, M., <strong>Zhu, R.</strong>, Krapu, C., and Nay, J. (2020). Crop yield response to water availability in the U.S. over the past thirty years. <i>Agricultural and Forest Meteorology</i>. (minor revision)
-                </li>
-				
-				<li>Li, Z., <strong>Zhu, R.</strong>, Zhang, Z., Zhang, X., Tian, Y., and Weng Z. (2020). Dual inverse distance weighting interpolation with locally varying exponents. <i>Computers & Geosciences</i>. (under review) </li>
-            </ul> -->
-
-
-<!--             <span class="label label-success"> Peer-reviewed Conference Papers </span>
- -->            
-            <h3> <i>Conferences Proceedings (with peer-review)</i></h3>
-            <ul>
-                <li><span class="label label-success">ICONSTEM</span><strong>Muthukumar, K.A.,</strong> Nandhini, M.<a href="https://doi.org/10.1109/ICONSTEM.2016.7560925"> Modified secret sharing algorithm for secured medical data sharing in cloud environment</a>. 2016 Second International Conference on Science Technology Engineering and Management (ICONSTEM), 2016, pp. 67-71.</li>
-
-                
-            </ul>
-
-<!--             <span class="label label-success"> Peer-reviewed Book Chapters </span>
- -->            
-            <h3> <i>Conferences Proceedings (without peer-review)</i></h3>
-            <ul>
-            	
-                <li><span class="label label-success">IEICE</span> <strong>Muthukumar, K.A</strong>, Bouazizi, M., Ohtsuki, T., .<a href="https://www.ieice.org/publications/conferences/summary.php?id=CONF0000129344&expandable=0&ConfCd=2021G&session_num=BS-4&lecture_number=BS-4-2&year=2021&conf_type=G
-                    ">Comparative Study of Activity Detection System Using Wide Angle Low-Resolution Infrared Array Sensor at Different Positions,</a>. 電子情報通信学会総合大会, 2021.
-                </li>
-
-                <li><span class="label label-success">IEICE</span> <strong>Muthukumar, K.A</strong>, Bouazizi, M., Ohtsuki, T., .<a href="https://www.ieice.org/publications/conferences/summary.php?id=CONF0000127929&ConfCd=2020S&session_num=BS-8&year=2020&ConfType=
-                    ">Activity Detection Using Wide Angle Low-Resolution Infrared Array Sensors,</a>. 電子情報通信学会総合大会, 2020.
-                </li>
-
-
-
-
-            </ul>
-
-<!--             <span class="label label-success"> Workshop/Symposium Abstracts </span>
- -->            
-            <h3> <i>Technical Reports</i></h3>
-            <ul>
-
-                <li><span class="label label-success">SeMI</span> <strong>Muthukumar, K.A</strong>, Bouazizi, M., Ohtsuki, T., .<a href="https://doi.org/10.1109/ACCESS.2021.3084926
-                    ">  Detection of human activity based on hybrid deep learning model using a low-resolution infrared array sensor</a>. 電子情報通信学会センサネットワークとモバイルインテリジェンス研究会 (SeMI), 2020.
-                </li>
-                   
-            </ul>
-
-            <h3> <i>Workshop/Symposium</i></h3>
-            <ul>
-            	<li>Participated in “Accessibility Computing Workshop” conducted by HEPSN‑Enabling unit Association of
-                    Pondicherry University.
-                </li>
-                <li>Participated in “Cloud Computing: OpenStack Implementation for setting Cloud Environment Workshop”
-                    conducted by C‑DAC Banglore Government of India.
-                </li>
-
-                <li>Participated in “Cloud computing and Digital Forensics Workshop” conducted Department of Computer
-                    Science & Information Systems of BITS Pilani.
-                </li>
-                
-                <li>Participated in JavaFX and Netbeans conducted by Sun Microsystems.
-                </li> 
-
-                <li>Participated in a “Microcontroller based Robotics Workshop” conducted by EEE Association of NIT‑Trichy.
-                </li>  
-                <li>Participated in “Ethical Hacking and Information Security” workshop conducted by Innobuzz Knowledge
-                    solutions.
-                </li>       
-            </ul>
-
-
-            </div>
-        </div>
+<!-- HONOURS -->
+<section id="honours">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">05 — Honours</div>
+      <div><h2>Grants, copyrights <em>&amp; service</em></h2></div>
     </div>
+    <div class="two">
+      <div class="reveal">
+        <h4 class="sub">Grants &amp; fellowships</h4>
+        <ul class="list">
+          <li><span class="yr">2026</span><span><b>IEEE ComSoc Travel Grant</b> · ICC 2026, Glasgow <span class="amt">USD 1,930</span></span></li>
+          <li><span class="yr">2024–27</span><span><b>DST–SERB Grant</b> · Fetal arrhythmia detection <span class="amt">INR 2.2M</span></span></li>
+          <li><span class="yr">2019–22</span><span><b>KLL Research Grant</b> · Keio University <span class="amt">JPY 1.8M</span></span></li>
+          <li><span class="yr">2018–22</span><span><b>MEXT Scholarship</b> · Government of Japan</span></li>
+          <li><span class="yr">2014–16</span><span><b>NHFDC Foundation Scholarship</b> · Govt. of India</span></li>
+          <li><span class="yr">2008–12</span><span><b>Post-Matric Scholarship</b> · Govt. of India</span></li>
+          <li><span class="yr">2021</span><span><b>ICM English Session Encouragement Award</b> · IEICE, Japan</span></li>
+        </ul>
+        <h4 class="sub" style="margin-top:44px">Software copyrights</h4>
+        <ul class="list">
+          <li><span class="yr">2026</span><span><b>Shinkai Labs Drone Detection &amp; Tracking Platform</b><span class="s">SW-2026023145 · Python, Dart</span></span></li>
+          <li><span class="yr">2025</span><span><b>Sulabh: Disability Indexing App</b><span class="s">SW-20217/2025 · AI-based disability assessment</span></span></li>
+          <li><span class="yr">2024</span><span><b>Hriday: ECG Tagging App</b><span class="s">SW-19736/2024 · ECG tagging and clinical support</span></span></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <h4 class="sub">Session chair</h4>
+        <ul class="list">
+          <li><span class="yr">2026</span><span><b>IEEE EMBC 2026</b> · Toronto, Canada</span></li>
+          <li><span class="yr">2024</span><span><b>BITMDM 2024</b> · Nagaland University</span></li>
+          <li><span class="yr">2024</span><span><b>ICAT 2024</b> · NUST, Muscat, Oman</span></li>
+          <li><span class="yr">2024</span><span><b>IEEE CSNT 2024</b> · Jabalpur</span></li>
+          <li><span class="yr">2023</span><span><b>IEEE CSNT 2023</b> · Bhopal</span></li>
+        </ul>
+        <h4 class="sub" style="margin-top:44px">Invited talks</h4>
+        <ul class="list">
+          <li><span class="yr">2023</span><span><b>Infrared Imaging in Healthcare</b> · IEEE CSNT 2023, Bhopal</span></li>
+          <li><span class="yr">—</span><span><b>AI for Everyone · Recent Advances in AI</b> · PATH, New Delhi</span></li>
+          <li><span class="yr">—</span><span><b>AI in Micro-Grid</b> · Dayananda Sagar College of Engineering</span></li>
+          <li><span class="yr">—</span><span><b>Image Processing tutorial</b> · Nagaland University</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 class="sub reveal" style="margin-top:72px">Toolkit</h4>
+    <div class="skills reveal">
+      <div class="sk"><h4>Frameworks</h4><div><span>PyTorch</span><span>TensorFlow</span><span>Keras</span><span>OpenCV</span><span>scikit-learn</span><span>NumPy</span><span>Pandas</span><span>Qiskit</span></div></div>
+      <div class="sk"><h4>Languages</h4><div><span>Python</span><span>Dart</span><span>C/C++</span><span>Julia</span><span>R</span><span>LaTeX</span></div></div>
+      <div class="sk"><h4>Systems</h4><div><span>NVIDIA Jetson</span><span>Raspberry Pi</span><span>IoT</span><span>ROS</span><span>OpenStack</span></div></div>
+      <div class="sk"><h4>Beyond code</h4><div><span>Grant writing</span><span>Intellectual property</span><span>Research supervision</span><span>Industry consultation</span></div></div>
+    </div>
+  </div>
 </section>
 
-<!-- Talks -->
-<!-- <section id="talks">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-8">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-8-content').toggle();">Talks  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-8-content">
-
-            <hr class="star-primary">
-            <h2>Selected Talks</h2>
-            <ul>
-
-            	<li><span class="label label-success">PhD Defense</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/defense_RuiZhu.pdf">A Higher-order Perspective on the Foundations of Geographic Information Science</a>, December 15, 2020, Santa Barbara, California, USA <a href="https://youtu.be/6I8lIHfVSAQ">[recorded video]</a></li>
-
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/geomultipole_locbigdata2019_RuiZhu.pdf">A High-order Statistical Approach to Understand Urban Structures</a>,<i> 2019 Location-based Big Data Symposium, in conjunction with the 29th International Cartographic Conference</i> July 15-20, 2019, Tokyo, Japan</li>
-
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/Esri2019_DirectionAnalysis_RuiZhu.pdf">Making Direction a First-class Citizen of Tobler's First Law of Geography</a>, <i>2019 Esri Users Conference: Frontiers in GIScience,</i> July 8-12, 2019, San Diego, California, USA</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/Esri2019_KGSummarization_RuiZhu.pdf">A Spatially-Explicit Reinforcement Learning Model for Geographic Knowledge Graph Summarization</a>, <i>2019 Esri Users Conference:  Advances in GIScience,</i> July 8-12, 2019, San Diego, California, USA</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/GeoQA_AGILE2019_RuiZhu.pdf">Relaxing Unanswerable Geographic Questions Using a Spatially Explicit Knowledge Graph Embedding Model</a>, <i>22nd Conference on Geo-information Science,</i> June 17-20, 2019, Limassol, Cyprus</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/RoadSignature_AGILE2019_RuiZhu.pdf">Are Streets Indicative of Place Types</a>, <i>GeoCultGIS Workshop</i>, June 17, 2019, Limassol, Cyprus</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/AAG2019_SemanticUncertainty_RuiZhu.pdf">Understanding Semantic Uncertainty in Volunteered Geographic Information</a>, <i>2019 Annual Meeting of AAG (GIScience in the Post-Truth Era)</i>, April 3-7, 2019, Washington DC, USA</li>
-                
-
-                <li><span class="label label-danger">Panal Discussion</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/AAG2019_Reckless_RuiZhu.pdf">The Three-body Problem in Geography</a>, <i>2019 Annual Meeting of AAG (Reckless Ideas in Geography and GIScience)</i>, April 3-7, 2019, Washington DC, USA</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/IATBR2018_SantaBarbara_slides_RuiZhu.pdf">Quantifying Semantic Uncertainties of Volunteered Geographic Information to Understand Human Travel Behaviors</a>, <i>5th International Conference on Travel Behavior Research</i>, July 15-20, 2018, Santa Barbara, California, USA</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/SpatialAccuracy2018_RuiZhu.pdf">Adopting Semantic Signatures to Quantify the Uncertainty of Volunteered Geographic Information</a>, <i>13th International Symposium of Spatial Accuracy</i>, May 21-25, 2018, Beijing, China.</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> Utilizing Multiple-point Geostatistics to Model Higher-order Geospatial interactions, <i>2018 Annual Meeting of AAG (Spatial Analysis)</i>, April 10-14, 2018, New Orleans, Louisiana, USA.</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/Mobility2017_RuiZhu.pdf">Quantifying the Attractiveness of Destinations for Modeling Long Distance Travel Patterns</a>, <i>NSF Mobility Science Workshop</i>, May 11-12, 2017, Columbus, Ohio, USA.</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/AAG2017_RuiZhu.pdf">From the Geo-dipole to the Geo-multipole: A Framework of Applying Multiple-Point (Geo)Statistics for Geographic Field Analysis</a>, <i>2017 Annual Meeting of AAG (Uncertainty in Spatial Patterns)</i>, April 5-9, 2017, Boston, Massachusetts, USA.</li>
-                
-                <li><span class="label label-warning">Lightning Talk</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/LightingTalk2017_RuiZhu.pdf">IChing and Geography</a>, <i>2017 Spatial@UCSB Lightning Talks</i>, February 28, 2017, Santa Barbara, California, USA.</li>
-                
-                <li><span class="label label-info">Poster Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/GIScience16_Kobani_RuiZhu.pdf">Which Kobani? A Case Study on the Role of Spatial Statistics and Semantics for Coreference Resolution Across Gazetteers</a>, <i>The Ninth International Conference in Geographic Information Science</i>, September 27- September 30, 2016, Montreal, Canada.</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/AAG2016_RuiZhu.pdf">Understanding the Semantics of Places in Gazetteers via Spatial Analysis</a>, <i>2016 Annual Meeting of AAG (Spatial Data Mining and Big Data Analytics)</i>, March 29- April 4, 2016, San Francisco, California, USA.</li>
-                
-                <li><span class="label label-primary">Oral Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/UC2016_RuiZhu.pdf">Spatial Signatures for Geographic Feature Types: Examining Gazetteer Ontologies using Spatial Statistics</a>, <i>2016 Esri User Conference: GIScience Frontier Research Session</i>,June 27-July 1, 2016, San Diego, California, USA.</li>   
-
-                <li><span class="label label-info">Poster Presentation</span> <a href="http://geog.ucsb.edu/~zhu/presentation_slides/SSSW2016_RuiZhu.pdf">Spatial Signatures for Geographic Feature Types: Examining Gazetteer Ontologies using Spatial Statistics</a>, <i>The 12th Semantic Web Summer School</i>,July 17-July 23, 2016, Bertinoro, Italy.</li>                 
-            </ul>
-            </div>
-        </div>
+<!-- CONTACT -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div>
+        <h2>Let's <em>collaborate</em>.</h2>
+        <p>Open to research collaborations, student supervision, industry projects in healthcare and vision AI, and India–Japan academic exchange.</p>
+      </div>
+      <div class="clinks">
+        <a href="mailto:muthukumar9890@gmail.com"><span>muthukumar9890@gmail.com</span><small>Email</small></a>
+        <a href="https://github.com/kamuthukumar" target="_blank" rel="noopener"><span>github.com/kamuthukumar</span><small>GitHub</small></a>
+        <a href="https://www.linkedin.com/in/muthukumarka" target="_blank" rel="noopener"><span>linkedin.com/in/muthukumarka</span><small>LinkedIn</small></a>
+        <a href="assets/KA_Muthukumar_CV.pdf" target="_blank" rel="noopener"><span>Curriculum vitae (PDF)</span><small>CV</small></a>
+      </div>
     </div>
-</section> -->
-
-<!-- Award Section -->
-<section id="awards">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-5">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-5-content').toggle();">Awards  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-5-content">
-
-            <hr class="star-primary">
-            <h2>Selected Awards</h2>
-            <ul>
-                <li><strong>ICM English session award</strong>, Technical Committee on Information and Communication Management (ICM), (IEICE ICM Section 2020)</li>
-            </ul>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
+</main>
 
-
-
-<!-- Followships and Travel Grants Section -->
-<section id="advising">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-           <i class="noshow" style="display:none;" id="tab-7">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-7-content').toggle();">Grants <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-           <div class="allshow" style="display:none;" id="tab-7-content">
-
-            <hr class="star-primary">
-            
-            
-            <h2>Grants and Fellowships</h2>
-            <h3><i>Grants</i></h3>
-            <ul>
-                <li>
-                    KEIO-KLL 2019-2022 <strong>Research Grant</strong> Keio Leading-Edge Laboratory of Science and
-                    Technology, Japan                
-            </ul>
-
-            
-            
-            
-            <h3><i>Fellowships</i></h3>
-            <ul>
-
-                 <li>
-                    2018-2022 <strong>Monbukagakusho MEXT Scholarship</strong> Issued by Ministry of Education, Culture, Sports, Science and Technology of Japan </li>
-                <li>
-                2014-2016 <strong>NHFDC FOUNDATION Scholarship</strong> Issued by Ministry of Social Justice of Empowerment, Goverment of India 
-                </li>
-                <li>
-                    2008-2012 <strong>Post Matric Scholarship</strong> Issued by Ministry of Minority Affairs, Goverment of India 
-                    </li>
-
-                
-            </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Projects -->
-<!-- <section id="projects">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-11">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-11-content').toggle();">Projects  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-11-content">
-
-            <hr class="star-primary">
-            <h2>Selected Projects</h2>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_stkg.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Spatiotemporally Enriching Knowledge Across Domains</strong></h3>
-                        <p>We apply spatiotemporal thinking into knowledge graph generation, embedding and analysis. Specific research questions include how to represent and incorporate remotely sensed images and maps into knowledge graph, as well as how to leverage geographic distance and direction knowledge into state-of-the-art models of deep learning. Applications include soil science, oceanography and ecology.  [This project is in progress and is funded by NSF]</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_direction.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Directional Operations in GIS</strong></h3>
-                        <p>This project investigates the role of directions in GIS. We claim that anisotropicity is the norm in geographic phenomena, not just an exception. Tobler's first law of geography has been generalized accordingly, and multiple new spatial operations are introduced to incorporate directional information with distance.   <a href="http://geog.ucsb.edu/~zhu/papers/TGIS_Special2019_DirTFL.pdf">Related paper</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_ontology.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3 class="project-title"><strong>Knowledge Graph-Assisted Knowledge Acquisition from Technical Documents</strong></h3>
-                        <div class= "project-description">
-                            <p> A product knowledge graph was generated from technical documents of Siemens Corporation. We further leveraged natural language processing techniques (e.g., BERT) and knowledge graph embedding techniques (e.g., ConvE and GCNN) to answer meaningful and complicated questions based on the built knowledge graph. Another contribution of this project is the introduction of literal-based embedding approach, which incorporates not only object-based nodes but literal information (e.g., countries & dates) into question answering models. [Funded by <a href="https://www.siemens.com/global/en/home/company/innovation/corporate-technology.html">Siemens Corporation</a>] </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_siemens.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3 class="project-title"><strong>SHACL Composer - A Tool to Validate Knowledge Graphs</strong></h3>
-                        <div class= "project-description">
-                            <p>We propose the conceptualization and development of a pattern-based, multi-modal framework for OWL ontologies to aid subject matter experts in developing the necessary axiomatization for semantic applications. The graphical end-user components will be matched to <a href='https://www.w3.org/TR/shacl/'>SHACL (Shape Constraint Language)</a>, that can operate on a domain ontology and whose arguments are selectable and composable, via a graphical user interface. You can check the<a href ='http://stko-testing.geog.ucsb.edu/rui/siemens/'> Demo</a> and <a href ='https://www.youtube.com/watch?v=gPJ7Mn5q1vw&feature=youtu.be'>Video demo</a>. [Funded by <a href="https://www.siemens.com/global/en/home/company/innovation/corporate-technology.html">Siemens Corporation</a>] </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_ORNL.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Spatio-Temporal-Thematic Patterns of African Conflicts</strong></h3>
-                        <p>I interned at <a href="https://www.ornl.gov/division/csed/gist">Oak Ridge National Laboratory (ORNL)</a> in the summer of 2017. Under the supervision of Dr. Robert N. Steward, I focused on researching the spatio-temporal-thematic patterns of African conflicts from 1997-2017 (one sub-project under the World Spatiotemporal Analytics and Mapping Project-WSTAMP). I also built a self-exciting point process model to predict the occurence of conflicts in Africa. An interactive interface was developed to allow users to explore detected pattern.
-                        [Funded by DOE] </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_TRB.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>California Long-Distance Travel Pattern Analysis</strong></h3>
-
-                        <p>Attractiveness of places is modeled to help understand the long-distance travel decision makings of citizens in California. Multiple indicators, including the diversity of the neighborhood in terms of place types, the neighborhood's spatial structures and citizens' perception of neighborhoods, are taken into account in the model. Experiments found that these proposed attractiveness indicators have significant influence on understanding citizens' travel behavior in respect to long-distance travel in California. <a href="https://www.researchgate.net/publication/325715401_Tour-Based_Path_Analysis_of_Long-Distance_Non-Commute_Travel_Behavior_in_California">Related paper</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_SpatialSignatures.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Semantic Spatial Signatures</strong></h3>
-
-                        <p>Semantic spatial signatures are proposed to characterize the semantics of place types (e.g., <i>restaurants, hotels, and bars</i>). A series of spatial statistics, such as nearest neighbor distance, Moran's I, and place-based statistics were applied to comprise the spatial signatures. Experiments were conducted to show that spatial signatures are capable to align place types across different gazetteers and location-based social networks. <a href="http://geog.ucsb.edu/~zhu/papers/TGIS2016_SpatialSig.pdf">Related paper</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_GeoMultipole.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Geo-Multipole: A High-order Geographic Conceptualization</strong></h3>
-
-                        <p>Conventional spatial statistics are based on first- or second-order stationarity/statistics. However, due to the complex nature of geographic phenomena, their spatial patterns are frequently beyond simple low-order statistics. Therefore, this project proposed a new conceptualization named as Geo-multipole to model higher-order spatial interactions. A specific approach, multiple-point geostatistics, was employed as one example of Geo-multipole to generate complex urban structures from remotely sensed images. <a href="http://geog.ucsb.edu/~zhu/papers/GeoMultipole2017_ZhuKyriakidisJanowicz.pdf">Related paper</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_Landmarks.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Automatic Selection of Landmarks</strong></h3>
-
-                        <p>In this research, several supervised learning models were applied to select “salient” objects as landmarks. Features were extracted from various sources, including traditional databases, social networks and LiDAR data. The features did not only represent static aspects of the object, but also the interactions between objects and humans. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/tgis.12095">Related paper</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_PAM.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Personalized Accessibility Map (PAM)</strong></h3>
-
-                        <p>Personalized Accessible Maps is a project focusing on providing navigation services to a wide range of users on campus. The prototype of this project was implemented at the University of Pittsburgh. The service provided three kinds of route for different users, including shuttle path, shortest path and personalized path. For personalized path, factors like slope, traffic, and width of the road were considered. In terms of navigation guidance, both turn-by-turn and landmark-based instructions were implemented in this service. Different POIs, service areas, accessible entrances and sidewalks were demonstrated on the maps as well. I was one of the developers for this project. <a href="https://ischoolatpitt.com/2014/04/10/personalized-accessibility-map-2/">Link</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-list">
-                <div class="project-item">
-                    <div class="project-item-image">
-                        <div class="project-image" style="background-image: url(images/project_PNS.png)"></div>
-                    </div>
-                    <div class="project-item-content">
-                        <h3><strong>Pedestrian Navigation Services (PNS)</strong></h3>
-
-                        <p>PNS aims to provide navigation guidance for pedestrians. In this service, the sidewalk, rather than road networks, was utilized to generate the route. Due to the smaller granularity of pedestrian navigation compared to vehicle navigation, more challenges were imposed on the techniques of map matching. It required the results of map matching to be highly accurate. To overcome this issue, a new algorithm, chain-code map matching, was implemented in this system. This technique largely improved the accuracy of positioning pedestrians. <a href="http://www.nrcresearchpress.com/doi/pdf/10.5623/cig2013-052">Relevant paper</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-
-
-
-<!-- Courses Section -->
-<!-- <section id="teaching">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-6">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-4-content').toggle();">Teaching  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-6-content">
-            <hr class="star-primary">
-            <h2>Teaching</h2> -->
-<!--             <span class="label label-success"> Instructor </span>
- -->        
-            <!-- <h3><i>Instructor</i></h3>    
-            <ul>
-                <li>  UCSB GEOG 176A: Introduction to GIS (Summer 2019)</li>
-                <li>  UCSB GEOG 176A: Introduction to GIS (Summer 2018)</li>
-            </ul> -->
-<!--             <span class="label label-success"> Guest Lecturer </span>
- -->       
-  <!-- <h3><i>Guest Lecturer</i></h3>    
-            <ul>
-                <li>  UCSB GEOG 176C: GIS Applications (Spring 2018, Spring 2017)</li>
-                <li> UCSB GEOG 178/258: Conceptual Modeling and Programming for the Geo-Sciences (Winter 2017)</li>
-            </ul> -->
-<!--             <span class="label label-success"> Teaching Assistant </span>
- -->       
-  <!-- <h3><i>Teaching Assistant</i></h3>    
-            <ul>
-                <li> UCSB GEOG 176C: GIS Applications (Spring 2017)</li>
-                <li>  UCSB GEOG 178/258: Conceptual Modeling and Programming for the Geo-Sciences (Winter 2016)</li>
-                <li>  UCSB GEOG 176A: Introduction to GIS (Fall 2015, Summer 2015, Fall 2014)</li>
-                <li>  UCSB GEOG 172: Intermediate Geographical Data Analysis (Spring 2015)</li>   
-                <li>  UCSB GEOG 3A: Ocean and Atmosphere (Winter 2015)</li>                
-            </ul> -->
-
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Service Section -->
-<section id="service">
-
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-6">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-6-content').toggle();">Service  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-6-content">
-
-           <hr class="star-primary">
-           <h2>Professional Service</h2>
-
-           <p>
-            <!-- <h3><i>Guest Editorial Board</i></h3>
-           <ul>
-                <li>
-                Semantic Web Journal: <a href="http://www.semantic-web-journal.net/blog/call-papers-special-issue-semantic-web-global-food-system">Special Issue on Semantic Web for the Global Food System</a>
-                </li>
-                <li>
-                Transactions in GIS: <a href="https://onlinelibrary.wiley.com/page/journal/14679671/homepage/featured-collections">Special Issue on Methods, Models and Resources for Geospatial Knowledge and
-GeoAI</a>
-                </li>
-            </ul> -->
-
-<!--            <span class="label label-success">Peer Reviewer for Academic Journals</span>
- -->       
- <!-- <h3><i>Peer Reviewer for Academic Journals</i></h3>
-           <ul>
-               <li>
-                <a href="https://www.tandfonline.com/toc/tgis20/current"> International Journal of Geographic Information Science </a>
-               </li>
-               <li>
-                <a href="https://onlinelibrary.wiley.com/journal/14679671"> Transactions in GIS </a>
-               </li>
-               <li>
-                <a href="https://www.journals.elsevier.com/applied-geography">Applied Geography</a>
-               </li>
-                <li>
-                <a href="https://www.tandfonline.com/loi/rtpg20">The Professional Geographer</a>
-               </li>
-                <li>
-                <a href="https://www.tandfonline.com/loi/raag21">Annals of the American Association of Geographers</a>
-               </li>
-                <li>
-                <a href="https://www.mdpi.com/journal/ijgi">ISPRS International Journal of Geo-Information</a>
-               </li>  
-                <li>
-                <a href="https://dc.uwm.edu/ijger/">International Journal of Geospatial Environmental Research</a>
-               </li>      
-                <li>
-                <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=17">IEEE Transactions on Engineering Management</a>
-               </li>  
-                <li>
-                <a href="https://journals.sagepub.com/home/irx">International Regional Science Review</a>
-               </li> 
-               <li>
-                <a href="https://www.tandfonline.com/loi/tagi20">Annals in GIS</a>
-               </li> 
-               <li>
-                <a href="https://www.josis.org/index.php/josis">Journal of Spatial Information Science</a>
-               </li> 
-                <li>
-                <a href="https://www.nature.com/srep/">Scientific Reports</a>
-               </li> 
-                <li>
-                <a href="http://www.semantic-web-journal.net/">Semantic Web Journal</a>
-               </li> 
-
-            </ul> -->
-
-<!--             <span class="label label-success">Academic Service</span>
- -->        
- <!-- <h3><i>Academic Service</i></h3>
-            <ul>
-                <li><b>Program Committee:</b> 19th Extended Semantic Web Conference (ESWC 2022), May 29-June 2, 2022, Hersonissos, Greece</li>
-                <li><b>Program Chair:</b> 2nd Spatial Data Science Symposium (SDSS 2021), December 13-14, 2021, online</li>
-                <li><b>Virtual Conference Chair:</b> 11th International Conference on Knowledge Capture (K-CAP 2021), De- cember 2-3, 2021, online</li>
-                <li><b>Program Committee:</b> 11th International Conference on Geographic Information Science (GIScience 2021), September 27-30, 2021, online</li>
-
-                <li><b>Program Committee:</b> 1st International Workshop on Methods, Models, and Resources for Geospatial Knowledge Graphs and GeoAI (GeoKG’21), September 26, 2021, online </li>
-
-                <li><b>Program Committee:</b> 12th Workshop on Ontology Design and Patterns (WOP 2021), October 24, 2021, online</li>
-                <li><b>Organizer</b>: 14th spatial@ucsb.global - Geography for the Upcoming Generation: Its Role in Contributing to a Sustainable Future, June 2, 2021, online </li>
-                <li><b>Program Committee:</b> 18th Extended Semantic Web Conference (ESWC 2021), June 6-10, 2021, online </li>
-                <li><b>Chair:</b> Center for Spatial Studies at UCSB - 2021 Annual Spatial Lightning Talks, March 16, online</li>
-                
-                <li><b>Judge Committee:</b> 2020 Mapping Horizons Competition - Tackling Crisis Through Geospatial Impact, online</li>
-
-                <li>
-                    <b>Program Committee:</b> International Geographical Union Task Force for Young & Early Career Geographers (IGU-YECG), 2020 - 2024
-                </li>
-
-                <li>
-                    <b>Program Committee:</b> 11th International Conference on Geographic Information Science (GIScience 2021), September 27-30, 2021, Poznań, Poland
-                </li>
-
-
-                <li>
-                    <b>Program Committee:</b> 19th International Semantic Web Conference, November 2-4, 2020, Virtual Conference 
-                </li>
-
-                <li>
-                    <b>Program Committee:</b> 17th Extended Semantic Web Conference (ESWC 2020), May 31 - June 4, 2020, Crete, Greece
-                </li>
-
-                <li>
-                    <b>Program Committee:</b> 3rd GeoAI and Deep Learning Symposium, AAG 2020, April 6-20, 2020, Denver, CO
-                </li>
-                
-                <li>
-                    <b>Lead Organizer:</b> 3rd GeoAI and Deep Learning Symposium: Deep Learning of Geospatial Patterns & Applications, AAG 2020, April 6-20, 2018, Denver, CO
-                </li>
-
-
-                <li>
-                    <b>Program Committee:</b> 1st International Conference on Spatial Data Intelligence (SpatialDI 2020), March 27-18, 2020, Shenzhen, China
-                </li>
-
-
-                <li>
-                    <b>Chair:</b> 2nd GeoAI and Deep Learning Symposium: Deep Learning of Geospatial Patterns & Applications, AAG 2019, April 6, 2019, Washington DC, USA
-                </li>
-
-                <li>
-                    <b>Program Committee:</b> 16th Extended Semantic Web Conference (ESWC2019), June 2nd - 6th, Portorož, Slovenia 
-                </li>
-
-                <li>
-                    <b>Committee:</b> GISS Specialty Group Student Paper Competition, AAG 2019, April 5, 2019, Washingtin, DC, USA
-                </li>
-                <li>
-                    <b>Student Director:</b> AAG Geographic Information Science and Systems (GISS) Specialty Group, 2018-2019
-                </li>
-            	
-                <li>
-                    <b>Local Committee:</b>The 8th International Conference on the Internet of Things (IoT 2018), October 15-18, 2018, Santa Barbara, CA, USA  
-                </li>
-                <li>
-                    <b>Chair:</b> Machine Learning-Fundamentals Workshop at 15th International Conference on Travel Behavior Research, July 16, 2018, Santa Barbara, CA, USA  
-                </li>
-                <li>
-                    <b>Lead Organizer:</b> 1st GeoAI and Deep Learning Symposium: Deep Learning of Geospatial Patterns & Applications, AAG 2018, April 14, 2018, New Orleans, LA, USA 
-                </li>
-
-                <li>
-                    <b>Lead Organizer:</b> Session of Uncertainties in Spatial Patterns, AAG 2017, April 7, 2017, Boston, MA, USA
-                </li>
-                <li>
-                    <b>Local Committee: </b>SPATIAL 2015, Center for Spatial Studies@UCSB, December 9-11, 2015, Santa Barbara, CA, USA
-                </li>
-
-                </ul> -->
-
-<!--             <span class="label label-success">Department Services</span>
- -->        
- <!-- <h3><i>Department Service</i></h3>
-            <ul>
-                <li>
-                   UCSB Geography Department: <strong>Faculty Representative Committee</strong>, 2019-2020
-                </li>
-
-                <li>
-                   UCSB Geography Department: <strong>Event Committee</strong>, 2015-2017
-                </li>
-
-                <li>
-                   UCSB Geography Department: <strong>Coffee Committee</strong>, 2014-2015
-                </li>
-
-                <li>
-                   UCSB Geography Department: <strong>Outreach Committee</strong>, 2014-2015
-                </li>
-                
-            </ul> -->
-
-<!--             <span class="label label-success">Membership of Professional Associations</span>
- -->        <h3><i>Professional Membership</i></h3>
-            <ul>
-                <li>
-                    <a href='https://www.ieee.org/membership/index.html'>Institute of Electrical and Electronics Engineers (IEEE) </a>
-                </li>
-                <li>
-                    <a href="https://www.ieice.org/eng_r/index.html"> Institute of Electronics, Information and Communication Engineers (IEICE) </a>
-                </li>
-
-            </ul>
-            </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- Random Links Section -->
-<!-- <section id="life">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-10">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-10-content').toggle();">Life  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-
-            <div class="allshow" style="display:none;" id="tab-10-content">
-
-            <hr class="star-primary">
-            <h2>Hobbies</h2>
-            <ul>
-                <li><span class="label label-success"><font color="white">Equestrian</font></span> I love horses and learned equestrian in Beijing. Now I am a rider volunteer at the <a target="_blank" href="http://www.heartsriding.org/">Hearts Therapeutic Equestrian Center</a> at Santa Barbara.</li>
-                <li><span class="label label-info"><font color="white">Books</font></span> I have a small library at my place and have a collection of books in topics such as spatial statistics, geostatistics, semantic web, data mining and machine learning, science, philosophy, history, Chinese art and culture (e.g., IChing and Daoism), Buddist art and culture, and numerous novels. I am working on building a digital database to organize my collected books in order for my friends to check them out!</a></li>
-                <li><span class="label label-danger"><font color="white">Yoga</font></span> I am an active yogi and love to try different types of yoga. I have been practicing yoga for more than four years, and it teaches me how to balance my spiritual mind and physical body!</a></li>
-                <li><span class="label label-warning"><font color="white">Sailing</font></span> Another outdoor activity I love to do at Santa Barbara Harbor! </li>
-                
-                <li><span class="label label-primary"><font color="white">Ruan</font></span> <a target="_blank" href="https://en.wikipedia.org/wiki/Zhongruan">Ruan</a> is a traditional Chinese instrument and can be dated back to 115 BC. It has four strings with a shape like Guitar, which is the reason I explain it to people as Chinese Guitar! However, the music played by Ruan is very different from Guitar. In addition to Ruan, I also play <a href="https://en.wikipedia.org/wiki/Erhu">Erhu</a>, another Chinese traditional instrument with only two strings.</li>
-            </ul>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- Contact Section -->
-<section id="contact">
-    <div class="container lead">
-        <div style="text-align: left; margin-top:10px" class="col-md-12">
-
-            <i class="noshow" style="display:none;" id="tab-9">
-                <button class="btn btn-default btn-lg btn-block"  style="display: block; width: 100%;" onclick="javascript:$('#tab-9-content').toggle();">Contact  <span class="glyphicon glyphicon-chevron-right"></span></button>
-            </i>
-            <div class="allshow" style="display:none;" id="tab-9-content">
-
-            <hr class="star-primary">
-            <h2>Contact</h2>
-            <div class="container lead">
-                <div align="left" class="col-md-6">
-                    <h4 class="myEN">
-                    <strong>Muthukumar Krishnan Arumugasamy</strong>
-                    </h4>
-                    <p class="myEN">
-                        Graduate School of Science and Technology<br>
-                        Keio University<br>
-                        Japan<br>
-                        <!-- 93106, Santa Barbara, CA, USA<br> -->
-                    </p>
-                    Email: <body>&nbsp;<a href="mailto:muthukumar989@gmail.com">muthukumar9890@gmail.com</a></body>
-                    <!-- <script language="JavaScript">
-                        
-                        document.write("&nbsp;");
-                        spiderjam('muthukumar9890','gmail.com');
-                        --> 
-                    <!-- </script><br> -->
-                </div>
-
-                <!-- <div align="left" class="col-md-6">
-                    <p>
-                     <img src="frame.png" width = "100", height ="100" > Contact</a> -->
-
-                    <!--   <a href="zeinalipour.vcf" class="btn btn-primary">Get VCF Card &raquo;</a>-->
-                    <!-- </p>
-                </div> -->
-
-
-        </div>
-        <hr class="star-primary">
-        </div>
-
-</section>
-
-<hr class="star-primary">
 <footer>
-    <small>
-    <center>
-        © 2020 | Muthukumar Krishnan Arumugasamy. Credits: AR template
-    <a onclick="javascript:$('#credit').toggle();"><img border="0" src="images/ccby.png" /></a>
-<!--     <div style="display:none;" id="credit">[AR template available under Creative Commons CC BY 4.0 licence: 
-    <a href="https://github.com/dmsl/academic-responsive-template"_blank">
-        https://github.com/dmsl/academic-responsive-template
-    </a> ] -->
-    </div>
-    </center>
-    </small>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> K. A. Muthukumar · Chennai, India</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
 </footer>
 
-</body>
+<script>
+const ME = "K. A. Muthukumar";
+const PUBS = [
+  {t:"j",y:2025,ti:"Integrating electrocardiogram and fundus images for early detection of cardiovascular diseases",au:"K. A. Muthukumar, D. Nandi, P. Ranjan, K. Ramachandran, P. J. Shiny, A. Ghosh, M. Ashwini, A. Radhakrishnan, V. E. Dhandapani, R. Janardhanan",ve:"Scientific Reports, vol. 15, 4390",doi:"10.1038/s41598-025-87634-z",hi:"Nature Portfolio"},
+  {t:"j",y:2024,ti:"Leveraging machine learning techniques to analyze nutritional content in processed foods",au:"K. A. Muthukumar, S. Gupta, D. Saikia",ve:"Discover Food, vol. 4, no. 1, 182",doi:"10.1007/s44187-024-00253-x"},
+  {t:"j",y:2024,ti:"Vision Mamba: Cutting-edge classification of Alzheimer's disease with 3D MRI scans",au:"K. A. Muthukumar, A. Gurung, P. Ranjan",ve:"arXiv preprint 2406.05757",doi:"10.48550/arXiv.2406.05757",k:"Preprint"},
+  {t:"j",y:2023,ti:"Multi-modal detection of cardiovascular disease at the community level",au:"K. A. Muthukumar, A. Ganeshan, D. Nandi, P. Ranjan, S. Mohandas, K. Ramachandran, et al., R. Janardhanan",ve:"Indian Heart Journal, vol. 75, S76–S77 (abstract)",doi:"10.1016/j.ihj.2023.11.162",k:"Abstract"},
+  {t:"j",y:2023,ti:"A multi-modal computational approach to accurate and rapid prediction of cardiovascular health using fundus images",au:"K. A. Muthukumar, D. Nandi, P. Ranjan, K. Ramachandran, et al., R. Janardhanan",ve:"Indian Heart Journal, vol. 75, S9 (abstract)",doi:"10.1016/j.ihj.2023.11.027",k:"Abstract"},
+  {t:"j",y:2022,ti:"An infrared array sensor-based approach for activity detection, combining low-cost technology with advanced deep learning techniques",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"Sensors, vol. 22, no. 10, 3898",doi:"10.3390/s22103898"},
+  {t:"j",y:2021,ti:"A novel hybrid deep learning model for activity detection using wide-angle low-resolution infrared array sensor",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEEE Access, vol. 9, pp. 82563–82576",doi:"10.1109/ACCESS.2021.3084926",hi:"IEEE Access"},
+  {t:"c",y:2026,ti:"Hybrid diffusion–dynamical modeling for robust non-invasive fetal ECG extraction from abdominal ECG recordings",au:"K. A. Muthukumar",ve:"48th Annual Int. Conf. of the IEEE EMBS (EMBC)",hi:"IEEE EMBC"},
+  {t:"c",y:2026,ti:"Multi-level adapter fusion with learnable text anchors for few-shot medical anomaly classification",au:"K. A. Muthukumar",ve:"48th Annual Int. Conf. of the IEEE EMBS (EMBC)",hi:"IEEE EMBC"},
+  {t:"c",y:2026,ti:"Non-invasive fetal electrocardiogram extraction using deep learning and earth mover's distance",au:"K. A. Muthukumar, R. Anurag, A. Li",ve:"IEEE Int. Conf. on Communications (ICC), Glasgow, U.K.",hi:"IEEE ICC"},
+  {t:"c",y:2026,ti:"Intelligent screening of chronic kidney disease from clinical biomarkers: A dimensionality-aware ensemble approach",au:"K. A. Muthukumar",ve:"18th IEEE Int. Conf. on Computational Intelligence and Communication Networks (CICN)"},
+  {t:"c",y:2026,ti:"Neural combinatorial fusion for deterministic radar tracking with calibrated uncertainties",au:"K. A. Muthukumar",ve:"IEEE SPACE Conference, Bengaluru, India"},
+  {t:"c",y:2026,ti:"TopOT-Net: Topology-preserving medical image segmentation via Sinkhorn divergence-regularized deformable attention",au:"K. A. Muthukumar",ve:"11th Int. Conf. on Computer Vision and Image Processing (CVIP), Calicut, India"},
+  {t:"c",y:2026,ti:"GWO-TriLL: Accelerating linked list search via grey wolf optimization and tridirectional traversal",au:"K. A. Muthukumar",ve:"6th Int. Conf. on Emerging Techniques in Computational Intelligence (ICETCI), Hyderabad"},
+  {t:"c",y:2024,ti:"Exploring vision transformers for enhanced MRI-based Alzheimer's disease classification",au:"K. A. Muthukumar, A. Gurung, P. Ranjan",ve:"3rd Int. Conf. BITMDM, pp. 60–70",doi:"10.1007/978-3-031-82706-8_7"},
+  {t:"c",y:2024,ti:"Enhancing EEG-based brain–computer interfaces through biologically inspired neural networks incorporating Dale's law and Hebbian learning",au:"K. A. Muthukumar, P. Ranjan",ve:"2nd Nature Conf. on Neuromorphic Computing, Beijing (abstract)",k:"Abstract"},
+  {t:"c",y:2024,ti:"HRIDAY: ECG tagging at your fingertips using Android app",au:"A. Ganeshan, S. R. Abishek, P. Deekshith, P. Piyush, K. A. Muthukumar, P. Ranjan",ve:"Annual Conf. of the Cardiological Society of India (abstract)",k:"Abstract"},
+  {t:"c",y:2021,ti:"Comparative study of activity detection system using wide angle low-resolution infrared array sensor at different positions",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEICE General Conference"},
+  {t:"c",y:2020,ti:"Activity detection using wide angle low-resolution infrared array sensors",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEICE Society Conference"},
+  {t:"c",y:2020,ti:"Detection of human activity based on hybrid deep learning model using a low-resolution infrared array sensor",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEICE Technical Report"},
+  {t:"c",y:2016,ti:"Modified secret sharing algorithm for secured medical data sharing in cloud environment",au:"K. A. Muthukumar, M. Nandhini",ve:"2nd Int. Conf. ICONSTEM, pp. 67–71",doi:"10.1109/ICONSTEM.2016.7560925"}
+];
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const list = document.getElementById("pubs");
+list.innerHTML = PUBS.sort((a,b)=>b.y-a.y || (a.t<b.t?-1:1)).map(p => `
+  <li class="pub" data-t="${p.t}" data-y="${p.y}">
+    <div class="y">${p.y}</div>
+    <div>
+      <div class="ti">${esc(p.ti)}</div>
+      <div class="au">${esc(p.au).replace(ME, `<b>${ME}</b>`)}</div>
+      <div class="ve">${esc(p.ve)}</div>
+      <div class="meta">
+        <span class="pill ${p.t==="j"?"j":""}">${p.t==="j"?"Journal":"Conference"}</span>
+        ${p.hi?`<span class="pill hi">${esc(p.hi)}</span>`:""}
+        ${p.k?`<span class="pill">${esc(p.k)}</span>`:""}
+        ${p.doi?`<a class="doi" href="https://doi.org/${p.doi}" target="_blank" rel="noopener">doi:${p.doi} ↗</a>`:""}
+      </div>
+    </div>
+  </li>`).join("");
 
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x===b));
+  const f = b.dataset.f;
+  list.querySelectorAll(".pub").forEach(li => {
+    li.hidden = !(f==="all" || li.dataset.t===f || li.dataset.y===f);
+  });
+}));
+
+// theme
+const root = document.documentElement;
+try { const s = localStorage.getItem("theme"); if (s) root.dataset.theme = s; } catch(e) {}
+document.getElementById("theme").addEventListener("click", () => {
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch(e) {}
+});
+
+// nav
+const nav = document.getElementById("nav"), links = document.getElementById("links");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), {passive:true});
+document.getElementById("menu").addEventListener("click", () => links.classList.toggle("open"));
+links.querySelectorAll("a.l").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
+
+// reveal
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.08});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
 </html>
