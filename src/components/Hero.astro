@@ -1,6 +1,6 @@
 ---
 import { Picture } from "astro:assets";
-import portrait from "../assets/portrait-tone.jpg";
+import portrait from "../assets/portrait-studio.jpg";
 import site from "../../content/site.json";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     </div>
     <figure class="portrait">
       <div class="frame">
-        <Picture src={portrait} formats={["avif", "webp"]} widths={[360, 480, 640, 800, 1003]} sizes="(max-width: 64rem) 62vw, 440px"
+        <Picture src={portrait} formats={["avif", "webp"]} widths={[360, 480, 640, 880, 1254]} sizes="(max-width: 64rem) 62vw, 440px"
           alt="Portrait of K. A. Muthukumar" loading="eager" fetchpriority="high" class="photo" />
       </div>
       <figcaption class="credit mono"><span class="jp" lang="ja">慶應</span><span>K. A. Muthukumar, Ph.D. Keio, 2022</span></figcaption>
@@ -49,8 +49,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   /* the portrait: a toned black-and-white print standing on the strip, credit set along its edge */
   .portrait { grid-column: 8 / span 5; justify-self: end; align-self: end; position: relative; z-index: 2; width: min(100%, 440px); margin-bottom: -1px; }
   .frame { position: relative; overflow: hidden; aspect-ratio: 4 / 5; }
-  .portrait :global(.photo) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-  :global(:root[data-theme="dark"]) .portrait :global(.photo) { filter: brightness(0.9) contrast(1.05); }
+  .portrait :global(.photo) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .frame { box-shadow: 0 30px 60px -34px oklch(20% 0.02 50 / 0.45); }
   .credit { position: absolute; left: -26px; top: 0; writing-mode: vertical-rl; text-orientation: mixed; display: flex; gap: var(--space-md); align-items: center; font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
   .credit .jp { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--ink-2); }
 
@@ -80,7 +80,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   /* one authored entrance: the copy settles while the portrait rises out of the strip and develops */
   @keyframes settle { from { opacity: 0; transform: translateY(10px); } }
   @keyframes rise { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
-  @keyframes develop { from { filter: brightness(1.35) contrast(0.75) blur(5px); transform: scale(1.04); } }
+  @keyframes develop { from { filter: brightness(1.25) saturate(0.4) blur(5px); transform: scale(1.04); } }
   @keyframes fadein { from { opacity: 0; } }
   .copy > * { animation: settle 620ms var(--ease-out) both; }
   .copy > :nth-child(2) { animation-delay: 70ms; }

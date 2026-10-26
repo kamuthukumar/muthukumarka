@@ -4,7 +4,25 @@
     "kind": "Japan",
     "lead": true,
     "title": "A student from my group joins Kyushu University on the JST LOTUS (Basic) Program.",
-    "body": "Selected by the Japan Science and Technology Agency (JST), the student opens a research collaboration with Kyushu University, extending the India and Japan research ties that began during my years at Keio."
+    "body": "Selected by the Japan Science and Technology Agency (JST) for LOTUS Basic, its India–Japan programme for young researchers, the student opens a research collaboration with Kyushu University, extending the India and Japan ties that began during my years at Keio.",
+    "funding": [
+      {
+        "k": "Support",
+        "v": "Up to 12 months in Japan"
+      },
+      {
+        "k": "Living costs",
+        "v": "¥240,000 (about ₹1.4 lakh) a month"
+      },
+      {
+        "k": "Joint supervision",
+        "v": "¥500,000 (about ₹2.9 lakh) a year"
+      }
+    ],
+    "source": {
+      "label": "JST LOTUS FY2026 call overview",
+      "url": "https://www.jst.go.jp/program/india/dl/2026/lotus_fy2026call_overview_en.pdf"
+    }
   },
   {
     "date": "2026",

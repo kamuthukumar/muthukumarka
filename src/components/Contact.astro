@@ -9,7 +9,7 @@ const rows = [
   { k: "CV", v: "Curriculum vitae (PDF)", href: `${base}/${L.cv}` },
   { k: "ORCID", v: L.orcid && L.orcid.replace("https://orcid.org/", ""), href: L.orcid, todo: "orcid" },
   { k: "Scopus", v: L.scopus && "Author ID 57224309244", href: L.scopus, todo: "scopus" },
-  { k: "Google Scholar", v: L.scholar, href: L.scholar, todo: "scholar" },
+  { k: "Google Scholar", v: L.scholar && "Profile and citations", href: L.scholar, todo: "scholar" },
   { k: "IEEE", v: L.ieee, href: L.ieee, todo: "ieee" },
   { k: "Shinkai Labs", v: L.shinkai && "shinkai-labs.com", href: L.shinkai, todo: "shinkai" },
 ].filter((r) => r.v || site.showTodos);
