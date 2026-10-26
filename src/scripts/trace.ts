@@ -1,4 +1,4 @@
-// Noise to information: a synthetic abdominal ECG (mother + fetus + noise) is carried, point by point,
+// Noise to Intelligence: a synthetic abdominal ECG (mother + fetus + noise) is carried, point by point,
 // onto a clean fetal heartbeat. The pairing is the 1D optimal transport map along time: sources and
 // targets are each sorted by x and matched in order, which is the exact W2-optimal monotone map for the
 // time marginal. Every point keeps its mass, and no two paths cross. Each point then travels its

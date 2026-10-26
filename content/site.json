@@ -4,14 +4,14 @@
   "honorific": "Ph.D.",
   "headline": "Building AI that sees, senses and cares.",
   "role": "AI researcher. Assistant Professor at SSN College of Engineering, and founder of Shinkai Labs.",
-  "thread": "Noise to information: machine learning where the signal is weak, the data is scarce and the stakes are clinical.",
+  "thread": "Machine learning where the signal is weak, the data is scarce and the stakes are clinical. Six lines of research, one method underneath.",
   "location": "Chennai, India",
   "languages": [
     "English",
     "Tamil",
     "Japanese"
   ],
-  "description": "K. A. Muthukumar, AI researcher, Assistant Professor at SSN College of Engineering and founder of Shinkai Labs, working on fetal ECG, medical image analysis, optimal transport and edge AI.",
+  "description": "K. A. Muthukumar: Noise to Intelligence. AI researcher, Assistant Professor at SSN College of Engineering and founder of Shinkai Labs, turning weak, noisy signals into clinical intelligence with fetal ECG, medical imaging, optimal transport and edge AI.",
   "affiliations": [
     {
       "name": "SSN College of Engineering",
@@ -54,5 +54,6 @@
       "value": "5",
       "label": "conference sessions chaired"
     }
-  ]
+  ],
+  "expertise": "Noise to Intelligence"
 }
