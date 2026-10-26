@@ -4,530 +4,559 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>K. A. Muthukumar, Ph.D.</title>
-<meta name="description" content="K. A. Muthukumar — AI researcher, Assistant Professor at SSN College of Engineering, and Founder & CEO of Shinkai Labs. Medical image analysis, biomedical signal processing, computer vision and edge AI.">
-<meta property="og:title" content="K. A. Muthukumar, Ph.D. — AI Healthcare & Computer Vision">
-<meta property="og:description" content="AI researcher, Assistant Professor (SSN College of Engineering), Founder & CEO of Shinkai Labs. Ph.D., Keio University.">
+<meta name="description" content="K. A. Muthukumar, AI researcher, Assistant Professor at SSN College of Engineering and founder of Shinkai Labs, working on medical image analysis, fetal ECG and edge AI.">
+<meta property="og:title" content="K. A. Muthukumar, Ph.D.">
+<meta property="og:description" content="AI researcher, Assistant Professor (SSN College of Engineering), founder of Shinkai Labs. Ph.D., Keio University.">
 <meta property="og:image" content="https://kamuthukumar.github.io/muthukumarka/assets/photo.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%238a1538'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='30' fill='white'>KA</text></svg>">
+<meta name="theme-color" content="#efe9e1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%23efe9e1'/><text x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='30' fill='%23271c14'>KA</text></svg>">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=sentient@300,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&display=swap" rel="stylesheet">
 <script>
-  // Apply saved theme before first paint so dark-mode visitors never see a light flash.
+  // Saved theme before first paint; .js lets the one reveal arm itself (content stays visible without script).
+  document.documentElement.classList.add("js");
   try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"K. A. Muthukumar","honorificSuffix":"Ph.D.","jobTitle":"Assistant Professor","worksFor":[{"@type":"CollegeOrUniversity","name":"SSN College of Engineering"},{"@type":"Organization","name":"Shinkai Labs Pvt. Ltd."}],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Keio University"},{"@type":"CollegeOrUniversity","name":"National Institute of Technology, Tiruchirappalli"}],"email":"mailto:muthukumar9890@gmail.com","url":"https://kamuthukumar.github.io/muthukumarka/","sameAs":["https://github.com/kamuthukumar","https://www.linkedin.com/in/muthukumarka"]}
 </script>
 <style>
-:root{
-  --bg:#faf8f4; --bg-2:#f2eee6; --card:#ffffff; --ink:#17151a; --ink-2:#4a4650; --ink-3:#6b6670;
-  --line:#e4ded3; --accent:#8a1538; --accent-soft:#f6e6ea; --gold:#85661f;
-  --shadow:0 1px 2px rgba(23,21,26,.04),0 10px 28px rgba(23,21,26,.07);
-  --serif:"Fraunces",Georgia,"Times New Roman",serif;
-  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --max:1120px;
-  /* Motion tokens: strong ease-out for responses, drawer curve for the authored entrance */
-  --ease-out:cubic-bezier(0.23,1,0.32,1);
-  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
-  --ease-drawer:cubic-bezier(0.32,0.72,0,1);
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121014; --bg-2:#19161c; --card:#1d1a21; --ink:#f1ece6; --ink-2:#c3bcc6; --ink-3:#958d9a;
-    --line:#2d2832; --accent:#e5728f; --accent-soft:#2a1820; --gold:#d6b26a;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.4);
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121014; --bg-2:#19161c; --card:#1d1a21; --ink:#f1ece6; --ink-2:#c3bcc6; --ink-3:#958d9a;
-  --line:#2d2832; --accent:#e5728f; --accent-soft:#2a1820; --gold:#d6b26a;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.4);
-  color-scheme:dark;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px;scrollbar-color:var(--line) var(--bg)}
-body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"cv11","ss01"}
-::selection{background:var(--accent);color:var(--bg)}
-a{color:inherit;text-decoration:none;text-underline-offset:3px}
-img{max-width:100%;display:block}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-@media(max-width:600px){.wrap{padding:0 16px}}
-.num,.when,.d,.yr,.pub .y{font-variant-numeric:tabular-nums}
-.label{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+/* Hallmark · v2.0.0 · theme: atelier (deal: manual, from atelier, specimen, lumen) · genre: editorial · redesign: full · posture: restrained · shape: index-led portfolio · hero: Stage · nav: edge-aligned · footer: colophon block · signature: the portrait as a matted print under the air */
+/* critique: an academic page usually stacks cards of icons and lists; this one hangs the research as sample strips on a rail and lets the portrait carry the first screen, so the facts read as a catalogue, not a template */
+/* waive 58 · the publication list, timeline and grants are the owner's record and keep their true count · copy rewritten from facts already on the page, listed in the handoff */
+/* Hallmark · dropped the 研究 watermark and the hero stat line · decoration and a figure row the theme does not carry; every fact stays elsewhere on the page */
+:root {
+  --color-paper: oklch(94.5% 0.010 76); --color-paper-2: oklch(91.8% 0.013 74); --color-paper-3: oklch(88% 0.015 72);
+  --color-ink: oklch(19% 0.024 52); --color-ink-2: oklch(31% 0.018 54); --color-muted: oklch(45% 0.014 60);
+  --color-rule: oklch(81% 0.011 70);
+  --color-accent: oklch(41% 0.075 248); --color-accent-ink: oklch(96% 0.008 76); --color-focus: oklch(50% 0.095 248);
+  --color-card: oklch(97.6% 0.007 82); --color-card-edge: oklch(86% 0.012 72); --color-pencil: oklch(50% 0.010 62);
+  --card-lit: oklch(98.4% 0.006 84); --card-shade: oklch(96.4% 0.008 78); --lit: oklch(99.6% 0.004 85 / 0.9);
+  --stain-1: oklch(70% 0.075 14); --stain-2: oklch(66% 0.055 132); --stain-3: oklch(60% 0.080 58); --stain-4: oklch(68% 0.045 206);
+  --stain-5: oklch(64% 0.060 98); --stain-6: oklch(62% 0.065 32);
+  --font-display: "Sentient", Georgia, serif; --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --radius-card: 2px; --radius-pill: 3px; --rule-hair: 1px; --rule-head: 1px;
+  --shadow-card: 0 0 0 1px oklch(30% 0.03 55 / 0.05), 0.5px 1px 1px oklch(30% 0.03 55 / 0.08), 3px 8px 14px -6px oklch(30% 0.03 55 / 0.14), 14px 36px 64px -28px oklch(30% 0.03 55 / 0.3);
+  --shadow-strip: 0.5px 1px 1px oklch(30% 0.03 55 / 0.1), 2px 6px 12px -6px oklch(30% 0.03 55 / 0.22);
+  --tracking-display: -0.018em; --tracking-statement: -0.022em; --display-weight: 300; --serif-small: 400;
+  /* the air: linear-light veils over the paper, as 0..1 sRGB triples for the shader */
+  --air-base: 0.937 0.914 0.882; --air-veil-1: 0.992 0.973 0.925; --air-veil-2: 0.957 0.890 0.800; --air-amount: 0.78;
 
-/* pressables: instant acknowledgement, never a lift on touch */
-.btn,.icon-btn,.filters button,.clinks a{transition:transform 160ms var(--ease-out),background-color 200ms ease,border-color 200ms ease,color 200ms ease}
-.btn:active,.icon-btn:active,.filters button:active,.clinks a:active{transform:scale(.97)}
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  --fibre: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85 0.05' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.3 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23f)'/%3E%3C/svg%3E");
 
-/* nav */
-header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color 200ms ease}
-header.nav.scrolled{border-bottom-color:var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.01em}
-.brand span{color:var(--accent)}
-.links{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--ink-2)}
-.links a.l{transition:color 200ms ease}
-.links a.l:hover{color:var(--accent)}
-.nav-in > nav{margin-left:auto;margin-right:26px}
-.actions{display:flex;gap:8px}
-@media(max-width:860px){.nav-in > nav{margin:0}}
-.icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:var(--card);color:var(--ink-2);cursor:pointer}
-.icon-btn .sun{display:none}
-:root[data-theme="dark"] .icon-btn .sun{display:block}
-:root[data-theme="dark"] .icon-btn .moon{display:none}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) .icon-btn .sun{display:block}
-  :root:not([data-theme="light"]) .icon-btn .moon{display:none}
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --section-gap-s: clamp(72px, 9vw, 120px); --section-gap: clamp(88px, 10vw, 144px); --section-gap-l: clamp(96px, 12vw, 176px);
+  --text-display: clamp(2.75rem, 5.2vw + 0.6rem, 5.25rem); --text-display-s: clamp(2.125rem, 3.6vw + 0.5rem, 3.75rem);
+  --text-section: clamp(2rem, 3vw + 0.6rem, 3.25rem); --text-title: clamp(1.3rem, 0.6vw + 1rem, 1.5625rem);
+  --text-lead: clamp(1.125rem, 0.4vw + 1rem, 1.3125rem); --text-md: 1rem; --text-sm: 0.875rem;
+  --container: 1440px; --gutter: clamp(16px, 4.4vw, 64px); --gap-columns: clamp(16px, 2.2vw, 32px);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1); --ease-in: cubic-bezier(0.55, 0, 1, 0.45); --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  color-scheme: light;
 }
-.menu-btn{display:none}
-@media(max-width:860px){
-  .links .l{display:none}
-  .menu-btn{display:grid}
-  .links.open{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px;box-shadow:var(--shadow)}
-  .links.open .l{display:block;padding:12px 0;width:100%;border-bottom:1px solid var(--line);animation:menu-in 200ms var(--ease-out) both}
-}
-@keyframes menu-in{from{opacity:0;transform:translateY(-4px)}}
-
-/* hero — the one authored moment */
-.hero{position:relative;padding:96px 0 80px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,var(--accent-soft) 0%,transparent 65%);z-index:-1}
-.hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:64px;align-items:center}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,6.4vw,76px);line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
-h1 em{font-style:italic;color:var(--accent)}
-.lede{margin-top:26px;font-size:18.5px;color:var(--ink-2);max-width:36em}
-.roles{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink-2)}
-.cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-size:14.5px;font-weight:500;border:1px solid var(--line);background:var(--card)}
-.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.btn svg{transition:transform 200ms var(--ease-out)}
-.facts{margin-top:30px;font-size:14px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 18px;font-variant-numeric:tabular-nums}
-.facts b{color:var(--ink);font-weight:600}
-.portrait{position:relative;justify-self:end;width:100%;max-width:380px}
-.portrait .frame{position:relative;border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:4/5;background:var(--bg-2);box-shadow:var(--shadow)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.portrait::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--accent);border-radius:200px 200px 24px 24px;z-index:-1;opacity:.5}
-.badge{position:absolute;left:-28px;bottom:36px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;max-width:260px}
-.badge .jp{font-family:var(--serif);font-size:26px;color:var(--accent);line-height:1;white-space:nowrap;flex-shrink:0}
-.badge small{display:block;font-size:12px;color:var(--ink-3);line-height:1.35}
-.badge b{font-size:13.5px;font-weight:600;display:block}
-@media(max-width:860px){
-  .hero{padding:48px 0 56px}
-  .hero-grid{grid-template-columns:1fr;gap:44px}
-  .portrait{justify-self:center;max-width:300px;order:-1}
-  .badge{left:-10px}
+:root[data-theme="dark"] {
+  --color-paper: oklch(16.5% 0.012 60); --color-paper-2: oklch(20% 0.013 60); --color-paper-3: oklch(24% 0.014 60);
+  --color-ink: oklch(93.5% 0.010 76); --color-ink-2: oklch(84% 0.012 72); --color-muted: oklch(70% 0.012 66);
+  --color-rule: oklch(32% 0.012 62);
+  --color-accent: oklch(76% 0.070 248); --color-accent-ink: oklch(18% 0.02 248); --color-focus: oklch(78% 0.09 248);
+  --color-card: oklch(23% 0.012 64); --color-card-edge: oklch(33% 0.012 64); --color-pencil: oklch(68% 0.010 62);
+  --card-lit: oklch(26% 0.012 66); --card-shade: oklch(21% 0.012 62); --lit: oklch(40% 0.01 70 / 0.35);
+  --shadow-card: 0 0 0 1px oklch(5% 0.01 55 / 0.4), 3px 8px 14px -6px oklch(5% 0.01 55 / 0.5), 14px 36px 64px -28px oklch(5% 0.01 55 / 0.7);
+  --shadow-strip: 2px 6px 12px -6px oklch(5% 0.01 55 / 0.6);
+  --air-base: 0.118 0.102 0.086; --air-veil-1: 0.200 0.165 0.125; --air-veil-2: 0.165 0.122 0.090; --air-amount: 0.9;
+  color-scheme: dark;
 }
 
-/* Entrance: portrait unveils bottom-up through clip-path while the copy settles in a short cascade.
-   Default state is fully visible; the keyframes only describe where it comes from. */
-@keyframes unveil{from{clip-path:inset(100% 0 0 0 round 200px 200px 24px 24px)}to{clip-path:inset(0 0 0 0 round 200px 200px 24px 24px)}}
-@keyframes settle{from{opacity:0;transform:translateY(10px);filter:blur(4px)}}
-@keyframes fade{from{opacity:0}}
-.hero .frame{animation:unveil 900ms var(--ease-drawer) 80ms both}
-.hero .frame img{animation:settle 1100ms var(--ease-out) 80ms both}
-.portrait::after{animation:fade 600ms ease 600ms both}
-.badge{animation:settle 500ms var(--ease-out) 640ms both}
-.hero-copy > *{animation:settle 600ms var(--ease-out) both}
-.hero-copy > :nth-child(1){animation-delay:120ms}
-.hero-copy > :nth-child(2){animation-delay:190ms}
-.hero-copy > :nth-child(3){animation-delay:250ms}
-.hero-copy > :nth-child(4){animation-delay:300ms}
-.hero-copy > :nth-child(5){animation-delay:340ms}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 88px; scrollbar-color: var(--color-rule) var(--color-paper); -webkit-text-size-adjust: 100%; }
+body { overflow-x: clip; background: var(--color-paper); color: var(--color-ink-2); font: 400 var(--text-md)/1.6 var(--font-body); -webkit-font-smoothing: antialiased; font-synthesis: none; text-rendering: optimizeLegibility; }
+html.has-air body { background: transparent; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; transition: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3 { font-family: var(--font-display); color: var(--color-ink); text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+h1, h2 { font-weight: var(--display-weight); letter-spacing: var(--tracking-display); }
+h1 { font-size: var(--text-display); line-height: 1.04; max-width: 14ch; }
+h2 { font-size: var(--text-section); line-height: 1.08; max-width: 18ch; }
+h3 { font-weight: var(--serif-small); font-size: var(--text-title); line-height: 1.25; letter-spacing: -0.01em; }
+p { text-wrap: pretty; }
+.meta { font-size: var(--text-sm); color: var(--color-muted); }
+.num { font-variant-numeric: tabular-nums; }
+.container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); }
+.lead { font-size: var(--text-lead); line-height: 1.5; color: var(--color-ink-2); max-width: 40ch; }
 
-@media (hover:hover) and (pointer:fine){
-  .btn:hover{border-color:var(--accent)}
-  .btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-  .btn:hover svg{transform:translateX(3px)}
-  .icon-btn:hover{color:var(--accent);border-color:var(--accent)}
-  .filters button:hover{border-color:var(--ink-3)}
-  .clinks a:hover{background:color-mix(in srgb,var(--bg) 8%,transparent);border-color:#f093a9}
-  .doi:hover{text-decoration:underline}
-  .area:hover h3{color:var(--accent)}
+/* the air: one fixed field behind the page; paper sections cover it */
+#air { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; }
+.air-grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: var(--grain); background-size: 180px; opacity: 0.16; mix-blend-mode: multiply; }
+:root[data-theme="dark"] .air-grain { mix-blend-mode: screen; opacity: 0.05; }
+.paper { background: var(--color-paper); position: relative; }
+.paper-2 { background: var(--color-paper-2); position: relative; }
+
+/* controls: hairline in ink, hover fills ink, press settles */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 var(--space-lg); border: var(--rule-hair) solid var(--color-ink); border-radius: var(--radius-pill); color: var(--color-ink); background: transparent; text-decoration: none; font-size: var(--text-md); transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.btn:active, .chip-btn:active, .icon-btn:active { transform: scale(0.97); }
+.link { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { background: var(--color-ink); color: var(--color-paper); }
+  .link:hover, .pub a:hover, .card dd a:hover { text-decoration-thickness: 2px; }
+  .nav nav a:hover { color: var(--color-ink); }
+  .icon-btn:hover { border-color: var(--color-ink); color: var(--color-ink); }
+  .chip-btn:hover:not([aria-pressed="true"]) { border-color: var(--color-ink); color: var(--color-ink); }
+  .strip:hover:not([aria-selected="true"]) { transform: translateY(6px); }
 }
+
+/* nav: edge-aligned, one line */
+.nav { position: sticky; top: 0; z-index: 300; transition: background-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out); }
+.nav.scrolled { background: color-mix(in oklch, var(--color-paper) 92%, transparent); box-shadow: 0 1px 0 var(--color-rule); }
+.nav .container { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); min-height: 72px; }
+.wordmark { font-family: var(--font-display); font-weight: var(--serif-small); font-size: 1.25rem; color: var(--color-ink); text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.nav nav { display: flex; gap: var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); }
+.nav nav a { text-decoration: none; transition: color var(--dur-short) var(--ease-out); }
+.nav-end { display: flex; align-items: center; gap: var(--space-xs); }
+.icon-btn { width: 40px; height: 40px; display: grid; place-items: center; border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-pill); color: var(--color-ink-2); transition: border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.icon-btn .sun { display: none; }
+:root[data-theme="dark"] .icon-btn .sun { display: block; }
+:root[data-theme="dark"] .icon-btn .moon { display: none; }
+.nav .btn { min-height: 40px; font-size: var(--text-sm); padding: 0 var(--space-md); }
+#menu { display: none; }
+@media (max-width: 60rem) {
+  .nav nav { display: none; }
+  #menu { display: grid; }
+  .nav .btn { display: none; }
+  .nav nav.open { display: flex; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; gap: 0; padding: var(--space-xs) var(--gutter) var(--space-lg); background: var(--color-paper); box-shadow: 0 1px 0 var(--color-rule); font-size: var(--text-md); color: var(--color-ink-2); }
+  .nav nav.open a { padding: var(--space-sm) 0; border-bottom: var(--rule-hair) solid var(--color-rule); animation: menu-in var(--dur-short) var(--ease-out) both; }
+}
+@keyframes menu-in { from { opacity: 0; transform: translateY(-4px); } }
+
+/* hero: Stage, the portrait as a matted print */
+.hero { min-height: calc(100svh - 72px); display: grid; align-items: center; padding-block: var(--space-2xl) var(--space-3xl); }
+.hero .grid { align-items: center; row-gap: var(--space-xl); }
+.hero-copy { grid-column: 1 / span 6; }
+.hero-copy .lead { margin-top: var(--space-lg); }
+.hero-actions { margin-top: var(--space-xl); display: flex; flex-wrap: wrap; gap: var(--space-md) var(--space-lg); align-items: center; }
+.print { grid-column: 8 / span 5; justify-self: end; width: min(100%, 440px); position: relative; }
+.stock { position: relative; border-radius: var(--radius-card); background: var(--fibre) 0 0 / 220px, linear-gradient(160deg, var(--card-lit), var(--color-card) 55%, var(--card-shade)); box-shadow: var(--shadow-card), inset 1px 1px 0 var(--lit); text-shadow: 0 1px 0 var(--lit); }
+.mat { padding: clamp(18px, 2.4vw, 32px) clamp(18px, 2.4vw, 32px) var(--space-md); }
+.mat .bevel { position: relative; aspect-ratio: 4 / 5; overflow: hidden; box-shadow: 0 0 0 1px var(--color-card-edge), inset 0 0 0 1px var(--lit); }
+.mat img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; filter: saturate(0.9) contrast(0.97) sepia(0.06); }
+.edition { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-md); margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-pencil); }
+.edition .hand { display: inline-block; width: 3.5em; border-bottom: 1px solid var(--color-pencil); margin-right: 0.35em; transform: translateY(-0.2em); }
+.edition .jp { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.08em; }
+.wall-label { margin-top: var(--space-md); font-size: var(--text-sm); line-height: 1.5; }
+.wall-label b { font-weight: 400; color: var(--color-ink); display: block; }
+.wall-label span { color: var(--color-muted); }
+@media (max-width: 60rem) {
+  .hero { min-height: 0; padding-block: var(--space-lg) var(--space-2xl); }
+  .hero-copy, .print { grid-column: 1 / -1; }
+  .print { justify-self: start; width: min(100%, 400px); }
+}
+
+/* the one entrance: copy settles, then the print is laid on the wall */
+@keyframes settle { from { opacity: 0; transform: translateY(8px); } }
+@keyframes lay { from { opacity: 0; transform: translateY(14px) rotate(-0.6deg); } }
+.hero-copy > * { animation: settle 560ms var(--ease-out) both; }
+.hero-copy > :nth-child(2) { animation-delay: 60ms; }
+.hero-copy > :nth-child(3) { animation-delay: 120ms; }
+.print { animation: lay 760ms var(--ease-out) 140ms both; }
 
 /* sections */
-section{padding:96px 0}
-@media(max-width:700px){section{padding:64px 0}}
-.sec-head{display:grid;grid-template-columns:220px 1fr;gap:40px;margin-bottom:48px}
-.sec-head > div{grid-column:2}
-h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.2vw,48px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
-h2 em{font-style:italic;color:var(--accent)}
-.sec-head p{color:var(--ink-2);margin-top:12px;max-width:620px}
-@media(max-width:860px){.sec-head{grid-template-columns:1fr;gap:10px}.sec-head > div{grid-column:1}}
-.alt{background:var(--bg-2)}
+.section { padding-block: var(--section-gap); }
+.head { margin-bottom: var(--space-2xl); }
+.split-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); align-items: end; margin-bottom: var(--space-2xl); }
+.split-head h2 { grid-column: 1 / span 6; }
+.split-head .lead { grid-column: 8 / span 5; }
+@media (max-width: 60rem) { .split-head h2, .split-head .lead { grid-column: 1 / -1; } .split-head .lead { margin-top: var(--space-md); } }
 
-/* news */
-.news-item{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:26px 0;border-top:1px solid var(--line)}
-.news-item:last-child{border-bottom:1px solid var(--line)}
-.news-item .d{font-size:14px;color:var(--ink-3);padding-top:3px}
-.news-item h3{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.3;letter-spacing:-.01em;text-wrap:balance}
-.news-item p{color:var(--ink-2);margin-top:6px;font-size:15.5px;max-width:68ch}
-.tag{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent);margin-right:8px;vertical-align:3px}
-.news-item.feature{background:linear-gradient(90deg,var(--accent-soft),transparent 75%);margin:0 -24px;padding:30px 24px}
-@media(max-width:700px){.news-item{grid-template-columns:1fr;gap:6px}.news-item.feature{margin:0 -16px;padding:24px 16px}}
+/* news: the lead as a statement, the rest as an index */
+.statement { grid-column: 1 / span 10; }
+.statement h2 { font-size: var(--text-display-s); letter-spacing: var(--tracking-statement); max-width: 22ch; line-height: 1.08; }
+.statement .edition { justify-content: flex-start; margin-top: var(--space-lg); }
+.wall-text { grid-column: 7 / span 5; margin-top: var(--space-xl); max-width: 62ch; }
+.dropcap::first-letter { float: left; font: var(--serif-small) 3.3em/0.8 var(--font-display); padding: 0.1em 0.1em 0 0; color: var(--color-accent); }
+.ruled { border-top: var(--rule-head) solid var(--color-ink); list-style: none; }
+.ruled > li + li, .ruled > div + div { border-top: var(--rule-hair) solid var(--color-rule); }
+.index { margin-top: var(--section-gap-s); }
+.index-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); padding-block: var(--space-lg); align-items: baseline; }
+.index-row .when { grid-column: 1 / span 2; font-size: var(--text-sm); color: var(--color-muted); }
+.index-row .when span { display: block; }
+.index-row h3 { grid-column: 3 / span 5; }
+.index-row p { grid-column: 8 / span 5; }
+@media (max-width: 60rem) {
+  .statement, .wall-text { grid-column: 1 / -1; }
+  .index-row .when, .index-row h3, .index-row p { grid-column: 1 / -1; }
+  .index-row h3 { margin-block: var(--space-2xs) var(--space-xs); }
+}
 
-/* research: editorial rows, not a card grid */
-.areas{list-style:none;border-top:1px solid var(--line)}
-.area{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:28px 0;border-bottom:1px solid var(--line)}
-.area h3{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.25;letter-spacing:-.01em;transition:color 200ms ease}
-.area p{color:var(--ink-2);font-size:15.5px;max-width:64ch}
-.area .kw{margin-top:12px;font-size:13px;color:var(--ink-3)}
-.area .kw span+span::before{content:"·";margin:0 8px;color:var(--line)}
-@media(max-width:700px){.area{grid-template-columns:1fr;gap:8px}}
+/* research: the six lines as sample strips on a rail */
+.strips-wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); align-items: start; }
+.rail { grid-column: 1 / span 6; position: relative; padding-top: 6px; }
+.rail::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 1px; background: var(--color-ink-2); opacity: 0.6; }
+.strips { display: flex; justify-content: space-between; gap: var(--space-xs); padding-inline: var(--space-xs); padding-bottom: var(--space-2xl); }
+.strip { position: relative; flex: 0 0 auto; width: clamp(44px, 4.4vw, 58px); height: clamp(260px, 26vw, 340px); padding-top: var(--space-md); display: flex; justify-content: center; transform-origin: top center; transition: transform var(--dur-long) var(--ease-out); }
+.strip::before { content: ""; position: absolute; top: -6px; left: 50%; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; border: 1px solid var(--color-ink-2); background: var(--color-paper-2); z-index: 1; }
+.strip .body { position: absolute; inset: var(--space-xs) 0 0 0; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), 50% 100%, 0 calc(100% - 22px)); background: linear-gradient(to top, var(--stain) 0%, color-mix(in oklch, var(--stain) 55%, var(--color-card)) 16%, color-mix(in oklch, var(--stain) 12%, var(--color-card)) 34%, transparent 52%), var(--fibre) 0 0 / 220px, linear-gradient(160deg, var(--card-lit), var(--color-card) 60%, var(--card-shade)); }
+.strip .shadow { position: absolute; inset: var(--space-xs) 0 0 0; filter: drop-shadow(var(--shadow-strip)); }
+.strip .name { position: relative; writing-mode: vertical-rl; font-family: var(--font-display); font-size: 0.95rem; color: var(--color-ink); padding-top: var(--space-md); text-shadow: 0 1px 0 var(--lit); white-space: nowrap; }
+.strip .name small { font-family: var(--font-body); font-size: 0.75rem; color: var(--color-pencil); margin-bottom: var(--space-sm); display: inline-block; }
+.strip[aria-selected="true"] { transform: translateY(var(--space-xl)); }
+.strip[aria-selected="true"] .thread { position: absolute; top: -2px; left: 50%; width: 1px; height: calc(var(--space-xl) + 10px); margin-top: calc(-1 * var(--space-xl)); background: var(--color-ink-2); }
+.strip:nth-child(1) { --stain: var(--stain-1); } .strip:nth-child(2) { --stain: var(--stain-2); } .strip:nth-child(3) { --stain: var(--stain-3); }
+.strip:nth-child(4) { --stain: var(--stain-4); } .strip:nth-child(5) { --stain: var(--stain-5); } .strip:nth-child(6) { --stain: var(--stain-6); }
+.panels { grid-column: 8 / span 5; min-height: 340px; }
+.panel h3 { font-size: var(--text-display-s); font-weight: var(--display-weight); letter-spacing: var(--tracking-statement); line-height: 1.08; }
+.panel p { margin-top: var(--space-lg); max-width: 46ch; }
+.panel .meta { margin-top: var(--space-md); }
+.panel { animation: panel-in var(--dur-long) var(--ease-out) both; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(6px); } }
+html.js .strips.armed .strip { clip-path: inset(-20px -20px 100% -20px); }
+html.js .strips.armed.in .strip { clip-path: inset(-20px -20px -80px -20px); transition: clip-path 640ms var(--ease-out) calc(var(--i) * 60ms), transform var(--dur-long) var(--ease-out); }
+@media (max-width: 60rem) {
+  .rail, .panels { grid-column: 1 / -1; }
+  .strips { overflow-x: auto; scroll-snap-type: x mandatory; gap: var(--space-md); justify-content: flex-start; }
+  .strip { scroll-snap-align: start; height: 290px; }
+  .panels { margin-top: var(--space-xs); min-height: 0; }
+}
 
-/* timeline */
-.tl-item{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:22px 0}
-.tl-item .when{font-size:14px;color:var(--ink-3);padding-top:2px}
-.tl-body{position:relative;padding-left:28px;border-left:1px solid var(--line)}
-.tl-body::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-.tl-item.now .tl-body::before{background:var(--accent)}
-.tl-body h3{font-size:17px;font-weight:600}
-.tl-body .org{color:var(--accent);font-size:15px;font-weight:500}
-.tl-body p{color:var(--ink-2);font-size:15px;margin-top:6px;max-width:68ch}
-@media(max-width:700px){.tl-item{grid-template-columns:1fr;gap:4px}.tl-item .when{padding-left:29px}}
+/* experience: rows beside a held head */
+.rows-wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); align-items: start; }
+.rows-wrap > .side { grid-column: 1 / span 4; position: sticky; top: 104px; }
+.rows-wrap > .ruled { grid-column: 5 / span 8; }
+.row { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); column-gap: var(--gap-columns); padding-block: var(--space-lg); }
+.row .when { font-size: var(--text-sm); color: var(--color-muted); padding-top: 0.4em; }
+.row .org { color: var(--color-ink-2); margin-top: var(--space-2xs); }
+.row p { margin-top: var(--space-xs); max-width: 60ch; }
+.row.now .when { color: var(--color-accent); }
+.side .lead { margin-top: var(--space-md); }
+.side dl { margin-top: var(--space-xl); font-size: var(--text-sm); }
+.side dt { color: var(--color-ink); margin-top: var(--space-md); }
+.side dd { color: var(--color-muted); }
+@media (max-width: 60rem) {
+  .rows-wrap > .side, .rows-wrap > .ruled { grid-column: 1 / -1; position: static; }
+  .rows-wrap > .ruled { margin-top: var(--space-xl); }
+  .row { grid-template-columns: minmax(0, 1fr); }
+}
 
-.two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-@media(max-width:860px){.two{grid-template-columns:1fr;gap:40px}}
-h4.label{margin-bottom:10px}
+/* tables: education, leadership, grants, chairs, copyrights, talks */
+.table { width: 100%; border-collapse: collapse; }
+.table caption { text-align: left; font-family: var(--font-display); font-size: var(--text-title); color: var(--color-ink); padding-bottom: var(--space-md); }
+.table thead th { font-weight: 400; font-size: var(--text-sm); color: var(--color-muted); text-align: left; padding: 0 var(--space-md) var(--space-xs) 0; border-bottom: var(--rule-head) solid var(--color-ink); white-space: nowrap; }
+.table thead th.r { text-align: right; padding-right: 0; }
+.table td, .table tbody th { padding: var(--space-md) var(--space-md) var(--space-md) 0; border-bottom: var(--rule-hair) solid var(--color-rule); vertical-align: baseline; text-align: left; font-weight: 400; }
+.table tbody th { color: var(--color-ink); }
+.table td:first-child { color: var(--color-muted); white-space: nowrap; font-variant-numeric: tabular-nums; width: 6.5rem; }
+.table td.amt { color: var(--color-ink); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; padding-right: 0; }
+.table .sub { display: block; color: var(--color-muted); font-size: var(--text-sm); }
+.tables { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); row-gap: var(--space-3xl); align-items: start; }
+.tables > :nth-child(odd) { grid-column: 1 / span 6; }
+.tables > :nth-child(even) { grid-column: 7 / span 6; }
+@media (max-width: 60rem) { .tables > :nth-child(n) { grid-column: 1 / -1; } }
 
-/* publications */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;align-items:center}
-.filters button{font:inherit;font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.filters .count{margin-left:auto;font-size:13.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
-.pubs{list-style:none}
-.pub{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line);transition:opacity 180ms ease}
-.pub:last-child{border-bottom:1px solid var(--line)}
-.pub .y{font-family:var(--serif);font-size:22px;color:var(--ink-3)}
-.pub .ti{font-family:var(--serif);font-size:19px;line-height:1.35;font-weight:600;letter-spacing:-.005em;max-width:62ch}
-.pub .au{font-size:14px;color:var(--ink-3);margin-top:6px}
-.pub .au b{color:var(--ink);font-weight:600}
-.pub .ve{font-size:14.5px;color:var(--ink-2);margin-top:4px;font-style:italic}
-.pub .meta{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.pill{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;border:1px solid var(--line);color:var(--ink-3)}
-.pill.j{border-color:transparent;background:var(--accent-soft);color:var(--accent)}
-.pill.hi{border-color:transparent;background:color-mix(in srgb,var(--gold) 14%,transparent);color:var(--gold)}
-.doi{font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
-.pub[hidden]{display:none}
-.pubs.swap .pub{animation:fade 220ms ease both}
-@media(max-width:600px){.pub{grid-template-columns:1fr;gap:4px}}
+/* publications: index with filters */
+.filters { display: flex; flex-wrap: wrap; gap: var(--space-xs); align-items: center; margin-bottom: var(--space-xl); }
+.chip-btn { min-height: 40px; padding: 0 var(--space-md); border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--color-ink-2); transition: border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.chip-btn[aria-pressed="true"] { border-color: var(--color-ink); background: var(--color-ink); color: var(--color-paper); }
+.filters .count { margin-left: auto; font-size: var(--text-sm); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.pubs { list-style: none; border-top: var(--rule-head) solid var(--color-ink); }
+.pub { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); padding-block: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-rule); }
+.pub .y { grid-column: 1 / span 1; font-family: var(--font-display); font-size: var(--text-title); color: var(--color-muted); font-variant-numeric: tabular-nums; line-height: 1.25; }
+.pub .main { grid-column: 2 / span 8; }
+.pub .ti { font-family: var(--font-display); font-size: 1.1875rem; line-height: 1.35; color: var(--color-ink); max-width: 60ch; }
+.pub .au { font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-xs); }
+.pub .au .me { color: var(--color-ink); }
+.pub .ve { font-size: var(--text-sm); color: var(--color-ink-2); margin-top: var(--space-3xs); }
+.pub .kind { grid-column: 10 / span 3; font-size: var(--text-sm); color: var(--color-muted); text-align: right; overflow-wrap: anywhere; }
+.pub .kind a { color: var(--color-ink-2); }
+.pub[hidden] { display: none; }
+.pubs.swap .pub { animation: fade 200ms var(--ease-out) both; }
+@keyframes fade { from { opacity: 0; } }
+@media (max-width: 60rem) {
+  .pub .y, .pub .main, .pub .kind { grid-column: 1 / -1; text-align: left; }
+  .pub .kind { margin-top: var(--space-xs); }
+}
 
-/* lists */
-.list{list-style:none}
-.list li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:92px 1fr;gap:16px}
-.list li:last-child{border-bottom:1px solid var(--line)}
-.list .yr{font-size:14px;color:var(--ink-3)}
-.list b{font-weight:600}
-.list .s{display:block;color:var(--ink-2);font-size:14.5px}
-.amt{font-size:13px;font-weight:500;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums}
+/* contact: a letterpress card, strips tucked behind */
+.close-wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); align-items: center; row-gap: var(--space-2xl); }
+.close-wrap .copy { grid-column: 1 / span 5; }
+.close-wrap .copy .lead { margin-top: var(--space-md); }
+.card-wrap { grid-column: 7 / span 6; position: relative; isolation: isolate; }
+.card { padding: clamp(32px, 4vw, 56px); }
+.card::before { content: ""; position: absolute; inset: 0.875rem; border: var(--rule-hair) solid var(--color-card-edge); pointer-events: none; }
+.card .house { font-family: var(--font-display); font-size: var(--text-title); color: var(--color-ink); }
+.card .house span { display: block; font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2xs); }
+.card dl { margin-top: var(--space-xl); }
+.card dl > div { display: grid; grid-template-columns: 6rem minmax(0, 1fr); column-gap: var(--space-md); padding-block: var(--space-sm); border-bottom: var(--rule-hair) solid var(--color-card-edge); align-items: baseline; }
+.card dt { font-size: var(--text-sm); color: var(--color-muted); }
+.card dd { min-width: 0; overflow-wrap: anywhere; }
+.card dd a { color: var(--color-ink); }
+.tuck { position: absolute; top: -40px; right: 14%; display: flex; gap: 10px; z-index: -1; transform: rotate(5deg); }
+.tuck span { width: 34px; height: 150px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), 50% 100%, 0 calc(100% - 16px)); background: linear-gradient(to bottom, var(--stain) 0%, color-mix(in oklch, var(--stain) 20%, var(--color-card)) 26%, var(--color-card) 50%); }
+.tuck span:nth-child(1) { --stain: var(--stain-4); transform: rotate(-8deg) translateY(12px); }
+.tuck span:nth-child(2) { --stain: var(--stain-1); }
+@media (max-width: 60rem) { .close-wrap .copy, .card-wrap { grid-column: 1 / -1; } .card dl > div { grid-template-columns: minmax(0, 1fr); } }
 
-/* skills */
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 48px}
-.sk{padding:16px 0;border-top:1px solid var(--line)}
-.sk h4{margin-bottom:10px;color:var(--accent)}
-.sk div{display:flex;flex-wrap:wrap;gap:6px}
-.sk span{font-size:13.5px;padding:4px 10px;border-radius:8px;background:var(--card);border:1px solid var(--line);color:var(--ink-2)}
-@media(max-width:700px){.skills{grid-template-columns:1fr}}
+/* colophon */
+.colophon { padding-block: var(--space-3xl) var(--space-2xl); border-top: var(--rule-hair) solid var(--color-rule); }
+.colophon .container { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); row-gap: var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); }
+.colophon .mark { grid-column: 1 / span 5; font-family: var(--font-display); font-size: var(--text-title); color: var(--color-ink); }
+.colophon p { grid-column: 7 / span 6; max-width: 56ch; }
+.colophon a { color: var(--color-ink-2); }
+@media (max-width: 60rem) { .colophon .mark, .colophon p { grid-column: 1 / -1; } }
 
-/* contact */
-.contact{background:var(--ink);color:var(--bg);border-radius:28px;padding:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
-.contact::after{content:"研究";position:absolute;right:-10px;bottom:-60px;font-family:var(--serif);font-size:240px;opacity:.05;line-height:1;pointer-events:none}
-.contact h2{color:var(--bg)}
-.contact h2 em{color:#f093a9}
-.contact p{color:color-mix(in srgb,var(--bg) 74%,transparent);margin-top:14px}
-.contact :focus-visible{outline-color:#f093a9}
-.clinks{display:grid;gap:10px}
-.clinks a{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border:1px solid color-mix(in srgb,var(--bg) 18%,transparent);border-radius:14px;font-size:15px;word-break:break-all;gap:12px}
-.clinks small{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;opacity:.65;white-space:nowrap}
-@media(max-width:860px){.contact{grid-template-columns:1fr;padding:40px 24px;border-radius:20px}}
-
-footer{padding:40px 0 56px;color:var(--ink-3);font-size:13.5px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-footer a:hover{color:var(--accent)}
-
-/* Reduced motion: keep the fades that orient, drop every spatial move and the clip reveal. */
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .hero .frame,.hero .frame img{animation:none}
-  .hero-copy > *,.badge,.portrait::after{animation:fade 300ms ease both}
-  .links.open .l{animation:fade 150ms ease both}
-  .btn:active,.icon-btn:active,.filters button:active,.clinks a:active{transform:none}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; transition-delay: 0ms !important; }
 }
 </style>
 </head>
 <body>
+<canvas id="air" aria-hidden="true"></canvas>
+<div class="air-grain" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
-  <div class="wrap nav-in">
-    <a href="#top" class="brand">K. A. Muthukumar<span>.</span></a>
-    <nav class="links" id="links" aria-label="Sections">
-      <a class="l" href="#news">News</a>
-      <a class="l" href="#research">Research</a>
-      <a class="l" href="#experience">Experience</a>
-      <a class="l" href="#publications">Publications</a>
-      <a class="l" href="#honours">Honours</a>
-      <a class="l" href="#contact">Contact</a>
+  <div class="container">
+    <a class="wordmark" href="#top" aria-label="K. A. Muthukumar, home">K. A. Muthukumar</a>
+    <nav id="links" aria-label="Sections">
+      <a href="#news">News</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#honours">Honours</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <div class="actions">
-      <button class="icon-btn" id="theme" aria-label="Switch colour theme" title="Switch theme">
-        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <div class="nav-end">
+      <button type="button" class="icon-btn" id="theme" aria-label="Switch colour theme">
+        <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <button class="icon-btn menu-btn" id="menu" aria-label="Menu" aria-expanded="false" aria-controls="links">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <button type="button" class="icon-btn" id="menu" aria-label="Menu" aria-expanded="false" aria-controls="links">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
       </button>
+      <a class="btn" href="mailto:muthukumar9890@gmail.com">Write to me</a>
     </div>
   </div>
 </header>
 
 <main id="top">
-<div class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1>Building AI that <em>sees</em>, senses and cares.</h1>
-      <p class="lede">I'm an AI researcher and Assistant Professor at SSN College of Engineering, and Founder &amp; CEO of Shinkai Labs. My work spans medical image analysis, fetal ECG extraction, infrared sensing and edge AI, from the lab bench to deployed products.</p>
-      <div class="roles">
-        <span class="chip">Ph.D., Keio University</span>
-        <span class="chip">B.Tech., NIT Tiruchirappalli</span>
-        <span class="chip">MEXT Scholar</span>
-        <span class="chip" lang="mul">English · தமிழ் · 日本語</span>
-      </div>
-      <div class="cta">
-        <a class="btn primary" href="#publications">View publications
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn" href="assets/KA_Muthukumar_CV.pdf" target="_blank" rel="noopener">Download CV</a>
-        <a class="btn" href="mailto:muthukumar9890@gmail.com">Get in touch</a>
-      </div>
-      <p class="facts"><span><b>21</b> publications</span><span><b>3</b> software copyrights</span><span>DST–SERB funded</span><span>Session chair, IEEE EMBC 2026</span></p>
-    </div>
-    <div class="portrait">
-      <div class="frame"><img src="assets/photo.jpg" alt="Portrait of K. A. Muthukumar" width="720" height="720" fetchpriority="high"></div>
-      <div class="badge">
-        <div class="jp" lang="ja">慶應</div>
-        <div><b>Ph.D. Engineering</b><small>Keio University, Japan · Ohtsuki Lab</small></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section id="news">
-  <div class="wrap">
-    <div class="sec-head"><div><h2>Recent <em>highlights</em></h2></div></div>
-    <div class="news">
-      <article class="news-item feature">
-        <div class="d">2026</div>
-        <div>
-          <h3><span class="tag">Japan</span>JST Lotus (Basic) Program: student research collaboration with Kyushu University</h3>
-          <p>A student from my group was selected for the Japan Science and Technology Agency (JST) Lotus (Basic) Program, opening a research collaboration with Kyushu University, Japan, and extending the India–Japan research ties that began during my years at Keio.</p>
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="container grid">
+      <div class="hero-copy">
+        <h1 id="hero-h">Building AI that sees, senses and cares.</h1>
+        <p class="lead">Assistant Professor at SSN College of Engineering, and founder of Shinkai Labs.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#publications">Read the publications</a>
+          <a class="link" href="assets/KA_Muthukumar_CV.pdf" target="_blank" rel="noopener">Download the CV (PDF)</a>
         </div>
-      </article>
-      <article class="news-item">
-        <div class="d">2026</div>
-        <div>
-          <h3><span class="tag">Service</span>Session Chair, IEEE EMBC 2026, Toronto</h3>
-          <p>Chairing a session at the 48th Annual International Conference of the IEEE Engineering in Medicine and Biology Society, where two of my papers also appear.</p>
+      </div>
+      <figure class="print">
+        <div class="stock mat">
+          <div class="bevel"><img src="assets/photo.jpg" alt="Portrait of K. A. Muthukumar" width="720" height="720" fetchpriority="high"></div>
+          <div class="edition"><span><span class="hand" aria-hidden="true"></span>Ph.D. 2022, Keio University</span><span class="jp" lang="ja">慶應</span></div>
         </div>
-      </article>
-      <article class="news-item">
-        <div class="d">2026</div>
-        <div>
-          <h3><span class="tag">Grant</span>IEEE ComSoc Travel Grant for ICC 2026, Glasgow</h3>
-          <p>Awarded USD 1,930 to present our work on non-invasive fetal ECG extraction using deep learning and earth mover's distance.</p>
+        <figcaption class="wall-label"><b>K. A. Muthukumar, Ph.D.</b><span>Ohtsuki Laboratory, Keio University, Japan</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section paper" id="news" aria-labelledby="news-h">
+    <div class="container">
+      <div class="grid">
+        <div class="statement">
+          <h2 id="news-h">A student from my group joins Kyushu University on the JST Lotus (Basic) Program.</h2>
+          <div class="edition"><span><span class="hand" aria-hidden="true"></span>2026, Japan</span></div>
         </div>
-      </article>
-      <article class="news-item">
-        <div class="d">2026</div>
-        <div>
-          <h3><span class="tag">Copyright</span>Shinkai Labs Drone Detection &amp; Tracking Platform registered</h3>
-          <p>Granted by the Copyright Office, Government of India (Reg. No. SW-2026023145).</p>
+        <p class="wall-text dropcap">Selected by the Japan Science and Technology Agency (JST), the student opens a research collaboration with Kyushu University, extending the India and Japan research ties that began during my years at Keio.</p>
+      </div>
+      <ol class="index ruled" aria-label="Also in 2026">
+        <li class="index-row"><div class="when"><time>2026</time><span>Service</span></div><h3>Session Chair, IEEE EMBC 2026, Toronto</h3><p>Chairing a session at the 48th Annual International Conference of the IEEE Engineering in Medicine and Biology Society, where two of my papers also appear.</p></li>
+        <li class="index-row"><div class="when"><time>2026</time><span>Grant</span></div><h3>IEEE ComSoc Travel Grant for ICC 2026, Glasgow</h3><p>Awarded USD 1,930 to present our work on non-invasive fetal ECG extraction using deep learning and earth mover’s distance.</p></li>
+        <li class="index-row"><div class="when"><time>2026</time><span>Copyright</span></div><h3>Shinkai Labs Drone Detection and Tracking Platform registered</h3><p>Granted by the Copyright Office, Government of India (Reg. No. SW-2026023145).</p></li>
+        <li class="index-row"><div class="when"><time>2026</time><span>Papers</span></div><h3>Seven conference papers accepted</h3><p>At IEEE EMBC (two), IEEE ICC, IEEE CICN, IEEE SPACE, CVIP and ICETCI, covering fetal ECG, few-shot medical anomaly detection, topology-preserving segmentation and radar tracking.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section paper-2" id="research" aria-labelledby="research-h">
+    <div class="container">
+      <div class="split-head">
+        <h2 id="research-h">Six lines of research</h2>
+        <p class="lead">Machine learning where the signal is weak, the data is scarce and the stakes are clinical, from the lab bench to deployed products.</p>
+      </div>
+      <div class="strips-wrap">
+        <div class="rail">
+          <div class="strips armed" role="tablist" aria-label="Research lines" id="strips">
+            <button type="button" class="strip" role="tab" id="t1" aria-controls="p1" aria-selected="true" style="--i:0"><span class="thread" aria-hidden="true"></span><span class="shadow" aria-hidden="true"><span class="body" style="position:absolute;inset:0"></span></span><span class="name"><small>No. 1</small> Biomedical signals</span></button>
+            <button type="button" class="strip" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1" style="--i:1"><span class="thread" aria-hidden="true"></span><span class="shadow" aria-hidden="true"><span class="body" style="position:absolute;inset:0"></span></span><span class="name"><small>No. 2</small> Medical images</span></button>
+            <button type="button" class="strip" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1" style="--i:2"><span class="thread" aria-hidden="true"></span><span class="shadow" aria-hidden="true"><span class="body" style="position:absolute;inset:0"></span></span><span class="name"><small>No. 3</small> Few-shot anomaly</span></button>
+            <button type="button" class="strip" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1" style="--i:3"><span class="thread" aria-hidden="true"></span><span class="shadow" aria-hidden="true"><span class="body" style="position:absolute;inset:0"></span></span><span class="name"><small>No. 4</small> Infrared sensing</span></button>
+            <button type="button" class="strip" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1" style="--i:4"><span class="thread" aria-hidden="true"></span><span class="shadow" aria-hidden="true"><span class="body" style="position:absolute;inset:0"></span></span><span class="name"><small>No. 5</small> Detection, tracking</span></button>
+            <button type="button" class="strip" role="tab" id="t6" aria-controls="p6" aria-selected="false" tabindex="-1" style="--i:5"><span class="thread" aria-hidden="true"></span><span class="shadow" aria-hidden="true"><span class="body" style="position:absolute;inset:0"></span></span><span class="name"><small>No. 6</small> Edge AI, inspection</span></button>
+          </div>
         </div>
-      </article>
-      <article class="news-item">
-        <div class="d">2026</div>
-        <div>
-          <h3><span class="tag">Papers</span>Seven conference papers accepted</h3>
-          <p>At IEEE EMBC (×2), IEEE ICC, IEEE CICN, IEEE SPACE, CVIP and ICETCI, covering fetal ECG, few-shot medical anomaly detection, topology-preserving segmentation and radar tracking.</p>
+        <div class="panels">
+          <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1"><h3>Biomedical signal processing</h3><p>Non-invasive fetal ECG extraction from abdominal recordings with diffusion models, dynamical priors and optimal transport. DST-SERB funded work on fetal arrhythmia.</p><p class="meta">Fetal ECG, EEG and BCI, diffusion</p></div>
+          <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden><h3>Medical image analysis</h3><p>Cardiovascular risk from fundus images and ECG, Alzheimer’s classification on 3D MRI with Vision Mamba and ViTs, and topology-preserving segmentation.</p><p class="meta">Fundus, MRI, segmentation</p></div>
+          <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden><h3>Few-shot and anomaly detection</h3><p>Vision and language adapters with learnable text anchors for few-shot medical anomaly classification, built for settings with very few labelled cases.</p><p class="meta">CLIP, few-shot, anomaly</p></div>
+          <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden><h3>Infrared sensing and activity</h3><p>Privacy-preserving activity and fall detection with low-resolution infrared array sensors and hybrid CNN-LSTM and CGAN models. The core of my Keio Ph.D.</p><p class="meta">IR arrays, CNN-LSTM, CGAN</p></div>
+          <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden><h3>Detection and tracking</h3><p>Drone detection and tracking, and radar tracking with neural combinatorial fusion and calibrated uncertainties, shipped through Shinkai Labs.</p><p class="meta">Drones, radar, uncertainty</p></div>
+          <div class="panel" role="tabpanel" id="p6" aria-labelledby="t6" hidden><h3>Edge AI and industrial vision</h3><p>Models on Raspberry Pi and NVIDIA Jetson; crack, rust and fault detection for railway and facade inspection with Raspect and Alstom.</p><p class="meta">Jetson, IoT, inspection</p></div>
         </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="research" class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2>What I <em>work on</em></h2>
-        <p>Machine learning for problems where the signal is weak, the data is scarce and the stakes are clinical.</p>
       </div>
     </div>
-    <ul class="areas">
-      <li class="area"><h3>Biomedical signal processing</h3><div>
-        <p>Non-invasive fetal ECG extraction from abdominal recordings with diffusion models, dynamical priors and optimal transport. DST–SERB funded work on fetal arrhythmia.</p>
-        <div class="kw"><span>Fetal ECG</span><span>EEG / BCI</span><span>Diffusion</span></div></div></li>
-      <li class="area"><h3>Medical image analysis</h3><div>
-        <p>Cardiovascular risk from fundus images and ECG, Alzheimer's classification on 3D MRI with Vision Mamba and ViTs, and topology-preserving segmentation.</p>
-        <div class="kw"><span>Fundus</span><span>MRI</span><span>Segmentation</span></div></div></li>
-      <li class="area"><h3>Few-shot &amp; anomaly detection</h3><div>
-        <p>Vision–language adapters with learnable text anchors for few-shot medical anomaly classification, built for settings with very few labelled cases.</p>
-        <div class="kw"><span>CLIP</span><span>Few-shot</span><span>Anomaly</span></div></div></li>
-      <li class="area"><h3>Infrared sensing &amp; activity</h3><div>
-        <p>Privacy-preserving activity and fall detection with low-resolution infrared array sensors and hybrid CNN–LSTM / CGAN models. The core of my Keio Ph.D.</p>
-        <div class="kw"><span>IR arrays</span><span>CNN–LSTM</span><span>CGAN</span></div></div></li>
-      <li class="area"><h3>Detection &amp; tracking</h3><div>
-        <p>Drone detection and tracking, and radar tracking with neural combinatorial fusion and calibrated uncertainties, shipped through Shinkai Labs.</p>
-        <div class="kw"><span>Drones</span><span>Radar</span><span>Uncertainty</span></div></div></li>
-      <li class="area"><h3>Edge AI &amp; industrial vision</h3><div>
-        <p>Models on Raspberry Pi and NVIDIA Jetson; crack, rust and fault detection for railway and facade inspection with Raspect and Alstom.</p>
-        <div class="kw"><span>Jetson</span><span>IoT</span><span>Inspection</span></div></div></li>
-    </ul>
-  </div>
-</section>
+  </section>
 
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-head"><div><h2>Academia, industry <em>&amp; startups</em></h2></div></div>
-    <div class="tl">
-      <div class="tl-item now"><div class="when">May 2025 – Now</div><div class="tl-body">
-        <h3>Assistant Professor</h3><div class="org">SSN College of Engineering, Anna University</div>
-        <p>Teaching and supervising research in machine learning, computer vision and AI for healthcare. Publishing at IEEE ICC, EMBC and SPACE.</p></div></div>
-      <div class="tl-item now"><div class="when">Mar 2025 – Now</div><div class="tl-body">
-        <h3>Founder &amp; CEO</h3><div class="org">Shinkai Labs Pvt. Ltd.</div>
-        <p>AI product research in computer vision, drone detection and tracking, and digital health. Copyrighted software (Python, Dart) with ML integration; industry partnerships in inspection and healthcare AI.</p></div></div>
-      <div class="tl-item"><div class="when">Nov 2022 – Feb 2025</div><div class="tl-body">
-        <h3>Assistant Professor</h3><div class="org">University of Petroleum and Energy Studies (UPES)</div>
-        <p>Founded and led the Centre of Excellence in IoT–AI Healthcare. Mentored students from undergraduate to Ph.D., ran the DST–SERB fetal arrhythmia project and consulted on railway and facade inspection.</p></div></div>
-      <div class="tl-item"><div class="when">Jan 2022 – Mar 2022</div><div class="tl-body">
-        <h3>Computer Vision / ML Engineer</h3><div class="org">MOTiV Research Co., Japan</div>
-        <p>Deep learning pipelines for visual recognition in an industrial research setting.</p></div></div>
-      <div class="tl-item"><div class="when">2018 – 2022</div><div class="tl-body">
-        <h3>MEXT Scholar · Ph.D. Researcher</h3><div class="org">Ohtsuki Laboratory, Keio University, Japan</div>
-        <p>Infrared-array sensing, hybrid deep learning (CNN–LSTM, CGAN) and edge deployment for activity and fall detection.</p></div></div>
-      <div class="tl-item"><div class="when">Apr 2017 – Aug 2017</div><div class="tl-body">
-        <h3>Operations Officer</h3><div class="org">ANZ, Bengaluru</div></div></div>
-      <div class="tl-item"><div class="when">Jun 2010 – Aug 2010</div><div class="tl-body">
-        <h3>Research Fellow</h3><div class="org">DA-IICT, Gandhinagar</div></div></div>
-    </div>
-
-    <div class="two" style="margin-top:72px">
-      <div>
-        <h4 class="label">Education</h4>
-        <ul class="list">
-          <li><span class="yr">2019–22</span><span><b>Ph.D., Engineering</b> · Keio University, Japan<span class="s">Activity and fall detection for AI healthcare using infrared array sensors and deep computer vision</span></span></li>
-          <li><span class="yr">2023–24</span><span><b>PG Diploma, IPR Law</b> · National Law School of India University</span></li>
-          <li><span class="yr">2014–16</span><span><b>M.Tech., CSE</b> · Pondicherry University<span class="s">Secure sharing of medical data in a hybrid cloud</span></span></li>
-          <li><span class="yr">2008–12</span><span><b>B.Tech., CSE</b> · NIT Tiruchirappalli</span></li>
-        </ul>
+  <section class="section paper" id="experience" aria-labelledby="exp-h">
+    <div class="container">
+      <div class="rows-wrap">
+        <div class="side">
+          <h2 id="exp-h">From Keio to Chennai</h2>
+          <p class="lead">Academia, industry and a startup, in that order and now at once.</p>
+          <dl>
+            <dt>Spoken languages</dt><dd>English, Tamil, Japanese</dd>
+            <dt>Frameworks</dt><dd>PyTorch, TensorFlow, Keras, OpenCV, scikit-learn, NumPy, Pandas, Matplotlib, Qiskit</dd>
+            <dt>Programming</dt><dd>Python, Dart, C and C++, Julia, R, LaTeX</dd>
+            <dt>Systems</dt><dd>NVIDIA Jetson, Raspberry Pi, IoT, ROS, OpenStack</dd>
+            <dt>Beyond code</dt><dd>Grant writing, intellectual property, research supervision, industry consultation</dd>
+          </dl>
+        </div>
+        <div class="ruled">
+          <div class="row now"><div class="when num">May 2025 to now</div><div><h3>Assistant Professor</h3><div class="org">SSN College of Engineering, Anna University</div><p>Teaching and supervising research in machine learning, computer vision and AI for healthcare. Publishing at IEEE ICC, EMBC and SPACE.</p></div></div>
+          <div class="row now"><div class="when num">Mar 2025 to now</div><div><h3>Founder and CEO</h3><div class="org">Shinkai Labs Pvt. Ltd.</div><p>AI product research in computer vision, drone detection and tracking, and digital health. Copyrighted software (Python, Dart) with ML integration; industry partnerships in inspection and healthcare AI.</p></div></div>
+          <div class="row"><div class="when num">Nov 2022 to Feb 2025</div><div><h3>Assistant Professor</h3><div class="org">University of Petroleum and Energy Studies (UPES)</div><p>Founded and led the Centre of Excellence in IoT and AI Healthcare. Mentored students from undergraduate to Ph.D., ran the DST-SERB fetal arrhythmia project and consulted on railway and facade inspection.</p></div></div>
+          <div class="row"><div class="when num">Jan 2022 to Mar 2022</div><div><h3>Computer Vision and ML Engineer</h3><div class="org">MOTiV Research Co., Japan</div><p>Deep learning pipelines for visual recognition in an industrial research setting.</p></div></div>
+          <div class="row"><div class="when num">2018 to 2022</div><div><h3>MEXT Scholar and Ph.D. Researcher</h3><div class="org">Ohtsuki Laboratory, Keio University, Japan</div><p>Infrared-array sensing, hybrid deep learning (CNN-LSTM, CGAN) and edge deployment for activity and fall detection.</p></div></div>
+          <div class="row"><div class="when num">Apr 2017 to Aug 2017</div><div><h3>Operations Officer</h3><div class="org">ANZ, Bengaluru</div></div></div>
+          <div class="row"><div class="when num">Jun 2010 to Aug 2010</div><div><h3>Research Fellow</h3><div class="org">DA-IICT, Gandhinagar</div></div></div>
+        </div>
       </div>
-      <div>
-        <h4 class="label">Leadership</h4>
-        <ul class="list">
-          <li><span class="yr">2023–24</span><span><b>Centre of Excellence, IoT–AI Healthcare Lab</b><span class="s">Founded and led strategy, industry–academia collaboration, budgeting and infrastructure</span></span></li>
-          <li><span class="yr">Ongoing</span><span><b>Research supervision</b><span class="s">UG, master's and Ph.D. students in AI healthcare and medical imaging</span></span></li>
-          <li><span class="yr">Ongoing</span><span><b>Faculty development</b><span class="s">FDPs and training in ML, computer vision and healthcare AI</span></span></li>
-          <li><span class="yr">2023–24</span><span><b>Industry consultation</b><span class="s">Railway inspection AI (Raspect, Alstom); facade monitoring (Raspect)</span></span></li>
-        </ul>
+
+      <div class="tables" style="margin-top: var(--section-gap-s)">
+        <table class="table">
+          <caption>Education</caption>
+          <thead><tr><th scope="col">Years</th><th scope="col">Degree and school</th></tr></thead>
+          <tbody>
+            <tr><td>2019-22</td><th scope="row">Ph.D., Engineering, Keio University, Japan<span class="sub">Activity and fall detection for AI healthcare using infrared array sensors and deep computer vision</span></th></tr>
+            <tr><td>2023-24</td><th scope="row">PG Diploma, IPR Law, National Law School of India University</th></tr>
+            <tr><td>2014-16</td><th scope="row">M.Tech., CSE, Pondicherry University<span class="sub">Secure sharing of medical data in a hybrid cloud</span></th></tr>
+            <tr><td>2008-12</td><th scope="row">B.Tech., CSE, NIT Tiruchirappalli</th></tr>
+          </tbody>
+        </table>
+        <table class="table">
+          <caption>Leadership</caption>
+          <thead><tr><th scope="col">Years</th><th scope="col">Role</th></tr></thead>
+          <tbody>
+            <tr><td>2023-24</td><th scope="row">Centre of Excellence, IoT and AI Healthcare Lab<span class="sub">Founded and led strategy, industry and academia collaboration, budgeting and infrastructure</span></th></tr>
+            <tr><td>Ongoing</td><th scope="row">Research supervision<span class="sub">UG, master’s and Ph.D. students in AI healthcare and medical imaging</span></th></tr>
+            <tr><td>Ongoing</td><th scope="row">Faculty development<span class="sub">FDPs and training in ML, computer vision and healthcare AI</span></th></tr>
+            <tr><td>2023-24</td><th scope="row">Industry consultation<span class="sub">Railway inspection AI (Raspect, Alstom); facade monitoring (Raspect)</span></th></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="publications" class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <div><h2>Selected <em>writing</em></h2><p>Journal articles, peer-reviewed conference papers and abstracts.</p></div>
-    </div>
-    <div class="filters" role="group" aria-label="Filter publications">
-      <button aria-pressed="true" data-f="all">All</button>
-      <button aria-pressed="false" data-f="j">Journals</button>
-      <button aria-pressed="false" data-f="c">Conferences</button>
-      <button aria-pressed="false" data-f="2026">2026</button>
-      <span class="count" id="count" aria-live="polite"></span>
-    </div>
-    <ol class="pubs" id="pubs"></ol>
-  </div>
-</section>
-
-<section id="honours">
-  <div class="wrap">
-    <div class="sec-head"><div><h2>Grants, copyrights <em>&amp; service</em></h2></div></div>
-    <div class="two">
-      <div>
-        <h4 class="label">Grants &amp; fellowships</h4>
-        <ul class="list">
-          <li><span class="yr">2026</span><span><b>IEEE ComSoc Travel Grant</b> · ICC 2026, Glasgow <span class="amt">USD 1,930</span></span></li>
-          <li><span class="yr">2024–27</span><span><b>DST–SERB Grant</b> · Fetal arrhythmia detection <span class="amt">INR 2.2M</span></span></li>
-          <li><span class="yr">2019–22</span><span><b>KLL Research Grant</b> · Keio University <span class="amt">JPY 1.8M</span></span></li>
-          <li><span class="yr">2018–22</span><span><b>MEXT Scholarship</b> · Government of Japan</span></li>
-          <li><span class="yr">2014–16</span><span><b>NHFDC Foundation Scholarship</b> · Govt. of India</span></li>
-          <li><span class="yr">2008–12</span><span><b>Post-Matric Scholarship</b> · Govt. of India</span></li>
-          <li><span class="yr">2021</span><span><b>ICM English Session Encouragement Award</b> · IEICE, Japan</span></li>
-        </ul>
-        <h4 class="label" style="margin-top:44px">Software copyrights</h4>
-        <ul class="list">
-          <li><span class="yr">2026</span><span><b>Shinkai Labs Drone Detection &amp; Tracking Platform</b><span class="s">SW-2026023145 · Python, Dart</span></span></li>
-          <li><span class="yr">2025</span><span><b>Sulabh: Disability Indexing App</b><span class="s">SW-20217/2025 · AI-based disability assessment</span></span></li>
-          <li><span class="yr">2024</span><span><b>Hriday: ECG Tagging App</b><span class="s">SW-19736/2024 · ECG tagging and clinical support</span></span></li>
-        </ul>
+  <section class="section paper-2" id="publications" aria-labelledby="pubs-h">
+    <div class="container">
+      <div class="split-head">
+        <h2 id="pubs-h">Twenty-one papers and abstracts</h2>
+        <p class="lead">Journal articles, peer-reviewed conference papers and abstracts, newest first.</p>
       </div>
-      <div>
-        <h4 class="label">Session chair</h4>
-        <ul class="list">
-          <li><span class="yr">2026</span><span><b>IEEE EMBC 2026</b> · Toronto, Canada</span></li>
-          <li><span class="yr">2024</span><span><b>BITMDM 2024</b> · Nagaland University</span></li>
-          <li><span class="yr">2024</span><span><b>ICAT 2024</b> · NUST, Muscat, Oman</span></li>
-          <li><span class="yr">2024</span><span><b>IEEE CSNT 2024</b> · Jabalpur</span></li>
-          <li><span class="yr">2023</span><span><b>IEEE CSNT 2023</b> · Bhopal</span></li>
-        </ul>
-        <h4 class="label" style="margin-top:44px">Invited talks</h4>
-        <ul class="list">
-          <li><span class="yr">2023</span><span><b>Infrared Imaging in Healthcare</b> · IEEE CSNT 2023, Bhopal</span></li>
-          <li><span class="yr">–</span><span><b>AI for Everyone · Recent Advances in AI</b> · PATH, New Delhi</span></li>
-          <li><span class="yr">–</span><span><b>AI in Micro-Grid</b> · Dayananda Sagar College of Engineering</span></li>
-          <li><span class="yr">–</span><span><b>Image Processing tutorial</b> · Nagaland University</span></li>
-        </ul>
+      <div class="filters" role="group" aria-label="Filter publications">
+        <button type="button" class="chip-btn" aria-pressed="true" data-f="all">All</button>
+        <button type="button" class="chip-btn" aria-pressed="false" data-f="j">Journals</button>
+        <button type="button" class="chip-btn" aria-pressed="false" data-f="c">Conferences</button>
+        <button type="button" class="chip-btn" aria-pressed="false" data-f="2026">2026</button>
+        <span class="count" id="count" aria-live="polite"></span>
       </div>
+      <ol class="pubs" id="pubs"></ol>
     </div>
+  </section>
 
-    <h4 class="label" style="margin-top:72px">Toolkit</h4>
-    <div class="skills">
-      <div class="sk"><h4 class="label">Frameworks</h4><div><span>PyTorch</span><span>TensorFlow</span><span>Keras</span><span>OpenCV</span><span>scikit-learn</span><span>NumPy</span><span>Pandas</span><span>Qiskit</span></div></div>
-      <div class="sk"><h4 class="label">Languages</h4><div><span>Python</span><span>Dart</span><span>C/C++</span><span>Julia</span><span>R</span><span>LaTeX</span></div></div>
-      <div class="sk"><h4 class="label">Systems</h4><div><span>NVIDIA Jetson</span><span>Raspberry Pi</span><span>IoT</span><span>ROS</span><span>OpenStack</span></div></div>
-      <div class="sk"><h4 class="label">Beyond code</h4><div><span>Grant writing</span><span>Intellectual property</span><span>Research supervision</span><span>Industry consultation</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" style="padding-top:0">
-  <div class="wrap">
-    <div class="contact">
-      <div>
-        <h2>Let's <em>collaborate</em>.</h2>
-        <p>Open to research collaborations, student supervision, industry projects in healthcare and vision AI, and India–Japan academic exchange.</p>
-      </div>
-      <div class="clinks">
-        <a href="mailto:muthukumar9890@gmail.com"><span>muthukumar9890@gmail.com</span><small>Email</small></a>
-        <a href="https://github.com/kamuthukumar" target="_blank" rel="noopener"><span>github.com/kamuthukumar</span><small>GitHub</small></a>
-        <a href="https://www.linkedin.com/in/muthukumarka" target="_blank" rel="noopener"><span>linkedin.com/in/muthukumarka</span><small>LinkedIn</small></a>
-        <a href="assets/KA_Muthukumar_CV.pdf" target="_blank" rel="noopener"><span>Curriculum vitae (PDF)</span><small>CV</small></a>
+  <section class="section paper" id="honours" aria-labelledby="hon-h">
+    <div class="container">
+      <div class="head"><h2 id="hon-h">Grants, copyrights and chairs</h2></div>
+      <div class="tables">
+        <table class="table">
+          <caption>Grants and fellowships</caption>
+          <thead><tr><th scope="col">Years</th><th scope="col">Award</th><th scope="col" class="r">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>2026</td><th scope="row">IEEE ComSoc Travel Grant<span class="sub">ICC 2026, Glasgow</span></th><td class="amt">USD 1,930</td></tr>
+            <tr><td>2024-27</td><th scope="row">DST-SERB Grant<span class="sub">Fetal arrhythmia detection</span></th><td class="amt">INR 2.2M</td></tr>
+            <tr><td>2019-22</td><th scope="row">KLL Research Grant<span class="sub">Keio University</span></th><td class="amt">JPY 1.8M</td></tr>
+            <tr><td>2018-22</td><th scope="row">MEXT Scholarship<span class="sub">Government of Japan</span></th><td></td></tr>
+            <tr><td>2014-16</td><th scope="row">NHFDC Foundation Scholarship<span class="sub">Government of India</span></th><td></td></tr>
+            <tr><td>2008-12</td><th scope="row">Post-Matric Scholarship<span class="sub">Government of India</span></th><td></td></tr>
+            <tr><td>2021</td><th scope="row">ICM English Session Encouragement Award<span class="sub">IEICE, Japan</span></th><td></td></tr>
+          </tbody>
+        </table>
+        <table class="table">
+          <caption>Session chair</caption>
+          <thead><tr><th scope="col">Year</th><th scope="col">Conference</th></tr></thead>
+          <tbody>
+            <tr><td>2026</td><th scope="row">IEEE EMBC 2026<span class="sub">Toronto, Canada</span></th></tr>
+            <tr><td>2024</td><th scope="row">BITMDM 2024<span class="sub">Nagaland University</span></th></tr>
+            <tr><td>2024</td><th scope="row">ICAT 2024<span class="sub">NUST, Muscat, Oman</span></th></tr>
+            <tr><td>2024</td><th scope="row">IEEE CSNT 2024<span class="sub">Jabalpur</span></th></tr>
+            <tr><td>2023</td><th scope="row">IEEE CSNT 2023<span class="sub">Bhopal</span></th></tr>
+          </tbody>
+        </table>
+        <table class="table">
+          <caption>Software copyrights</caption>
+          <thead><tr><th scope="col">Year</th><th scope="col">Work and registration</th></tr></thead>
+          <tbody>
+            <tr><td>2026</td><th scope="row">Shinkai Labs Drone Detection and Tracking Platform<span class="sub">SW-2026023145, Python and Dart</span></th></tr>
+            <tr><td>2025</td><th scope="row">Sulabh: Disability Indexing App<span class="sub">SW-20217/2025, AI-based disability assessment</span></th></tr>
+            <tr><td>2024</td><th scope="row">Hriday: ECG Tagging App<span class="sub">SW-19736/2024, ECG tagging and clinical support</span></th></tr>
+          </tbody>
+        </table>
+        <table class="table">
+          <caption>Invited talks</caption>
+          <thead><tr><th scope="col">Year</th><th scope="col">Talk and host</th></tr></thead>
+          <tbody>
+            <tr><td>2023</td><th scope="row">Infrared Imaging in Healthcare<span class="sub">IEEE CSNT 2023, Bhopal</span></th></tr>
+            <tr><td></td><th scope="row">AI for Everyone, and Recent Advances in AI<span class="sub">PATH, New Delhi</span></th></tr>
+            <tr><td></td><th scope="row">AI in Micro-Grid<span class="sub">Dayananda Sagar College of Engineering</span></th></tr>
+            <tr><td></td><th scope="row">Image Processing tutorial<span class="sub">Nagaland University</span></th></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-h">
+    <div class="container close-wrap">
+      <div class="copy">
+        <h2 id="contact-h">Write to me</h2>
+        <p class="lead">Open to research collaborations, student supervision, industry projects in healthcare and vision AI, and India and Japan academic exchange.</p>
+      </div>
+      <div class="card-wrap">
+        <div class="tuck" aria-hidden="true"><span></span><span></span></div>
+        <div class="stock card">
+          <p class="house">K. A. Muthukumar, Ph.D.<span>SSN College of Engineering, Chennai, and Shinkai Labs</span></p>
+          <dl>
+            <div><dt>Email</dt><dd><a href="mailto:muthukumar9890@gmail.com">muthukumar9890@gmail.com</a></dd></div>
+            <div><dt>GitHub</dt><dd><a href="https://github.com/kamuthukumar" target="_blank" rel="noopener">github.com/kamuthukumar</a></dd></div>
+            <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/muthukumarka" target="_blank" rel="noopener">linkedin.com/in/muthukumarka</a></dd></div>
+            <div><dt>CV</dt><dd><a href="assets/KA_Muthukumar_CV.pdf" target="_blank" rel="noopener">Curriculum vitae (PDF)</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>© <span id="yr">2026</span> K. A. Muthukumar · Chennai, India</span>
-    <a href="#top">Back to top</a>
+<footer class="colophon paper">
+  <div class="container">
+    <div class="mark">K. A. Muthukumar</div>
+    <p>© <span id="yr">2026</span> K. A. Muthukumar, Chennai, India. Set in Sentient and Hanken Grotesk. <a href="#top">Back to the top</a></p>
   </div>
 </footer>
 
@@ -537,70 +566,141 @@ const PUBS = [
   {t:"j",y:2025,ti:"Integrating electrocardiogram and fundus images for early detection of cardiovascular diseases",au:"K. A. Muthukumar, D. Nandi, P. Ranjan, K. Ramachandran, P. J. Shiny, A. Ghosh, M. Ashwini, A. Radhakrishnan, V. E. Dhandapani, R. Janardhanan",ve:"Scientific Reports, vol. 15, 4390",doi:"10.1038/s41598-025-87634-z",hi:"Nature Portfolio"},
   {t:"j",y:2024,ti:"Leveraging machine learning techniques to analyze nutritional content in processed foods",au:"K. A. Muthukumar, S. Gupta, D. Saikia",ve:"Discover Food, vol. 4, no. 1, 182",doi:"10.1007/s44187-024-00253-x"},
   {t:"j",y:2024,ti:"Vision Mamba: Cutting-edge classification of Alzheimer's disease with 3D MRI scans",au:"K. A. Muthukumar, A. Gurung, P. Ranjan",ve:"arXiv preprint 2406.05757",doi:"10.48550/arXiv.2406.05757",k:"Preprint"},
-  {t:"j",y:2023,ti:"Multi-modal detection of cardiovascular disease at the community level",au:"K. A. Muthukumar, A. Ganeshan, D. Nandi, P. Ranjan, S. Mohandas, K. Ramachandran, et al., R. Janardhanan",ve:"Indian Heart Journal, vol. 75, S76–S77 (abstract)",doi:"10.1016/j.ihj.2023.11.162",k:"Abstract"},
-  {t:"j",y:2023,ti:"A multi-modal computational approach to accurate and rapid prediction of cardiovascular health using fundus images",au:"K. A. Muthukumar, D. Nandi, P. Ranjan, K. Ramachandran, et al., R. Janardhanan",ve:"Indian Heart Journal, vol. 75, S9 (abstract)",doi:"10.1016/j.ihj.2023.11.027",k:"Abstract"},
+  {t:"j",y:2023,ti:"Multi-modal detection of cardiovascular disease at the community level",au:"K. A. Muthukumar, A. Ganeshan, D. Nandi, P. Ranjan, S. Mohandas, K. Ramachandran, et al., R. Janardhanan",ve:"Indian Heart Journal, vol. 75, S76-S77",doi:"10.1016/j.ihj.2023.11.162",k:"Abstract"},
+  {t:"j",y:2023,ti:"A multi-modal computational approach to accurate and rapid prediction of cardiovascular health using fundus images",au:"K. A. Muthukumar, D. Nandi, P. Ranjan, K. Ramachandran, et al., R. Janardhanan",ve:"Indian Heart Journal, vol. 75, S9",doi:"10.1016/j.ihj.2023.11.027",k:"Abstract"},
   {t:"j",y:2022,ti:"An infrared array sensor-based approach for activity detection, combining low-cost technology with advanced deep learning techniques",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"Sensors, vol. 22, no. 10, 3898",doi:"10.3390/s22103898"},
-  {t:"j",y:2021,ti:"A novel hybrid deep learning model for activity detection using wide-angle low-resolution infrared array sensor",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEEE Access, vol. 9, pp. 82563–82576",doi:"10.1109/ACCESS.2021.3084926",hi:"IEEE Access"},
-  {t:"c",y:2026,ti:"Hybrid diffusion–dynamical modeling for robust non-invasive fetal ECG extraction from abdominal ECG recordings",au:"K. A. Muthukumar",ve:"48th Annual Int. Conf. of the IEEE EMBS (EMBC)",hi:"IEEE EMBC"},
+  {t:"j",y:2021,ti:"A novel hybrid deep learning model for activity detection using wide-angle low-resolution infrared array sensor",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEEE Access, vol. 9, pp. 82563-82576",doi:"10.1109/ACCESS.2021.3084926",hi:"IEEE Access"},
+  {t:"c",y:2026,ti:"Hybrid diffusion-dynamical modeling for robust non-invasive fetal ECG extraction from abdominal ECG recordings",au:"K. A. Muthukumar",ve:"48th Annual Int. Conf. of the IEEE EMBS (EMBC)",hi:"IEEE EMBC"},
   {t:"c",y:2026,ti:"Multi-level adapter fusion with learnable text anchors for few-shot medical anomaly classification",au:"K. A. Muthukumar",ve:"48th Annual Int. Conf. of the IEEE EMBS (EMBC)",hi:"IEEE EMBC"},
   {t:"c",y:2026,ti:"Non-invasive fetal electrocardiogram extraction using deep learning and earth mover's distance",au:"K. A. Muthukumar, R. Anurag, A. Li",ve:"IEEE Int. Conf. on Communications (ICC), Glasgow, U.K.",hi:"IEEE ICC"},
   {t:"c",y:2026,ti:"Intelligent screening of chronic kidney disease from clinical biomarkers: A dimensionality-aware ensemble approach",au:"K. A. Muthukumar",ve:"18th IEEE Int. Conf. on Computational Intelligence and Communication Networks (CICN)"},
   {t:"c",y:2026,ti:"Neural combinatorial fusion for deterministic radar tracking with calibrated uncertainties",au:"K. A. Muthukumar",ve:"IEEE SPACE Conference, Bengaluru, India"},
   {t:"c",y:2026,ti:"TopOT-Net: Topology-preserving medical image segmentation via Sinkhorn divergence-regularized deformable attention",au:"K. A. Muthukumar",ve:"11th Int. Conf. on Computer Vision and Image Processing (CVIP), Calicut, India"},
   {t:"c",y:2026,ti:"GWO-TriLL: Accelerating linked list search via grey wolf optimization and tridirectional traversal",au:"K. A. Muthukumar",ve:"6th Int. Conf. on Emerging Techniques in Computational Intelligence (ICETCI), Hyderabad"},
-  {t:"c",y:2024,ti:"Exploring vision transformers for enhanced MRI-based Alzheimer's disease classification",au:"K. A. Muthukumar, A. Gurung, P. Ranjan",ve:"3rd Int. Conf. BITMDM, pp. 60–70",doi:"10.1007/978-3-031-82706-8_7"},
-  {t:"c",y:2024,ti:"Enhancing EEG-based brain–computer interfaces through biologically inspired neural networks incorporating Dale's law and Hebbian learning",au:"K. A. Muthukumar, P. Ranjan",ve:"2nd Nature Conf. on Neuromorphic Computing, Beijing (abstract)",k:"Abstract"},
-  {t:"c",y:2024,ti:"HRIDAY: ECG tagging at your fingertips using Android app",au:"A. Ganeshan, S. R. Abishek, P. Deekshith, P. Piyush, K. A. Muthukumar, P. Ranjan",ve:"Annual Conf. of the Cardiological Society of India (abstract)",k:"Abstract"},
+  {t:"c",y:2024,ti:"Exploring vision transformers for enhanced MRI-based Alzheimer's disease classification",au:"K. A. Muthukumar, A. Gurung, P. Ranjan",ve:"3rd Int. Conf. BITMDM, pp. 60-70",doi:"10.1007/978-3-031-82706-8_7"},
+  {t:"c",y:2024,ti:"Enhancing EEG-based brain-computer interfaces through biologically inspired neural networks incorporating Dale's law and Hebbian learning",au:"K. A. Muthukumar, P. Ranjan",ve:"2nd Nature Conf. on Neuromorphic Computing, Beijing",k:"Abstract"},
+  {t:"c",y:2024,ti:"HRIDAY: ECG tagging at your fingertips using Android app",au:"A. Ganeshan, S. R. Abishek, P. Deekshith, P. Piyush, K. A. Muthukumar, P. Ranjan",ve:"Annual Conf. of the Cardiological Society of India",k:"Abstract"},
   {t:"c",y:2021,ti:"Comparative study of activity detection system using wide angle low-resolution infrared array sensor at different positions",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEICE General Conference"},
   {t:"c",y:2020,ti:"Activity detection using wide angle low-resolution infrared array sensors",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEICE Society Conference"},
   {t:"c",y:2020,ti:"Detection of human activity based on hybrid deep learning model using a low-resolution infrared array sensor",au:"K. A. Muthukumar, M. Bouazizi, T. Ohtsuki",ve:"IEICE Technical Report"},
-  {t:"c",y:2016,ti:"Modified secret sharing algorithm for secured medical data sharing in cloud environment",au:"K. A. Muthukumar, M. Nandhini",ve:"2nd Int. Conf. ICONSTEM, pp. 67–71",doi:"10.1109/ICONSTEM.2016.7560925"}
+  {t:"c",y:2016,ti:"Modified secret sharing algorithm for secured medical data sharing in cloud environment",au:"K. A. Muthukumar, M. Nandhini",ve:"2nd Int. Conf. ICONSTEM, pp. 67-71",doi:"10.1109/ICONSTEM.2016.7560925"}
 ];
-const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/'/g, "’");
 const list = document.getElementById("pubs"), count = document.getElementById("count");
 list.innerHTML = PUBS.sort((a,b)=>b.y-a.y || (a.t<b.t?-1:1)).map(p => `
   <li class="pub" data-t="${p.t}" data-y="${p.y}">
     <div class="y">${p.y}</div>
-    <div>
+    <div class="main">
       <div class="ti">${esc(p.ti)}</div>
-      <div class="au">${esc(p.au).replace(ME, `<b>${ME}</b>`)}</div>
+      <div class="au">${esc(p.au).replace(ME, `<span class="me">${ME}</span>`)}</div>
       <div class="ve">${esc(p.ve)}</div>
-      <div class="meta">
-        <span class="pill ${p.t==="j"?"j":""}">${p.t==="j"?"Journal":"Conference"}</span>
-        ${p.hi?`<span class="pill hi">${esc(p.hi)}</span>`:""}
-        ${p.k?`<span class="pill">${esc(p.k)}</span>`:""}
-        ${p.doi?`<a class="doi" href="https://doi.org/${p.doi}" target="_blank" rel="noopener">doi:${p.doi}</a>`:""}
-      </div>
     </div>
+    <div class="kind">${p.t==="j"?"Journal":"Conference"}${p.k?`, ${p.k.toLowerCase()}`:""}${p.hi?`<br>${esc(p.hi)}`:""}${p.doi?`<br><a href="https://doi.org/${p.doi}" target="_blank" rel="noopener">doi:${p.doi}</a>`:""}</div>
   </li>`).join("");
 const setCount = () => { const n = list.querySelectorAll(".pub:not([hidden])").length; count.textContent = `${n} ${n===1?"paper":"papers"}`; };
 setCount();
-
-document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x===b));
+document.querySelectorAll(".filters .chip-btn").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filters .chip-btn").forEach(x => x.setAttribute("aria-pressed", x===b));
   const f = b.dataset.f;
   list.querySelectorAll(".pub").forEach(li => { li.hidden = !(f==="all" || li.dataset.t===f || li.dataset.y===f); });
-  // Brief crossfade so the swap reads as a filter, not a page jump. Restart by toggling the class.
   list.classList.remove("swap"); void list.offsetWidth; list.classList.add("swap");
   setCount();
 }));
 
-// theme (initial value applied in <head>)
+// research strips: a real tablist; the chosen strip is let down on its thread
+const tabs = [...document.querySelectorAll("#strips .strip")];
+const choose = (tab, focus) => {
+  tabs.forEach(t => { const on = t === tab; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute("aria-controls")).hidden = !on; });
+  if (focus) tab.focus();
+};
+tabs.forEach((t, i) => {
+  t.addEventListener("click", () => choose(t));
+  t.addEventListener("keydown", e => {
+    const k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+    if (k) { e.preventDefault(); choose(tabs[(i + k + tabs.length) % tabs.length], true); }
+    if (e.key === "Home") { e.preventDefault(); choose(tabs[0], true); }
+    if (e.key === "End") { e.preventDefault(); choose(tabs[tabs.length - 1], true); }
+  });
+});
+// the strips unfurl once, when the rail comes into view
+const strips = document.getElementById("strips");
+if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { strips.classList.add("in"); o.disconnect(); } }), { rootMargin: "0px 0px -15% 0px" }).observe(strips);
+} else strips.classList.remove("armed");
+
+// theme
 const root = document.documentElement;
 document.getElementById("theme").addEventListener("click", () => {
-  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  root.dataset.theme = dark ? "light" : "dark";
-  try { localStorage.setItem("theme", root.dataset.theme); } catch(e) {}
+  root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+  if (window.__air) window.__air.recolor();
 });
 
 // nav
 const nav = document.getElementById("nav"), links = document.getElementById("links"), menu = document.getElementById("menu");
-addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), {passive:true});
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive: true });
 const setMenu = open => { links.classList.toggle("open", open); menu.setAttribute("aria-expanded", open); };
 menu.addEventListener("click", () => setMenu(!links.classList.contains("open")));
-links.querySelectorAll("a.l").forEach(a => a.addEventListener("click", () => setMenu(false)));
+links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
 addEventListener("keydown", e => { if (e.key === "Escape" && links.classList.contains("open")) { setMenu(false); menu.focus(); } });
 document.getElementById("yr").textContent = new Date().getFullYear();
+
+// the air: domain-warped noise drifting upward in cream and amber veils, mixed in linear light,
+// at half size; the pointer's recent path parts it. Paused off screen and when the tab is hidden;
+// under reduced motion it is drawn once and held still.
+(() => {
+  const cv = document.getElementById("air");
+  const gl = cv.getContext("webgl", { antialias: false });
+  if (!gl) return;
+  const vs = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
+  const fs = `precision mediump float;
+uniform vec2 r;uniform float t;uniform vec2 m;uniform float mk;uniform vec3 base;uniform vec3 v1;uniform vec3 v2;uniform float amt;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float a=.5,s=0.;for(int i=0;i<5;i++){s+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return s;}
+vec3 lin(vec3 c){return pow(c,vec3(2.2));}
+void main(){vec2 uv=gl_FragCoord.xy/r;vec2 p=uv*vec2(r.x/r.y,1.)*1.6;p.y-=t*.018;
+vec2 q=vec2(fbm(p+vec2(0.,t*.01)),fbm(p+vec2(5.2,1.3)-t*.008));
+vec2 w=vec2(fbm(p+3.*q+vec2(1.7,9.2)),fbm(p+3.*q+vec2(8.3,2.8)+t*.012));
+float a=fbm(p+3.5*w);float b=smoothstep(.35,.85,fbm(p*1.4+2.*q-t*.006));
+vec2 d=(uv-m)*vec2(r.x/r.y,1.);float part=mk*smoothstep(.32,0.,length(d));
+vec3 c=lin(base);c=mix(c,lin(v1),clamp(smoothstep(.38,.78,a)*amt-part*.9,0.,1.));c=mix(c,lin(v2),clamp(b*.55*amt-part*.6,0.,1.));
+gl_FragColor=vec4(pow(c,vec3(1./2.2)),1.);}`;
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+  const pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
+  gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const U = k => gl.getUniformLocation(pr, k);
+  const uR = U("r"), uT = U("t"), uM = U("m"), uMk = U("mk"), uB = U("base"), uV1 = U("v1"), uV2 = U("v2"), uA = U("amt");
+  const triple = k => getComputedStyle(root).getPropertyValue(k).trim().split(/\s+/).map(Number);
+  let t = 40, last = 0, mx = .5, my = .5, tx = .5, ty = .5, mk = 0, running = false, raf = 0, visible = true;
+  const draw = () => { gl.uniform1f(uT, t); gl.uniform2f(uM, mx, my); gl.uniform1f(uMk, mk); gl.drawArrays(gl.TRIANGLES, 0, 3); };
+  const recolor = () => { gl.uniform3fv(uB, triple("--air-base")); gl.uniform3fv(uV1, triple("--air-veil-1")); gl.uniform3fv(uV2, triple("--air-veil-2")); gl.uniform1f(uA, triple("--air-amount")[0]); draw(); };
+  const size = () => { cv.width = Math.max(1, Math.round(innerWidth / 2)); cv.height = Math.max(1, Math.round(innerHeight / 2)); gl.viewport(0, 0, cv.width, cv.height); gl.uniform2f(uR, cv.width, cv.height); };
+  const still = matchMedia("(prefers-reduced-motion: reduce)");
+  function frame(now) {
+    const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now; t += dt;
+    mx += (tx - mx) * Math.min(1, dt * 4); my += (ty - my) * Math.min(1, dt * 4); mk *= Math.pow(0.35, dt);
+    draw(); raf = requestAnimationFrame(frame);
+  }
+  const update = () => { const go = visible && !document.hidden && !still.matches;
+    if (go && !running) { running = true; last = 0; raf = requestAnimationFrame(frame); }
+    if (!go && running) { running = false; cancelAnimationFrame(raf); } };
+  addEventListener("pointermove", e => { tx = e.clientX / innerWidth; ty = 1 - e.clientY / innerHeight; mk = Math.min(1, mk + 0.08); }, { passive: true });
+  addEventListener("resize", () => { size(); draw(); }, { passive: true });
+  document.addEventListener("visibilitychange", update);
+  if (still.addEventListener) still.addEventListener("change", update);
+  // the air shows through the hero and the close; run it only while one of them is on screen
+  const zones = new Set();
+  const io = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? zones.add(e.target) : zones.delete(e.target)); visible = zones.size > 0; update(); });
+  io.observe(document.querySelector(".hero")); io.observe(document.getElementById("contact"));
+  size(); recolor(); root.classList.add("has-air");
+  window.__air = { recolor };
+})();
 </script>
 </body>
 </html>
