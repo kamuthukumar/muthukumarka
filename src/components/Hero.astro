@@ -41,7 +41,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 <style>
   .hero > :global(.container) { width: 100%; }
-  .hero { position: relative; min-height: calc(100svh - 68px); display: grid; grid-template-rows: 1fr auto auto; padding-top: clamp(16px, 3vh, 48px); }
+  .hero { position: relative; min-height: min(calc(100svh - 68px), 880px); display: grid; grid-template-rows: 1fr auto auto; padding-top: clamp(16px, 3vh, 48px); }
   .hero-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: center; }
   .copy { grid-column: 1 / span 7; padding-block: var(--space-lg) clamp(40px, 7vh, 96px); }
   h1 { font-size: var(--text-hero); line-height: 0.98; letter-spacing: -0.032em; font-variation-settings: "opsz" 72; max-width: 12.5ch; }
