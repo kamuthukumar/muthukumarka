@@ -16,7 +16,7 @@ const rest = news.filter((n) => n !== lead);
         <li class="row" data-reveal style={`--i:${i}`}>
           <p class="tag"><time>{n.date}</time><span>{n.kind}</span></p>
           <h3>{n.title}</h3>
-          <p class="body">{n.body}{n.ref && <> <span class="mono">{n.ref}</span></>}</p>
+          <p class="body">{n.body}{n.ref && <> <span class="mono">{n.ref}</span></>}{n.link && <> <a class="link" href={n.link} target="_blank" rel="noopener">{n.linkLabel ?? "Read more"}</a></>}</p>
         </li>
       ))}
     </ol>

@@ -7,10 +7,11 @@ const rows = [
   { k: "GitHub", v: "github.com/kamuthukumar", href: L.github },
   { k: "LinkedIn", v: "linkedin.com/in/muthukumarka", href: L.linkedin },
   { k: "CV", v: "Curriculum vitae (PDF)", href: `${base}/${L.cv}` },
+  { k: "ORCID", v: L.orcid && L.orcid.replace("https://orcid.org/", ""), href: L.orcid, todo: "orcid" },
+  { k: "Scopus", v: L.scopus && "Author ID 57224309244", href: L.scopus, todo: "scopus" },
   { k: "Google Scholar", v: L.scholar, href: L.scholar, todo: "scholar" },
-  { k: "ORCID", v: L.orcid, href: L.orcid, todo: "orcid" },
   { k: "IEEE", v: L.ieee, href: L.ieee, todo: "ieee" },
-  { k: "Shinkai Labs", v: L.shinkai, href: L.shinkai, todo: "shinkai" },
+  { k: "Shinkai Labs", v: L.shinkai && "shinkai-labs.com", href: L.shinkai, todo: "shinkai" },
 ].filter((r) => r.v || site.showTodos);
 ---
 <section class="section" id="contact" aria-labelledby="contact-h">

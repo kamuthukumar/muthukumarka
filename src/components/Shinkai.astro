@@ -1,7 +1,8 @@
 ---
 import shinkai from "../../content/shinkai.json";
-import site from "../../content/site.json";
-const products = shinkai.products.filter((p) => !p.todo || site.showTodos);
+const lead = shinkai.products.find((p) => p.lead) ?? shinkai.products[0];
+const others = shinkai.products.filter((p) => p !== lead);
+const sectors = [...new Set(others.map((p) => p.sector))];
 ---
 <section class="section sea" id="shinkai" aria-labelledby="shinkai-h">
   <div class="container">
@@ -11,62 +12,97 @@ const products = shinkai.products.filter((p) => !p.todo || site.showTodos);
         <h2 id="shinkai-h">Shinkai Labs <span class="jp" lang="ja">{shinkai.kanji}</span></h2>
         <p class="recog">{shinkai.recognition}</p>
       </div>
-      <p class="mission" data-reveal style="--i:1">{shinkai.mission} The same research, built to be used.</p>
+      <div class="mission" data-reveal style="--i:1">
+        <p class="tagline">{shinkai.tagline}</p>
+        <p>{shinkai.mission}</p>
+      </div>
     </div>
 
-    <ul class="products">
-      {products.map((p, i) => p.todo ? (
-        <li class="product todo-card" data-reveal style={`--i:${i}`}>
-          <p class="todo">TODO: product name, one line on what it does, status. Edit content/shinkai.json.</p>
-        </li>
-      ) : (
-        <li class="product" data-reveal style={`--i:${i}`}>
-          <p class="tag status">{p.status}, {p.year}</p>
-          <h3>{p.name}</h3>
-          <p>{p.body}</p>
-          <dl>
-            <div><dt class="tag">Built with</dt><dd class="mono">{p.stack?.join(", ")}</dd></div>
-            <div><dt class="tag">Copyright</dt><dd class="mono">Reg. No. {p.ref}</dd></div>
-          </dl>
-        </li>
+    <article class="lead-product" data-reveal>
+      <div>
+        <p class="tag sector">{lead.sector}, {lead.status}</p>
+        <h3>{lead.name}</h3>
+        <p class="body">{lead.body}</p>
+      </div>
+      <dl>
+        {lead.stack && <div><dt class="tag">Built with</dt><dd class="mono">{lead.stack.join(", ")}</dd></div>}
+        {lead.ref && <div><dt class="tag">Copyright</dt><dd class="mono">Reg. No. {lead.ref}</dd></div>}
+        <div><dt class="tag">Papers</dt><dd>IEEE GLOBECOM, Macao, and IEEE SPACE, Bengaluru</dd></div>
+      </dl>
+    </article>
+
+    <div class="sectors">
+      {sectors.map((s) => (
+        <div class="sector-col" data-reveal>
+          <h3 class="sector-h">{s}</h3>
+          <ul class="rows">
+            {others.filter((p) => p.sector === s).map((p) => (
+              <li><p class="pname">{p.name}</p><p class="pbody">{p.body}</p></li>
+            ))}
+          </ul>
+        </div>
       ))}
-    </ul>
-    {shinkai.website ? <a class="btn" href={shinkai.website} target="_blank" rel="noopener">Visit Shinkai Labs</a>
-      : site.showTodos && <p class="todo">TODO: Shinkai Labs website URL (content/shinkai.json, "website").</p>}
+    </div>
+
+    <div class="foot">
+      <p class="caps"><span class="tag">What the lab works in</span>{shinkai.capabilities.join(", ")}.</p>
+      <address>
+        <span class="tag">Office</span>
+        {shinkai.address.map((l) => <span>{l}</span>)}
+      </address>
+      <div class="go">
+        <a class="btn" href={shinkai.website} target="_blank" rel="noopener">Visit shinkai-labs.com</a>
+        <p><a href={`mailto:${shinkai.email}`}>{shinkai.email}</a></p>
+        <p><a href={shinkai.linkedin} target="_blank" rel="noopener">LinkedIn</a>, <a href={shinkai.x} target="_blank" rel="noopener">X</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
   /* 深海: the deep sea. The one section that is always dark, in both themes */
-  .sea { --sea: oklch(17% 0.022 232); --sea-ink: oklch(94% 0.01 220); --sea-muted: oklch(74% 0.02 220); --sea-rule: oklch(32% 0.025 230); --sea-accent: oklch(84% 0.16 152);
+  .sea { --sea: oklch(17% 0.022 232); --sea-ink: oklch(94% 0.01 220); --sea-muted: oklch(76% 0.02 220); --sea-rule: oklch(33% 0.025 230); --sea-accent: oklch(84% 0.16 152);
     background: linear-gradient(to bottom, var(--sea), oklch(13% 0.02 236)); color: var(--sea-ink); }
   :global(:root[data-theme="dark"]) .sea { --sea: oklch(13% 0.02 234); background: linear-gradient(to bottom, var(--sea), oklch(10% 0.016 238)); border-block: 1px solid var(--sea-rule); }
   .sea :global(.tag) { color: var(--sea-muted); }
   .sea :global(:focus-visible) { outline-color: var(--sea-accent); }
+  .sea a { color: var(--sea-ink); text-decoration-color: var(--sea-accent); }
   .top { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); align-items: end; }
   .name { grid-column: 1 / span 6; }
   h2 { color: var(--sea-ink); font-size: var(--text-display); line-height: 1; letter-spacing: -0.03em; margin-top: var(--space-md); max-width: none; }
   .jp { font-size: 0.32em; letter-spacing: 0.1em; color: var(--sea-muted); vertical-align: 0.9em; margin-left: 0.2em; }
   .recog { margin-top: var(--space-md); color: var(--sea-accent); font-family: var(--font-mono); font-size: var(--text-sm); }
-  .mission { grid-column: 8 / span 5; font-size: var(--text-lead); line-height: 1.5; color: var(--sea-ink); }
-  .products { list-style: none; margin-block: clamp(56px, 7vw, 96px) var(--space-xl); display: grid; grid-template-columns: 7fr 5fr; grid-auto-rows: minmax(0, auto); gap: var(--gap); }
-  .product { border: 1px solid var(--sea-rule); padding: clamp(24px, 3vw, 40px); background: oklch(100% 0 0 / 0.025); }
-  .product:first-child { grid-row: span 2; }
-  .products:has(> .product:only-child) { grid-template-columns: minmax(0, 1fr); }
-  .products:has(> .product:only-child) .product { grid-row: auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gap); align-items: end; }
-  .products:has(> .product:only-child) .product dl { grid-column: 2; grid-row: 1 / span 3; }
-  .product h3 { color: var(--sea-ink); font-size: var(--text-section); line-height: 1.06; letter-spacing: -0.02em; margin-top: var(--space-md); max-width: 16ch; }
-  .product > p:not(.tag) { margin-top: var(--space-lg); max-width: 46ch; color: var(--sea-muted); }
-  .status { color: var(--sea-accent) !important; }
-  .product dl { margin-top: var(--space-xl); border-top: 1px solid var(--sea-rule); }
-  .product dl div { display: grid; grid-template-columns: 8rem 1fr; gap: var(--space-md); padding-block: var(--space-sm); border-bottom: 1px solid var(--sea-rule); }
-  .todo-card { display: grid; place-items: center; border-style: dashed; min-height: 160px; }
-  .sea .todo { border-color: var(--sea-accent); color: var(--sea-muted); }
+  .mission { grid-column: 8 / span 5; }
+  .tagline { font-family: var(--font-display); font-size: var(--text-title); color: var(--sea-ink); }
+  .mission p:not(.tagline) { margin-top: var(--space-md); color: var(--sea-muted); }
+
+  .lead-product { margin-top: clamp(56px, 7vw, 96px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: var(--space-xl); align-items: end;
+    border: 1px solid var(--sea-rule); padding: clamp(24px, 3.5vw, 48px); background: oklch(100% 0 0 / 0.025); }
+  .lead-product > div { grid-column: 1 / span 7; }
+  .lead-product dl { grid-column: 8 / span 5; border-top: 1px solid var(--sea-rule); }
+  .lead-product dl div { display: grid; grid-template-columns: 7rem 1fr; gap: var(--space-md); padding-block: var(--space-sm); border-bottom: 1px solid var(--sea-rule); }
+  .sector { color: var(--sea-accent) !important; }
+  .lead-product h3 { color: var(--sea-ink); font-size: var(--text-section); line-height: 1.04; letter-spacing: -0.02em; margin-top: var(--space-md); max-width: 15ch; }
+  .lead-product .body { margin-top: var(--space-lg); max-width: 48ch; color: var(--sea-muted); }
+
+  .sectors { margin-top: clamp(48px, 6vw, 88px); display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
+  .sector-h { color: var(--sea-ink); font-size: var(--text-title); padding-bottom: var(--space-md); border-bottom: 1px solid var(--sea-ink); }
+  .rows { list-style: none; }
+  .rows li { display: grid; grid-template-columns: minmax(0, 10rem) 1fr; gap: var(--space-md); padding-block: var(--space-lg); border-bottom: 1px solid var(--sea-rule); }
+  .pname { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.2; color: var(--sea-ink); }
+  .pbody { color: var(--sea-muted); }
+
+  .foot { margin-top: clamp(56px, 7vw, 96px); padding-top: var(--space-xl); border-top: 1px solid var(--sea-rule); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: var(--space-xl); }
+  .caps { grid-column: 1 / span 5; color: var(--sea-muted); }
+  .caps .tag, address .tag { display: block; margin-bottom: var(--space-xs); }
+  address { grid-column: 6 / span 4; font-style: normal; color: var(--sea-muted); display: flex; flex-direction: column; }
+  .go { grid-column: 10 / span 3; display: grid; gap: var(--space-sm); justify-items: start; color: var(--sea-muted); }
   .sea .btn { border-color: var(--sea-ink); color: var(--sea-ink); }
+  @media (hover: hover) and (pointer: fine) { .sea .btn:hover { background: var(--sea-ink); color: var(--sea); } }
   @media (max-width: 64rem) {
-    .name, .mission { grid-column: 1 / -1; }
+    .name, .mission, .lead-product > div, .lead-product dl, .caps, address, .go { grid-column: 1 / -1; }
     .mission { margin-top: var(--space-lg); }
-    .products { grid-template-columns: 1fr; }
-    .product:first-child { grid-row: auto; }
+    .sectors { grid-template-columns: 1fr; }
+    .rows li { grid-template-columns: 1fr; gap: var(--space-2xs); }
   }
 </style>

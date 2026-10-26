@@ -1,5 +1,5 @@
 {
-  "showTodos": true,
+  "showTodos": false,
   "name": "K. A. Muthukumar",
   "honorific": "Ph.D.",
   "headline": "Building AI that sees, senses and cares.",
@@ -32,9 +32,10 @@
     "linkedin": "https://www.linkedin.com/in/muthukumarka",
     "cv": "assets/KA_Muthukumar_CV.pdf",
     "scholar": null,
-    "orcid": null,
+    "orcid": "https://orcid.org/0000-0002-7923-3995",
     "ieee": null,
-    "shinkai": null
+    "shinkai": "https://shinkai-labs.com",
+    "scopus": "https://www.scopus.com/authid/detail.uri?authorId=57224309244"
   },
   "stats": [
     {

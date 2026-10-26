@@ -7,7 +7,7 @@ import bodyFont from "@fontsource/hanken-grotesk/files/hanken-grotesk-latin-400-
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const url = new URL(import.meta.env.BASE_URL, Astro.site).href;
 const ogImage = new URL(`${base}/assets/photo.jpg`, Astro.site).href;
-const sameAs = [site.links.github, site.links.linkedin, site.links.scholar, site.links.orcid, site.links.ieee].filter(Boolean);
+const sameAs = [site.links.github, site.links.linkedin, site.links.orcid, site.links.scopus, site.links.scholar, site.links.ieee].filter(Boolean);
 
 const person = {
   "@context": "https://schema.org",
@@ -15,6 +15,7 @@ const person = {
   name: site.name,
   honorificSuffix: site.honorific,
   jobTitle: "Assistant Professor",
+  identifier: { "@type": "PropertyValue", propertyID: "ORCID", value: "0000-0002-7923-3995" },
   description: site.description,
   url,
   image: ogImage,

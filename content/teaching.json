@@ -1,13 +1,21 @@
 {
   "courses": [
-    { "name": "Advanced Machine Learning", "where": "SSN College of Engineering" },
-    { "name": "High Performance Computing", "where": "SSN College of Engineering" }
+    {
+      "name": "Advanced Machine Learning",
+      "where": "SSN College of Engineering"
+    },
+    {
+      "name": "High Performance Computing",
+      "where": "SSN College of Engineering"
+    }
   ],
   "supervision": "Undergraduate, master's and Ph.D. students in AI healthcare and medical imaging, at UPES and SSN.",
   "development": "Faculty development programmes and professional training in machine learning, computer vision and healthcare AI; AI and medical-imaging workshops.",
   "achievements": [
-    { "year": "2026", "text": "A student from my group selected for the JST LOTUS (Basic) Program, Kyushu University." },
-    { "year": null, "todo": true }
+    {
+      "year": "2026",
+      "text": "A student from my group selected for the JST LOTUS (Basic) Program, Kyushu University."
+    }
   ],
   "open": "Open to motivated students interested in medical AI, signal processing and optimal transport."
 }

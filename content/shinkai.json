@@ -3,13 +3,58 @@
   "kanji": "深海",
   "since": "March 2025",
   "recognition": "DPIIT-recognized deep tech startup",
-  "mission": "AI product research in computer vision, drone detection and tracking, and digital health, from model to shipped software.",
-  "website": null,
+  "tagline": "Reimagining intelligence for the future.",
+  "mission": "An AI research and development company building systems for fields where reliability and accuracy decide outcomes for people: defense, healthcare and signal processing. From foundational research to deployed software.",
+  "website": "https://shinkai-labs.com",
+  "email": "info@shinkai-labs.com",
+  "linkedin": "https://www.linkedin.com/company/shinkai-labs/",
+  "x": "https://x.com/shinkai_labs",
+  "address": [
+    "Innov8 Millenia, 2nd Floor, East Wing",
+    "RMZ Millenia Business Park, Campus 1A",
+    "No. 143, Dr. M.G.R. Road, Perungudi",
+    "Chennai 600096"
+  ],
   "products": [
-    { "name": "Drone Detection and Tracking Platform", "status": "Registered software",
-      "body": "A drone detection and tracking web application with ML model integration.",
-      "stack": ["Python", "Dart"], "ref": "SW-2026023145", "year": "2026" },
-    { "name": null, "todo": true },
-    { "name": null, "todo": true }
+    {
+      "name": "Drone Detection and Monitoring System",
+      "sector": "Defense",
+      "lead": true,
+      "body": "Detects, tracks and classifies drones in real time by fusing radar, RF and electro-optical sensing, for fixed, mobile and portable deployments.",
+      "stack": [
+        "Python",
+        "Dart"
+      ],
+      "ref": "SW-2026023145",
+      "status": "Copyright registered, 2026"
+    },
+    {
+      "name": "SAR and Signal Intelligence",
+      "sector": "Defense",
+      "body": "Synthetic aperture radar image processing and radar signal analysis for surveillance and geospatial work."
+    },
+    {
+      "name": "RhythmNest",
+      "sector": "Healthcare",
+      "body": "Fetal arrhythmia detection: isolates the fetal cardiac pattern from the maternal ECG to support early diagnosis."
+    },
+    {
+      "name": "WombChrono",
+      "sector": "Healthcare",
+      "body": "Non-invasive fetal age estimation from the maternal ECG, using signal processing."
+    },
+    {
+      "name": "ScanSage",
+      "sector": "Healthcare",
+      "body": "Medical image classification across MRI, CT and X-ray, with attention and geometric deep learning."
+    }
+  ],
+  "capabilities": [
+    "Biomedical signal processing",
+    "Computer vision and multimodal sensing",
+    "Radar and SAR signal processing",
+    "Edge AI and IoT",
+    "Robotics",
+    "Deep learning: optimal transport, Mamba, transformers"
   ]
 }
