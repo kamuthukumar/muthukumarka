@@ -1,6 +1,6 @@
 ---
 import { Picture } from "astro:assets";
-import portrait from "../assets/portrait-cut.png";
+import portrait from "../assets/portrait-studio.jpg";
 import site from "../../content/site.json";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
@@ -17,8 +17,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     </div>
     <figure class="portrait">
       <div class="frame">
-        <span class="sheet" aria-hidden="true"></span>
-        <svg class="pulse" viewBox="0 0 440 120" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 78 H18 l6 -4 l6 4 H44 l4 5 l8 -66 l9 84 l6 -19 H92 q14 -12 28 0 H346 l6 -4 l6 4 H372 l4 5 l8 -66 l9 84 l6 -19 H420 q10 -10 20 -2" /></svg>
         <Picture src={portrait} formats={["avif", "webp"]} widths={[360, 480, 640, 880, 1254]} sizes="(max-width: 64rem) 62vw, 440px"
           alt="Portrait of K. A. Muthukumar" loading="eager" fetchpriority="high" class="photo" />
       </div>
@@ -48,28 +46,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   .actions { margin-top: clamp(24px, 4vh, 40px); display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-md); align-items: center; }
   .actions .link { margin-left: var(--space-xs); }
 
-  /* the portrait: the subject standing on a sheet of the same ECG chart paper, one heartbeat passing
-     behind the shoulders. In dark mode the sheet becomes the monitor and the beat turns phosphor. */
+  /* the portrait: a toned black-and-white print standing on the strip, credit set along its edge */
   .portrait { grid-column: 8 / span 5; justify-self: end; align-self: end; position: relative; z-index: 2; width: min(100%, 440px); margin-bottom: -1px; }
-  .frame { position: relative; overflow: hidden; aspect-ratio: 4 / 5; isolation: isolate;
-    border: 1px solid var(--rule); border-bottom: 0;
-    box-shadow: 0 30px 60px -34px oklch(20% 0.02 50 / 0.4); }
-  .sheet { position: absolute; inset: 0; z-index: -2;
-    background:
-      radial-gradient(70% 55% at 55% 34%, color-mix(in oklch, var(--card) 92%, white), transparent 72%),
-      linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
-      linear-gradient(var(--grid-minor) 1px, transparent 1px), linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
-      var(--paper-2);
-    background-size: 100% 100%, 40px 40px, 40px 40px, 8px 8px, 8px 8px, auto; background-position: 0 0, -1px -1px, -1px -1px, -1px -1px, -1px -1px, 0 0; }
-  :global(:root[data-theme="dark"]) .sheet { background-color: oklch(17% 0.01 150);
-    background-image: radial-gradient(70% 55% at 55% 34%, oklch(30% 0.04 150 / 0.55), transparent 72%),
-      linear-gradient(var(--grid-major) 1px, transparent 1px), linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
-      linear-gradient(var(--grid-minor) 1px, transparent 1px), linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px); }
-  .pulse { position: absolute; left: 0; top: 52%; width: 100%; height: 22%; z-index: -1; overflow: visible; }
-  .pulse path { fill: none; stroke: var(--trace-clean); stroke-width: 1.6; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
-  :global(:root[data-theme="dark"]) .pulse path { filter: drop-shadow(0 0 3px oklch(84% 0.17 152 / 0.6)); }
-  .portrait :global(.photo) { position: relative; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%;
-    filter: drop-shadow(0 18px 24px oklch(20% 0.02 50 / 0.18)); }
+  .frame { position: relative; overflow: hidden; aspect-ratio: 4 / 5; }
+  .portrait :global(.photo) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .frame { box-shadow: 0 30px 60px -34px oklch(20% 0.02 50 / 0.45); }
   .credit { position: absolute; left: -26px; top: 0; writing-mode: vertical-rl; text-orientation: mixed; display: flex; gap: var(--space-md); align-items: center; font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
   .credit .jp { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--ink-2); }
 
@@ -99,15 +80,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   /* one authored entrance: the copy settles while the portrait rises out of the strip and develops */
   @keyframes settle { from { opacity: 0; transform: translateY(10px); } }
   @keyframes rise { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
-  @keyframes develop { from { opacity: 0; transform: translateY(14px); } }
+  @keyframes develop { from { filter: brightness(1.25) saturate(0.4) blur(5px); transform: scale(1.04); } }
   @keyframes fadein { from { opacity: 0; } }
   .copy > * { animation: settle 620ms var(--ease-out) both; }
   .copy > :nth-child(2) { animation-delay: 70ms; }
   .copy > :nth-child(3) { animation-delay: 140ms; }
-  @keyframes draw { from { stroke-dashoffset: 1; } }
   .frame { animation: rise 1100ms cubic-bezier(0.32, 0.72, 0, 1) 120ms both; }
   .portrait :global(.photo) { animation: develop 1700ms cubic-bezier(0.33, 0.1, 0.25, 1) 200ms both; }
-  .pulse path { animation: draw 1400ms cubic-bezier(0.65, 0, 0.35, 1) 900ms both; }
   .credit { animation: fadein 600ms var(--ease-out) 1000ms both; }
 </style>
 
