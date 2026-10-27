@@ -29,10 +29,11 @@
       "status": "Copyright registered, 2026"
     },
     {
-      "name": "ANCIRS",
+      "name": "ACNRICS",
       "sector": "Defense",
-      "body": "An AI denoising communication system: acoustic signature analysis and noise cancellation so voice and signals stay clear around artillery fire. Being developed for the School of Artillery, Devlali, Nashik.",
-      "client": "School of Artillery, Devlali, Nashik"
+      "body": "Artillery Crew Noise Reduction and Intelligent Communication System: AI noise reduction and acoustic signature analysis so gun crews can hear and talk clearly around artillery fire. Being developed for the School of Artillery, Devlali, Nashik.",
+      "client": "School of Artillery, Devlali, Nashik",
+      "full": "Artillery Crew Noise Reduction and Intelligent Communication System"
     },
     {
       "name": "SAR and Signal Intelligence",
