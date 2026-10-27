@@ -1,0 +1,112 @@
+---
+// The funding ledger: every award as a share of one bar, research grants in the accent,
+// scholarships in ink. The list beside it is the accessible content; the bar repeats it visually.
+import h from "../../content/honours.json";
+import { items, total, byKind, fmtM, fmtLakh, fmtShort } from "../lib/funding";
+const research = byKind("research"), scholarships = byKind("scholarship");
+const japan = items.filter((g) => g.from === "Japan").reduce((s, g) => s + g.inr, 0);
+const pct = (v: number) => (v / total) * 100;
+// "2024-27" spans 2024 to 2027
+const span = h.grants.flatMap((g) => { const [a, b] = g.year.split("-"); return b ? [+a, +(a.slice(0, 4 - b.length) + b)] : [+a]; });
+const from = Math.min(...span), to = Math.max(...span);
+---
+<figure class="ledger" aria-labelledby="ledger-h">
+  <div class="top">
+    <div>
+      <p class="tag" id="ledger-h">Total funding, {from} to {to}</p>
+      <p class="sum"><span class="unit">INR</span>{fmtM(total).replace("INR ", "")}</p>
+      <p class="lakh muted">About {fmtLakh(total)}, across {items.length} grants and scholarships from India and Japan.</p>
+    </div>
+    <dl class="split">
+      <div><dt class="tag"><i class="sw research"></i>Research grants</dt><dd>{fmtShort(research)}</dd></div>
+      <div><dt class="tag"><i class="sw scholarship"></i>Scholarships</dt><dd>{fmtShort(scholarships)}</dd></div>
+      <div><dt class="tag">Funded from Japan</dt><dd>{Math.round(pct(japan))}%</dd></div>
+    </dl>
+  </div>
+
+  <div class="bar" aria-hidden="true" data-ledger>
+    {items.map((g) => (
+      <span class={`seg ${g.kind}`} style={`flex-grow:${g.inr}`} data-key={g.name}></span>
+    ))}
+  </div>
+
+  <ol class="rows">
+    {items.map((g) => (
+      <li data-key={g.name} tabindex="0">
+        <i class={`sw ${g.kind}`} aria-hidden="true"></i>
+        <span class="nm">{g.name}{g.estimate && <span class="est" title="Estimated from official scheme rates">est.</span>}</span>
+        <span class="mono native">{g.amount}</span>
+        <span class="mono inr">{fmtShort(g.inr)}</span>
+        <span class="mono pc">{pct(g.inr) < 1 ? "<1" : Math.round(pct(g.inr))}%</span>
+      </li>
+    ))}
+  </ol>
+  <figcaption class="note">{h.rates.note} MEXT, NHFDC and Post-Matric figures are estimates from official scheme rates.</figcaption>
+</figure>
+
+<style>
+  .ledger { margin-bottom: clamp(56px, 7vw, 96px); border-top: 1px solid var(--ink); padding-top: var(--space-lg); }
+  .top { display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap); align-items: end; }
+  .sum { font-family: var(--font-display); font-size: var(--text-display); line-height: 1; letter-spacing: -0.03em; color: var(--ink); margin-top: var(--space-sm); font-variant-numeric: lining-nums tabular-nums; font-variation-settings: "opsz" 72; }
+  .unit { font-family: var(--font-mono); font-size: 0.3em; letter-spacing: 0.04em; color: var(--muted); margin-right: 0.35em; vertical-align: 1em; }
+  .lakh { margin-top: var(--space-sm); }
+  .split { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+  .split div { padding: var(--space-sm) var(--space-md) 0 0; }
+  .split div + div { border-left: 1px solid var(--rule); padding-left: var(--space-md); }
+  .split dd { font-family: var(--font-display); font-size: var(--text-title); color: var(--ink); margin-top: var(--space-2xs); white-space: nowrap; }
+
+  .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: 0; flex-shrink: 0; }
+  .sw.research, .seg.research { background: var(--accent); }
+  .sw.scholarship, .seg.scholarship { background: var(--ink-2); }
+
+  .bar { display: flex; gap: 2px; height: 22px; margin-top: var(--space-xl); }
+  .seg { min-width: 4px; flex-basis: 0; border-radius: 2px; opacity: 0.85; transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); transform-origin: bottom; }
+  .seg.research:nth-of-type(odd) { opacity: 0.95; }
+  .bar.hovering .seg { opacity: 0.25; }
+  .bar.hovering .seg.on { opacity: 1; transform: scaleY(1.25); }
+  /* the bar fills left to right once, when it is first seen */
+  :global(html.js-reveal) .bar { clip-path: inset(0 100% 0 0); }
+  :global(html.js-reveal) .bar.in { clip-path: inset(0 0 0 0); transition: clip-path 1200ms cubic-bezier(0.65, 0, 0.35, 1); }
+
+  .rows { list-style: none; margin-top: var(--space-lg); columns: 2; column-gap: var(--gap); }
+  .rows li { break-inside: avoid; display: grid; grid-template-columns: auto 1fr auto auto 3.2rem; align-items: baseline; gap: var(--space-sm); padding: var(--space-sm) var(--space-xs); border-bottom: 1px solid var(--rule); border-radius: 2px; transition: background-color var(--dur-short) var(--ease-out); }
+  .rows li.on { background: color-mix(in oklch, var(--accent) 8%, transparent); }
+  .nm { color: var(--ink); }
+  .est { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); border: 1px solid var(--rule); border-radius: 2px; padding: 0 4px; margin-left: 6px; vertical-align: 1px; }
+  .native { color: var(--muted); }
+  .inr { color: var(--ink); }
+  .pc { color: var(--accent); text-align: right; }
+  .note { margin-top: var(--space-md); font-size: var(--text-xs); color: var(--muted); max-width: 90ch; }
+  @media (max-width: 64rem) {
+    .top { grid-template-columns: 1fr; }
+    .rows { columns: 1; }
+  }
+  @media (max-width: 40rem) {
+    .split { grid-template-columns: 1fr 1fr; }
+    .split > div:nth-child(3) { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); margin-top: var(--space-sm); }
+    .rows li { grid-template-columns: auto 1fr auto 2.8rem; }
+    .native { display: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-ledger]").forEach((bar) => {
+    const fig = bar.closest("figure")!;
+    const rows = [...fig.querySelectorAll<HTMLElement>(".rows li")];
+    const segs = [...bar.querySelectorAll<HTMLElement>(".seg")];
+    const mark = (key: string | null) => {
+      bar.classList.toggle("hovering", !!key);
+      segs.forEach((s) => s.classList.toggle("on", s.dataset.key === key));
+      rows.forEach((r) => r.classList.toggle("on", r.dataset.key === key));
+    };
+    const pick = (el: HTMLElement) => mark(el.dataset.key!);
+    [...rows, ...segs].forEach((el) => {
+      el.addEventListener("pointerenter", () => pick(el));
+      el.addEventListener("pointerleave", () => mark(null));
+    });
+    rows.forEach((r) => { r.addEventListener("focus", () => pick(r)); r.addEventListener("blur", () => mark(null)); });
+    // always watched, so the bar can never stay hidden whatever order the scripts run in
+    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { bar.classList.add("in"); io.disconnect(); } }, { threshold: 0.35 });
+    io.observe(fig);   // the figure, not the bar: a fully clipped bar never reports as visible
+  });
+</script>

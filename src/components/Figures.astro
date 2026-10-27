@@ -1,12 +1,14 @@
 ---
 import site from "../../content/site.json";
+import { total, fmtM } from "../lib/funding";
+const stats = site.stats.map((s) => (s.value === "$funding" ? { ...s, value: fmtM(total) } : s));
 // "INR 2.2M" -> unit "INR" set small, figure "2.2M" set large
 const split = (v: string) => { const m = /^([A-Za-z]+)\s+(.*)$/.exec(v); return m ? { unit: m[1], num: m[2] } : { unit: "", num: v }; };
 ---
 <section class="figures" aria-label="Figures">
   <div class="container">
     <dl class="readouts">
-      {site.stats.map((s, i) => (
+      {stats.map((s, i) => (
         <div class="readout" data-reveal style={`--i:${i}`}>
           <dt class="tag">{s.label}</dt>
           <dd>{split(s.value).unit && <span class="unit">{split(s.value).unit}</span>}{split(s.value).num}</dd>
