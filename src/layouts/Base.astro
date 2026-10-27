@@ -24,11 +24,11 @@ const person = {
   knowsLanguage: site.languages,
   affiliation: [
     { "@type": "CollegeOrUniversity", name: "SSN College of Engineering", parentOrganization: { "@type": "CollegeOrUniversity", name: "Anna University" } },
-    { "@type": "Organization", name: "Shinkai Labs Pvt. Ltd.", ...(site.links.shinkai ? { url: site.links.shinkai } : {}) },
+    { "@type": "Organization", name: "Shinkai-Labs Pvt. Ltd.", ...(site.links.shinkai ? { url: site.links.shinkai } : {}) },
   ],
   worksFor: [
     { "@type": "CollegeOrUniversity", name: "SSN College of Engineering" },
-    { "@type": "Organization", name: "Shinkai Labs Pvt. Ltd." },
+    { "@type": "Organization", name: "Shinkai-Labs Pvt. Ltd." },
   ],
   alumniOf: [
     { "@type": "CollegeOrUniversity", name: "Keio University" },
@@ -48,7 +48,7 @@ const person = {
   <meta name="description" content={site.description}>
   <link rel="canonical" href={url}>
   <meta property="og:title" content={site.display}>
-  <meta property="og:description" content="AI researcher, Assistant Professor (SSN College of Engineering), founder of Shinkai Labs. Ph.D., Keio University.">
+  <meta property="og:description" content="AI researcher, Assistant Professor (SSN College of Engineering), founder of Shinkai-Labs. Ph.D., Keio University.">
   <meta property="og:image" content={ogImage}>
   <meta property="og:url" content={url}>
   <meta property="og:type" content="profile">

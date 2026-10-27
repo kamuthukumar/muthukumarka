@@ -8,7 +8,7 @@ Everything the page says lives in this folder. Edit a file, commit to `main`, an
 | `news.json` | News items, newest first. The item with `"lead": true` is set large at the top. |
 | `publications.bib` | Every paper. Add a BibTeX entry and it appears, with filters, search and copy-BibTeX. Use `keywords` for topics and `note = {abstract}` or `{preprint}`. |
 | `research.json` | The six research lines. A paper appears under a line when its `keywords` include the line's `id`. |
-| `shinkai.json` | Shinkai Labs mission and products. Replace a `{ "todo": true }` item with a real product. |
+| `shinkai.json` | Shinkai-Labs mission and products. Replace a `{ "todo": true }` item with a real product. |
 | `journey.json` | The India and Japan timeline. `country` picks the lane; `kind: "study"` draws an outlined bar. |
 | `honours.json` | Grants, copyrights, session chairs, talks, awards. |
 | `teaching.json` | Courses, supervision, student achievements. |

@@ -26,6 +26,12 @@
   },
   {
     "date": "2026",
+    "kind": "Shinkai-Labs",
+    "title": "ANCIRS, a denoising communication system for the School of Artillery, Nashik",
+    "body": "Shinkai-Labs is developing ANCIRS, an AI denoising communication system, for the School of Artillery, Devlali, Nashik."
+  },
+  {
+    "date": "2026",
     "kind": "Service",
     "title": "Session Chair, IEEE EMBC 2026, Toronto",
     "body": "Chairing a session at the 48th Annual International Conference of the IEEE Engineering in Medicine and Biology Society, where two of my papers also appear."
@@ -40,12 +46,12 @@
     "date": "2026",
     "kind": "Papers",
     "title": "Drone detection paper accepted at IEEE GLOBECOM and IEEE SPACE",
-    "body": "The Shinkai Labs drone detection system paper was accepted at IEEE GLOBECOM, Macao, and IEEE SPACE, Bengaluru."
+    "body": "The Shinkai-Labs drone detection system paper was accepted at IEEE GLOBECOM, Macao, and IEEE SPACE, Bengaluru."
   },
   {
     "date": "2026",
     "kind": "Copyright",
-    "title": "Shinkai Labs Drone Detection and Tracking Platform registered",
+    "title": "Shinkai-Labs Drone Detection and Tracking Platform registered",
     "body": "Granted by the Copyright Office, Government of India.",
     "ref": "SW-2026023145"
   },
@@ -63,21 +69,21 @@
   },
   {
     "date": "2026",
-    "kind": "Shinkai Labs",
+    "kind": "Shinkai-Labs",
     "title": "Invited to the India AI Impact Summit 2026, New Delhi",
-    "body": "Shinkai Labs was invited to the summit."
+    "body": "Shinkai-Labs was invited to the summit."
   },
   {
     "date": "2026",
-    "kind": "Shinkai Labs",
+    "kind": "Shinkai-Labs",
     "title": "At the Advance Defence Tech Expo 2026, Bengaluru",
-    "body": "The Shinkai Labs team attended the expo."
+    "body": "The Shinkai-Labs team attended the expo."
   },
   {
     "date": "2026",
     "kind": "Interview",
     "title": "Founder interview with Swift",
-    "body": "A conversation about Shinkai Labs and its work, published on YouTube.",
+    "body": "A conversation about Shinkai-Labs and its work, published on YouTube.",
     "link": "https://youtu.be/loBAUp9MNBA",
     "linkLabel": "Watch the interview"
   }

@@ -11,7 +11,7 @@
   { "from": "2022-11", "to": "2025-02", "place": "Dehradun", "country": "India", "role": "Assistant Professor", "org": "University of Petroleum and Energy Studies (UPES)",
     "body": "Founded and led the Centre of Excellence in IoT and AI Healthcare. Ran the DST-SERB fetal arrhythmia project; consulted on railway and facade inspection." },
   { "from": "2023-09", "to": "2024-09", "place": "Bengaluru", "country": "India", "role": "PG Diploma, Intellectual Property Rights Law", "org": "National Law School of India University", "kind": "study" },
-  { "from": "2025-03", "to": null, "place": "Chennai", "country": "India", "role": "Founder and CEO", "org": "Shinkai Labs Pvt. Ltd.",
+  { "from": "2025-03", "to": null, "place": "Chennai", "country": "India", "role": "Founder and CEO", "org": "Shinkai-Labs Pvt. Ltd.",
     "body": "AI products in computer vision, drone detection and tracking, and digital health." },
   { "from": "2025-05", "to": null, "place": "Chennai", "country": "India", "role": "Assistant Professor", "org": "SSN College of Engineering, Anna University",
     "body": "Teaching and supervising research in machine learning, computer vision and AI for healthcare." }

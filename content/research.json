@@ -1,22 +1,73 @@
 [
-  { "id": "signals", "name": "Biomedical signals", "title": "Biomedical signal processing",
+  {
+    "id": "signals",
+    "name": "Biomedical signals",
+    "title": "Biomedical signal processing",
     "idea": "Recover a fetal heartbeat buried under the mother's, from electrodes on the abdomen.",
-    "methods": ["Diffusion models", "Dynamical priors", "Earth mover's distance"], "ot": true,
-    "note": "DST-SERB funded work on fetal arrhythmia." },
-  { "id": "imaging", "name": "Medical images", "title": "Medical image analysis",
+    "methods": [
+      "Diffusion models",
+      "Dynamical priors",
+      "Earth mover's distance"
+    ],
+    "ot": true,
+    "note": "DST-SERB funded work on fetal arrhythmia. At Shinkai-Labs, the same denoising ideas power ANCIRS, a communication system for the School of Artillery, Nashik."
+  },
+  {
+    "id": "imaging",
+    "name": "Medical images",
+    "title": "Medical image analysis",
     "idea": "Read cardiovascular risk from the eye, and Alzheimer's from 3D MRI, while keeping anatomy intact.",
-    "methods": ["Vision Mamba", "Vision transformers", "Sinkhorn divergence"], "ot": true },
-  { "id": "anomaly", "name": "Few-shot anomaly", "title": "Few-shot and anomaly detection",
+    "methods": [
+      "Vision Mamba",
+      "Vision transformers",
+      "Sinkhorn divergence"
+    ],
+    "ot": true
+  },
+  {
+    "id": "anomaly",
+    "name": "Few-shot anomaly",
+    "title": "Few-shot and anomaly detection",
     "idea": "Find what is abnormal when only a handful of labelled cases exist.",
-    "methods": ["Vision and language adapters", "Learnable text anchors", "CLIP"] },
-  { "id": "infrared", "name": "Infrared sensing", "title": "Infrared sensing and activity",
+    "methods": [
+      "Vision and language adapters",
+      "Learnable text anchors",
+      "CLIP"
+    ]
+  },
+  {
+    "id": "infrared",
+    "name": "Infrared sensing",
+    "title": "Infrared sensing and activity",
     "idea": "See activity and falls with low-resolution heat, so no camera ever sees a face.",
-    "methods": ["Infrared arrays", "CNN-LSTM", "CGAN"], "note": "The core of my Keio Ph.D." },
-  { "id": "tracking", "name": "Detection and tracking", "title": "Detection and tracking",
+    "methods": [
+      "Infrared arrays",
+      "CNN-LSTM",
+      "CGAN"
+    ],
+    "note": "The core of my Keio Ph.D."
+  },
+  {
+    "id": "tracking",
+    "name": "Detection and tracking",
+    "title": "Detection and tracking",
     "idea": "Track drones and radar targets, and say how certain the track is.",
-    "methods": ["Neural combinatorial fusion", "Calibrated uncertainty"], "note": "Shipped through Shinkai Labs." },
-  { "id": "edge", "name": "Edge AI and inspection", "title": "Edge AI and industrial vision",
+    "methods": [
+      "Neural combinatorial fusion",
+      "Calibrated uncertainty"
+    ],
+    "note": "Shipped through Shinkai-Labs."
+  },
+  {
+    "id": "edge",
+    "name": "Edge AI and inspection",
+    "title": "Edge AI and industrial vision",
     "idea": "Run the model where the data is: on a Jetson, a Raspberry Pi, a railway line.",
-    "methods": ["NVIDIA Jetson", "Raspberry Pi", "Crack, rust and fault detection"],
-    "note": "Industry consultation for Raspect (Hong Kong) and Alstom (France)." }
+    "methods": [
+      "NVIDIA Jetson",
+      "Raspberry Pi",
+      "Crack, rust and fault detection"
+    ],
+    "note": "Industry consultation for Raspect (Hong Kong) and Alstom (France)."
+  }
 ]

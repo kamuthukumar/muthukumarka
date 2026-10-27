@@ -1,5 +1,5 @@
 {
-  "name": "Shinkai Labs Pvt. Ltd.",
+  "name": "Shinkai-Labs Pvt. Ltd.",
   "kanji": "深海",
   "since": "March 2025",
   "recognition": "DPIIT-recognized deep tech startup",
@@ -27,6 +27,12 @@
       ],
       "ref": "SW-2026023145",
       "status": "Copyright registered, 2026"
+    },
+    {
+      "name": "ANCIRS",
+      "sector": "Defense",
+      "body": "An AI denoising communication system: acoustic signature analysis and noise cancellation so voice and signals stay clear around artillery fire. Being developed for the School of Artillery, Devlali, Nashik.",
+      "client": "School of Artillery, Devlali, Nashik"
     },
     {
       "name": "SAR and Signal Intelligence",
