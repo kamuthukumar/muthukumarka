@@ -1,5 +1,7 @@
 ---
 import site from "../../content/site.json";
+// "INR 2.2M" -> unit "INR" set small, figure "2.2M" set large
+const split = (v: string) => { const m = /^([A-Za-z]+)\s+(.*)$/.exec(v); return m ? { unit: m[1], num: m[2] } : { unit: "", num: v }; };
 ---
 <section class="figures" aria-label="Figures">
   <div class="container">
@@ -7,7 +9,7 @@ import site from "../../content/site.json";
       {site.stats.map((s, i) => (
         <div class="readout" data-reveal style={`--i:${i}`}>
           <dt class="tag">{s.label}</dt>
-          <dd>{s.value}</dd>
+          <dd>{split(s.value).unit && <span class="unit">{split(s.value).unit}</span>}{split(s.value).num}</dd>
         </div>
       ))}
     </dl>
@@ -17,13 +19,14 @@ import site from "../../content/site.json";
 <style>
   .figures { padding-block: var(--space-xl) 0; }
   .readouts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
-  .readout { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--space-xs); padding: var(--space-lg) var(--space-lg) var(--space-lg) 0; }
+  .readout { container-type: inline-size; min-width: 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--space-xs); padding: var(--space-lg) var(--space-lg) var(--space-lg) 0; }
   .readout + .readout { border-left: 1px solid var(--rule); padding-left: var(--space-lg); }
-  dd { font-family: var(--font-display); font-size: clamp(2.6rem, 4.2vw, 4.75rem); line-height: 1; color: var(--ink); letter-spacing: -0.03em; font-variant-numeric: lining-nums tabular-nums; font-variation-settings: "opsz" 72; white-space: nowrap; }
+  dd { font-family: var(--font-display); font-size: min(clamp(2.6rem, 4.2vw, 4.75rem), 30cqi); line-height: 1; color: var(--ink); letter-spacing: -0.03em; font-variant-numeric: lining-nums tabular-nums; font-variation-settings: "opsz" 72; white-space: nowrap; }
   dt { max-width: 22ch; }
+  .unit { font-family: var(--font-mono); font-size: 0.32em; letter-spacing: 0.04em; color: var(--muted); margin-right: 0.35em; vertical-align: 0.9em; }
   @media (max-width: 64rem) {
     .readouts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .readout:nth-child(3) { border-left: 0; padding-left: 0; }
+    .readouts .readout:nth-child(3) { border-left: 0; padding-left: 0; }
     .readout:nth-child(n + 3) { border-top: 1px solid var(--rule); }
   }
 </style>
