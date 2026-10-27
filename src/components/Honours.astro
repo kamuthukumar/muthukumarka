@@ -14,7 +14,7 @@ import h from "../../content/honours.json";
         <thead><tr><th scope="col">Years</th><th scope="col">Award</th><th scope="col" class="r">Amount</th></tr></thead>
         <tbody>
           {h.grants.map((g) => (
-            <tr><td class="mono">{g.year}</td><th scope="row">{g.name}<span class="sub">{g.detail}</span></th><td class="mono r amt">{g.amount ?? ""}</td></tr>
+            <tr><td class="mono">{g.year}</td><th scope="row">{g.name}<span class="sub">{g.detail}</span>{g.rate && <span class="sub rate">{g.rate}</span>}</th><td class="mono r amt">{g.amount ?? ""}</td></tr>
           ))}
         </tbody>
       </table>
@@ -67,6 +67,7 @@ import h from "../../content/honours.json";
   .r { text-align: right !important; padding-right: 0 !important; }
   td.amt { color: var(--accent); font-size: 0.95rem; }
   .sub { display: block; color: var(--muted); font-size: var(--text-sm); }
+  .rate { font-size: var(--text-xs); margin-top: 2px; }
   .slips ul { list-style: none; display: grid; gap: var(--space-md); }
   .slip { position: relative; padding: var(--space-lg) var(--space-lg) var(--space-md); background: var(--card); border: 1px solid var(--rule); border-left: 1px solid var(--rule);
     box-shadow: 0 1px 0 var(--lit) inset, 0 6px 18px -12px oklch(20% 0.02 50 / 0.3); }
@@ -81,4 +82,14 @@ import h from "../../content/honours.json";
   .list li > span:last-child { color: var(--muted); font-size: var(--text-sm); }
   .award-h { margin-top: var(--space-2xl); }
   @media (max-width: 64rem) { .cols, .lower { grid-template-columns: 1fr; } }
+  /* phones: each grant becomes a block, years and amount on one line, the award below */
+  @media (max-width: 40rem) {
+    .grants thead { display: none; }
+    .grants tr { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-md); padding-block: var(--space-md); border-bottom: 1px solid var(--rule); }
+    .grants tbody tr:first-child { border-top: 1px solid var(--ink); }
+    .grants td, .grants tbody th { border: 0; padding: 0; width: auto; }
+    .grants td.amt { text-align: right; }
+    .grants td.amt:empty { display: none; }
+    .grants tbody th { grid-column: 1 / -1; grid-row: 2; margin-top: var(--space-xs); }
+  }
 </style>

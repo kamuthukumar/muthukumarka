@@ -1,31 +1,119 @@
 {
   "grants": [
-    { "year": "2026", "name": "IEEE ComSoc Travel Grant", "detail": "IEEE ICC 2026, Glasgow", "amount": "USD 1,930" },
-    { "year": "2024-27", "name": "DST-SERB Grant", "detail": "Fetal arrhythmia detection", "amount": "INR 2.2M" },
-    { "year": "2019-22", "name": "KLL Research Grant", "detail": "Keio University", "amount": "JPY 1.8M" },
-    { "year": "2018-22", "name": "MEXT Scholarship", "detail": "Ministry of Education, Culture, Sports, Science and Technology, Japan" },
-    { "year": "2014-16", "name": "NHFDC Foundation Scholarship", "detail": "Ministry of Social Justice and Empowerment, Government of India" },
-    { "year": "2008-12", "name": "Post-Matric Scholarship", "detail": "Ministry of Minority Affairs, Government of India" }
+    {
+      "year": "2026",
+      "name": "IEEE ComSoc Travel Grant",
+      "detail": "IEEE ICC 2026, Glasgow",
+      "amount": "USD 1,930"
+    },
+    {
+      "year": "2024-27",
+      "name": "DST-SERB Grant",
+      "detail": "Fetal arrhythmia detection",
+      "amount": "INR 2.2M"
+    },
+    {
+      "year": "2019-22",
+      "name": "KLL Research Grant",
+      "detail": "Keio University",
+      "amount": "JPY 1.8M"
+    },
+    {
+      "year": "2018-22",
+      "name": "MEXT Scholarship",
+      "detail": "Ministry of Education, Culture, Sports, Science and Technology, Japan",
+      "amount": "JPY 145,000/mo",
+      "rate": "Scheme rate: ¥143,000 a month as a research student, ¥145,000 on the doctoral course, plus tuition and travel"
+    },
+    {
+      "year": "2014-16",
+      "name": "NHFDC Foundation Scholarship",
+      "detail": "Ministry of Social Justice and Empowerment, Government of India",
+      "amount": "INR 3,000/mo",
+      "rate": "Scheme rate for professional postgraduate courses: ₹3,000 a month for 10 months, plus ₹10,000 a year for books"
+    },
+    {
+      "year": "2008-12",
+      "name": "Post-Matric Scholarship",
+      "detail": "Ministry of Minority Affairs, Government of India",
+      "amount": "INR 570/mo",
+      "rate": "Scheme rate for undergraduate courses: ₹570 a month (hosteller), plus tuition up to ₹3,000 a year"
+    }
   ],
   "copyrights": [
-    { "year": "2026", "name": "Shinkai Labs Drone Detection and Tracking Platform", "ref": "SW-2026023145", "detail": "Python, Dart. Owner: Shinkai Labs Pvt. Ltd." },
-    { "year": "2025", "name": "Sulabh: Disability Indexing App", "ref": "SW-20217/2025", "detail": "AI-based disability indexing and assessment" },
-    { "year": "2024", "name": "Hriday: ECG Tagging App", "ref": "SW-19736/2024", "detail": "ECG tagging and clinical support" }
+    {
+      "year": "2026",
+      "name": "Shinkai Labs Drone Detection and Tracking Platform",
+      "ref": "SW-2026023145",
+      "detail": "Python, Dart. Owner: Shinkai Labs Pvt. Ltd."
+    },
+    {
+      "year": "2025",
+      "name": "Sulabh: Disability Indexing App",
+      "ref": "SW-20217/2025",
+      "detail": "AI-based disability indexing and assessment"
+    },
+    {
+      "year": "2024",
+      "name": "Hriday: ECG Tagging App",
+      "ref": "SW-19736/2024",
+      "detail": "ECG tagging and clinical support"
+    }
   ],
   "chairs": [
-    { "year": "2026", "name": "IEEE EMBC 2026", "detail": "Toronto, Canada" },
-    { "year": "2024", "name": "BITMDM 2024", "detail": "Nagaland University, India" },
-    { "year": "2024", "name": "ICAT 2024", "detail": "National University of Science and Technology, Muscat, Oman" },
-    { "year": "2024", "name": "IEEE CSNT 2024", "detail": "Jabalpur, India" },
-    { "year": "2023", "name": "IEEE CSNT 2023", "detail": "Bhopal, India" }
+    {
+      "year": "2026",
+      "name": "IEEE EMBC 2026",
+      "detail": "Toronto, Canada"
+    },
+    {
+      "year": "2024",
+      "name": "BITMDM 2024",
+      "detail": "Nagaland University, India"
+    },
+    {
+      "year": "2024",
+      "name": "ICAT 2024",
+      "detail": "National University of Science and Technology, Muscat, Oman"
+    },
+    {
+      "year": "2024",
+      "name": "IEEE CSNT 2024",
+      "detail": "Jabalpur, India"
+    },
+    {
+      "year": "2023",
+      "name": "IEEE CSNT 2023",
+      "detail": "Bhopal, India"
+    }
   ],
   "talks": [
-    { "year": "2023", "name": "Infrared Imaging in Healthcare", "detail": "IEEE CSNT 2023, Bhopal" },
-    { "year": null, "name": "AI for Everyone, and Recent Advances in AI", "detail": "PATH, New Delhi" },
-    { "year": null, "name": "AI in Micro-Grid", "detail": "Dayananda Sagar College of Engineering, Bengaluru" },
-    { "year": null, "name": "Image Processing tutorial", "detail": "Nagaland University" }
+    {
+      "year": "2023",
+      "name": "Infrared Imaging in Healthcare",
+      "detail": "IEEE CSNT 2023, Bhopal"
+    },
+    {
+      "year": null,
+      "name": "AI for Everyone, and Recent Advances in AI",
+      "detail": "PATH, New Delhi"
+    },
+    {
+      "year": null,
+      "name": "AI in Micro-Grid",
+      "detail": "Dayananda Sagar College of Engineering, Bengaluru"
+    },
+    {
+      "year": null,
+      "name": "Image Processing tutorial",
+      "detail": "Nagaland University"
+    }
   ],
   "awards": [
-    { "year": "2021", "name": "ICM English Session Encouragement Award", "detail": "IEICE Conference, Japan" }
+    {
+      "year": "2021",
+      "name": "ICM English Session Encouragement Award",
+      "detail": "IEICE Conference, Japan"
+    }
   ]
 }
